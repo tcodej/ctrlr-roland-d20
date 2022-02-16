@@ -46,7 +46,7 @@
     <uiChildWindow uiChildWindowName="ModulatorList" uiChildWindowState="1990 80 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="1931 37 1263 783">
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="fs 1928 37 1263 783">
       <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/btnLoadData&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;37aded3a04c8453fa7431c8a054142f2:6d48ca18a7af42129109af8d83a0e0c2:397bd9192ec147939e398ac41893b858:eda8781969b94d6ab2539811e4cfc8ef:7863817704464130a9f863ed1610b774:cdb5a5084e6744438073a709c2a32c66:7da7f22f721649d58380ee58ce4bc3f2"/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="LayerEditor" uiChildWindowState="1923 858 475 144">
@@ -1099,7 +1099,7 @@
                componentLuaMouseDoubleClick="-- None" uiLabelBgColour="ff000000"
                uiLabelTextColour="ff00ff00" uiLabelOutline="0.00000000000000000000"
                uiLabelOutlineColour="0" uiLabelJustification="left" uiLabelFitFont="0"
-               uiLabelFont="LED Calculator;22;0;0;0;0;1;1" uiLabelText="Structure 3&amp;4&#10; 01 "
+               uiLabelFont="LED Calculator;22;0;0;0;0;1;1" uiLabelText="WG Pitch KF&#10;-1  100  99  00"
                uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
@@ -1681,7 +1681,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="wgFormControls" name="form-vel1" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="7">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3104,7 +3104,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="arpControls" name="arp-rate" modulatorMin="1.00000000000000000000"
-             modulatorValue="10">
+             modulatorValue="14">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3232,7 +3232,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-freqkf1" modulatorMin="0.00000000000000000000"
-             modulatorValue="8">
+             modulatorValue="14">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3317,7 +3317,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-pitch-kf1"
-             modulatorMin="0.00000000000000000000" modulatorValue="11">
+             modulatorMin="0.00000000000000000000" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>

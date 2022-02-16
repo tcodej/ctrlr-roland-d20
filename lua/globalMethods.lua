@@ -215,6 +215,6 @@ pBase[3] = hexToNum("02")
 pBase[4] = hexToNum("3c")
 
 -- down here so tableConcat() is available
-KEY_FOL_PITCH = tableConcat(KEY_FOL, {"x1","x2"})
+KEY_FOL_PITCH = tableConcat(KEY_FOL, {"s1","s2"})
 dump(KEY_FOL_PITCH)
 
