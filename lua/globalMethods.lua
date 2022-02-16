@@ -6,6 +6,17 @@ ARP_ON = false
 ACT_OFF = 0
 ACT_IN = 1
 ACT_OUT = 2
+ACT_SYS = 3
+
+pBase = {}
+pBase[1] = hexToNum("0e")
+pBase[2] = hexToNum("48")
+pBase[3] = hexToNum("02")
+pBase[4] = hexToNum("3c")
+
+KEY_FOL = {"-1","-1/2","-1/4","0","1/8","1/4","3/8","1/2","5/8","3/4","7/8","1","5/4","3/2","2"}
+KEY_FOL_PITCH = {"-1","-1/2","-1/4","0","1/8","1/4","3/8","1/2","5/8","3/4","7/8","1","5/4","3/2","2","s1","s2"}
+BIAS_PT = {"<A1","<A#1","<B1","<C1","<C#1","<D1","<D#1","<E1","<F1","<F#1","<G1","<G#1","<A2","<A#2","<B2","<C2","<C#2","<D2","<D#2","<E2","<F2","<F#2","<G2","<G#2","<A3","<A#3","<B3","<C3","<C#3","<D3","<D#3","<E3","<F3","<F#3","<G3","<G#3","<A4","<A#4","<B4","<C4","<C#4","<D4","<D#4","<E4","<F4","<F#4","<G4","<G#4","<A5","<A#5","<B5","<C5","<C#5","<D5","<D#5","<E5","<F5","<F#5","<G5","<G#5","<A6","<A#6","<B6","<C7",">A1",">A#1",">B1",">C1",">C#1",">D1",">D#1",">E1",">F1",">F#1",">G1",">G#1",">A2",">A#2",">B2",">C2",">C#2",">D2",">D#2",">E2",">F2",">F#2",">G2",">G#2",">A3",">A#3",">B3",">C3",">C#3",">D3",">D#3",">E3",">F3",">F#3",">G3",">G#3",">A4",">A#4",">B4",">C4",">C#4",">D4",">D#4",">E4",">F4",">F#4",">G4",">G#4",">A5",">A#5",">B5",">C5",">C#5",">D5",">D#5",">E5",">F5",">F#5",">G5",">G#5",">A6",">A#6",">B6",">C7"}
 
 -- send prefix
 prefixSend = "f0 41 10 16 12 "
@@ -17,10 +28,21 @@ suffix = " f7"
 
 
 function sendSysex(msg)
+    activity(ACT_SYS)
+
+    timer:setCallback(10, stopSysexTimer)
+    timer:startTimer(10, 100)
+
     sysex = prefixSend .. msg .. " " .. z4(msg) .. suffix
     panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
 
     return sysex
+end
+
+-- auto turn off led
+function stopSysexTimer()
+    activity(ACT_OFF)
+    timer:stopTimer(10)
 end
 
 
@@ -100,21 +122,56 @@ function numToHex(num)
 end
 
 
--- Return " 03" in case of 3 to preserve LCD column format. Otherwise does nothing.
-function zeroPad(num)
-    if num == nil then
-        num = 0
+-- Fit values into a 4 char grid to preserve LCD column format.
+-- example: 3 becomes " 03 ", 10 becomes " 10 " and -1/2 becomes "-1/2 "
+function zeroPad(val)
+    padded = ""
+
+    if val == nil then
+        val = 0
     end
 
-    if type(num) == "number" then
-        if num < 10 then
-            num = " 0" .. num
-        elseif num < 100 then
-            num = " " .. num
+    -- number
+    if type(val) == "number" then
+        if val < 10 then
+            padded = " 0".. val
+
+        elseif val < 100 then
+            padded = " ".. val
+
+        else
+            padded = val
+        end
+
+        padded = padded .." "
+    
+    -- string
+    elseif type(val) == "string" then
+        local len = string.len(val)
+
+        if len == 1 then
+            padded = " ".. val .."  "
+
+        elseif len == 2 then
+            -- for negative kf values < 3 chars, don't add first space
+            console("sub ".. string.sub(val, 0, 1))
+
+            if string.sub(val, 0, 1) == "-" then
+                padded = val .."  "
+
+            else
+                padded = " ".. val .." "
+            end
+
+        elseif len == 3 then
+            padded = " ".. val
+
+        else
+            padded = val
         end
     end
 
-    return num
+    return padded
 end
 
 
@@ -130,20 +187,18 @@ function activity(num)
         panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-off")
 
     elseif num == ACT_IN then
-        -- in, blink blue
-        panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-blue")
+        -- in, blink red
+        panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-red")
 
     elseif num == ACT_OUT then
         -- out, blink green
         panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-green")
+
+    elseif num == ACT_SYS then
+        -- sysex in or out blink blue
+        panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-blue")
     end
 end
 
 
-
-pBase = {}
-pBase[1] = hexToNum("0e")
-pBase[2] = hexToNum("48")
-pBase[3] = hexToNum("02")
-pBase[4] = hexToNum("3c")
 

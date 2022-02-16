@@ -25,7 +25,7 @@ test[1] = { name="Bass Drum 2", disp="BsDrum2" }
 
 
 function wgFormControls(mod, value, source)
-	local offset = "00"
+	local addr = "00"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
     local sysEx = "04 00 "
@@ -44,10 +44,10 @@ function wgFormControls(mod, value, source)
 
 
 
-    -- offset 04
+    -- wave shape
     if string.find(name, "btn%-shape") then
         v1 = "Waveform"
-        offset = calcOffset(partial, "04")
+        addr = calcOffset(partial, "04")
 
         if value == 0 or value == 2 then
             valueStr = "SQU"
@@ -57,9 +57,10 @@ function wgFormControls(mod, value, source)
         end
     end
 
+    -- pcm bank
     if string.find(name, "btn%-bank") then
         v1 = "PCM Wave Bank"
-        offset = calcOffset(partial, "04")
+        addr = calcOffset(partial, "04")
 
         waveCombo = panel:getComponent("list-pcm-wave-number".. partial)
 	    waveCombo:setProperty("uiComboContent", pcmBank[bank], false)
@@ -74,10 +75,24 @@ function wgFormControls(mod, value, source)
         end
     end
 
+
+    -- pcm wave
     if string.find(name, "wave%-number") then
         v1 = "PCM Wave No."
-        offset = calcOffset(partial, "05")
+        addr = calcOffset(partial, "05")
         valueStr = pcmBank[bank][value+1]
+    end
+
+    
+    -- wave pulse width
+    if string.find(name, "form%-pw") then
+        v1 = "Pulse Width"
+        addr = calcOffset(partial, "06")
+
+    elseif string.find(name, "form%-vel") then
+        v1 = "PW Velocity"
+        addr = calcOffset(partial, "07")
+
     end
 
 
@@ -85,7 +100,7 @@ function wgFormControls(mod, value, source)
 
 
 
-    sysEx = sysEx .. offset .." ".. numToHex(value)
+    sysEx = sysEx .. addr .." ".. numToHex(value)
 
     line1 = line1:gsub("s1", v1)
 

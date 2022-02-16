@@ -6,7 +6,7 @@
 local notes = {"3c"}
 local velocity = "64"
 
-local curNote = 1
+local curNote = 0
 local maxNotes = 5
 local dir = 1
 local updown = 0
@@ -16,6 +16,7 @@ local rate = 500
 local noteLength = rate / 2
 
 function arpControls(mod, value)
+
     local name = L(mod:getName())
 
     if name == "btn-arp" then
@@ -23,30 +24,44 @@ function arpControls(mod, value)
             ARP_ON = false
             timer:stopTimer(1)
 
-            curNote = 1
-            notes = {"3c"}
-            velocity = "64"
-
             -- all notes off
             panel:sendMidiMessageNow(CtrlrMidiMessage("b0 7b 00"))
         end
 
         if value == 1 then
+            reset()
+            -- trigger the first note on button press
+            sendNote()
+
             ARP_ON = true
             timer:setCallback(1, sendNote)
             timer:startTimer(1, rate)
         end
 
     elseif name == "arp-rate" then
-        timer:stopTimer(1)
+        -- convert to high to low
+        value = 20 - value
+
         rate = (value + 1) * 50
         noteLength = rate / 2
-        timer:startTimer(1, rate)
         console("rate: ".. rate)
+
+        if ARP_ON then
+            timer:stopTimer(1)
+            timer:startTimer(1, rate)
+        end
     end
 end
 
 
+
+function reset()
+    notes = {"3c", "40", "43", "47", "48"}
+    velocity = "64"
+    curNote = 0
+    rate = 500
+    noteLength = rate / 2
+end
 
 function addNote(num, vel)
     if num ~= notes[curNote] then
@@ -58,7 +73,7 @@ function addNote(num, vel)
     end
 
     table.insert(notes, num)
-    --console(dump(notes))
+    console(dump(notes))
 
     velocity = vel
 end
