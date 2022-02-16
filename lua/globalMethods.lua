@@ -2,21 +2,18 @@
 -- Variables and functions available globally
 --
 
+-- pBase is populated down below...
+pBase = {}
+
 ARP_ON = false
 ACT_OFF = 0
 ACT_IN = 1
 ACT_OUT = 2
 ACT_SYS = 3
 
-pBase = {}
-pBase[1] = hexToNum("0e")
-pBase[2] = hexToNum("48")
-pBase[3] = hexToNum("02")
-pBase[4] = hexToNum("3c")
-
-KEY_FOL = {"-1","-1/2","-1/4","0","1/8","1/4","3/8","1/2","5/8","3/4","7/8","1","5/4","3/2","2"}
-KEY_FOL_PITCH = {"-1","-1/2","-1/4","0","1/8","1/4","3/8","1/2","5/8","3/4","7/8","1","5/4","3/2","2","s1","s2"}
 BIAS_PT = {"<A1","<A#1","<B1","<C1","<C#1","<D1","<D#1","<E1","<F1","<F#1","<G1","<G#1","<A2","<A#2","<B2","<C2","<C#2","<D2","<D#2","<E2","<F2","<F#2","<G2","<G#2","<A3","<A#3","<B3","<C3","<C#3","<D3","<D#3","<E3","<F3","<F#3","<G3","<G#3","<A4","<A#4","<B4","<C4","<C#4","<D4","<D#4","<E4","<F4","<F#4","<G4","<G#4","<A5","<A#5","<B5","<C5","<C#5","<D5","<D#5","<E5","<F5","<F#5","<G5","<G#5","<A6","<A#6","<B6","<C7",">A1",">A#1",">B1",">C1",">C#1",">D1",">D#1",">E1",">F1",">F#1",">G1",">G#1",">A2",">A#2",">B2",">C2",">C#2",">D2",">D#2",">E2",">F2",">F#2",">G2",">G#2",">A3",">A#3",">B3",">C3",">C#3",">D3",">D#3",">E3",">F3",">F#3",">G3",">G#3",">A4",">A#4",">B4",">C4",">C#4",">D4",">D#4",">E4",">F4",">F#4",">G4",">G#4",">A5",">A#5",">B5",">C5",">C#5",">D5",">D#5",">E5",">F5",">F#5",">G5",">G#5",">A6",">A#6",">B6",">C7"}
+KEY_FOL = {"-1","-1/2","-1/4","0","1/8","1/4","3/8","1/2","5/8","3/4","7/8","1","5/4","3/2","2"}
+KEY_FOL_PITCH = {}
 
 -- send prefix
 prefixSend = "f0 41 10 16 12 "
@@ -154,8 +151,6 @@ function zeroPad(val)
 
         elseif len == 2 then
             -- for negative kf values < 3 chars, don't add first space
-            console("sub ".. string.sub(val, 0, 1))
-
             if string.sub(val, 0, 1) == "-" then
                 padded = val .."  "
 
@@ -164,7 +159,12 @@ function zeroPad(val)
             end
 
         elseif len == 3 then
-            padded = " ".. val
+            -- bias vals start with < or > and are always left justified
+            if string.sub(val, 0, 1) == "<" or string.sub(val, 0, 1) == ">" then
+                padded = val .." "
+            else
+                padded = " ".. val
+            end
 
         else
             padded = val
@@ -201,4 +201,20 @@ function activity(num)
 end
 
 
+function tableConcat(t1, t2)
+   for i=1,#t2 do
+      t1[#t1+1] = t2[i]
+   end
+   return t1
+end
+
+-- down here so hexToNum() is available
+pBase[1] = hexToNum("0e")
+pBase[2] = hexToNum("48")
+pBase[3] = hexToNum("02")
+pBase[4] = hexToNum("3c")
+
+-- down here so tableConcat() is available
+KEY_FOL_PITCH = tableConcat(KEY_FOL, {"x1","x2"})
+dump(KEY_FOL_PITCH)
 

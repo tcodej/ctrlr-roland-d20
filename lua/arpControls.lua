@@ -12,8 +12,8 @@ local dir = 1
 local updown = 0
 
 -- milliseconds
-local rate = 500
-local noteLength = rate / 2
+local rate = nil
+local noteLength = nil
 
 function arpControls(mod, value)
 
@@ -59,7 +59,9 @@ function reset()
     notes = {"3c", "40", "43", "47", "48"}
     velocity = "64"
     curNote = 0
-    rate = 500
+    if rate == nil then
+        rate = 250
+    end
     noteLength = rate / 2
 end
 

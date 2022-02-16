@@ -30,24 +30,30 @@ function filterControls(mod, value, source)
         v1 = "Freq KF"
         valueStr = KEY_FOL[value+1]
         addr = calcOffset(partial, "19")
+
+    elseif string.find(name, "bpt") then
+        line2 = "s1<A#6<B6 >C7"
+        v1 = "Bias Point"
+        valueStr = BIAS_PT[value+1]
+        addr = calcOffset(partial, "1a")
     end
 
 
 
     -- tvf env time
-    if string.find(name, "t1") then
+    if string.find(name, "%-t1") then
         v1 = "Time 1"
         addr = calcOffset(partial, "0b")
 
-    elseif string.find(name, "t2") then
+    elseif string.find(name, "%-t2") then
         v1 = "Time 2"
         addr = calcOffset(partial, "0c")
 
-    elseif string.find(name, "t3") then
+    elseif string.find(name, "%-t3") then
         v1 = "Time 3"
         addr = calcOffset(partial, "0d")
 
-    elseif string.find(name, "t4") then
+    elseif string.find(name, "%-t4") then
         v1 = "Time 4"
         addr = calcOffset(partial, "0e")
 
