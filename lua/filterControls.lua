@@ -6,12 +6,14 @@ function filterControls(mod, value, source)
     local addr = "17"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
+    name = string.sub(name, 0, -2)
+
     local sysEx = "04 00 "
 
     if (partial > 2) then sysEx = "04 01 " end
 
     local line1 = "TVF s1"
-    local line2 = "s1100 100 100"
+    local line2 = "s1s2s3s4"
     local v1 = "";
     local v2 = "s".. partial
     local valueStr = nil
@@ -77,7 +79,10 @@ function filterControls(mod, value, source)
     end
 
 
-
+    s1 = get(name .."1")
+    s2 = get(name .."2")
+    s3 = get(name .."3")
+    s4 = get(name .."4")
     
 
     line1 = line1:gsub("s1", v1)
@@ -86,7 +91,8 @@ function filterControls(mod, value, source)
         line2 = line2:gsub(v2, zeroPad(valueStr))
 
     else
-        line2 = line2:gsub(v2, zeroPad(value))
+        --line2 = line2:gsub(v2, zeroPad(value))
+        line2 = zeroPad(s1)..zeroPad(s2)..zeroPad(s3)..zeroPad(s4)
     end
 
     updateLCD(line1, line2)
