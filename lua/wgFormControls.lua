@@ -40,7 +40,7 @@ function wgFormControls(mod, value, source)
 
     local bank = panel:getModulatorByName("btn-bank1"):getModulatorValue()
 
-    console(name ..": ".. value)
+    --console(name ..": ".. value)
 
 
 

@@ -1,5 +1,5 @@
 --
--- Auto-send notes when adjusting tone parameters
+-- Auto-play notes when adjusting tone parameters
 --
 
 -- hex
@@ -47,7 +47,7 @@ function setNote(num, vel)
     end
 
     table.insert(notes, num)
-    console(dump(notes))
+    --console(dump(notes))
 
     velocity = vel
 end

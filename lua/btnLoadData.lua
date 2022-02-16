@@ -4,6 +4,6 @@
 -- @value    new numeric value of the modulator
 --
 btnLoadData = function(mod, value, source)
-    console("Request data")
+    --console("Request data")
     sendSysex("20 00 00 a0")
 end

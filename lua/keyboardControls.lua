@@ -1,5 +1,5 @@
 --
--- Simple Arpeggiator control
+-- Simple arpeggiator control
 --
 
 function keyboardControls(mod, value)
