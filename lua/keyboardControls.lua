@@ -10,7 +10,7 @@ function keyboardControls(mod, value)
 
     -- ignore note off (velocity is 0)
     if ARP_ON and value > 0 then
-        setNote(note, velocity)
+        addNote(note, velocity)
     end
 end
 
