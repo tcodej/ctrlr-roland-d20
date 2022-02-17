@@ -3,6 +3,7 @@
 --
 
 function pitchControls(mod, value, source)
+    console("pitch ".. source)
     local addr = "00"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))

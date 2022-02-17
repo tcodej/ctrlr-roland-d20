@@ -7,5 +7,15 @@ function partialLock(mod, value)
     local partial = tonumber(string.sub(name, -1))
     name = string.sub(name, 0, -2)
 
-    console(name ..": ".. partial)
+    if value == 0 then
+        value = false
+    end
+    
+    if value == 1 then
+        value = true
+    end
+
+    P_EDIT[partial] = value
+
+    console(dump(P_EDIT))
 end

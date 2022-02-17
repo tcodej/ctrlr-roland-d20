@@ -3,14 +3,18 @@
 --
 
 function filterControls(mod, value, source)
-    local addr = "17"
+    console("tvf src "..source)
+    local addr = "00"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
     name = string.sub(name, 0, -2)
 
-    local sysEx = "04 00 "
+    local sysEx = {"04 00 ", "04 01 "}
+    local base = sysEx[1]
 
-    if (partial > 2) then sysEx = "04 01 " end
+    if (partial > 2) then
+        base = sysEx[2]
+    end
 
     local line1 = "TVF s1"
     local line2 = "s1s2s3s4"
@@ -18,26 +22,46 @@ function filterControls(mod, value, source)
     local v2 = "s".. partial
     local valueStr = nil
 
+    offset = {
+        cutoff = "17",
+        res = "18",
+        freqkf = "19",
+        bpt = "1a",
+        blv = "1b",
+        dep = "1c",
+        vels = "1d",
+        depkf = "1e",
+        tkf = "1f",
+        t1 = "20",
+        t2 = "21",
+        t3 = "22",
+        t4 = "24",
+        l1 = "25",
+        l2 = "26",
+        lsus = "28"
+    }
+
+
     -- tvf frequency
     if string.find(name, "cutoff") then
         v1 = "Cutoff Freq"
-        addr = calcOffset(partial, "17")
+        addr = offset.cutoff
 
     elseif string.find(name, "res") then
         v1 = "Resonance"
-        addr = calcOffset(partial, "18")
+        addr = offset.res
 
     elseif string.find(name, "freqkf") then
         line2 = "s11/2-1/4 0"
         v1 = "Freq KF"
         valueStr = KEY_FOL[value+1]
-        addr = calcOffset(partial, "19")
+        addr = offset.freqkf
 
     elseif string.find(name, "bpt") then
         line2 = "s1<A#6<B6 >C7"
         v1 = "Bias Point"
         valueStr = BIAS_PT[value+1]
-        addr = calcOffset(partial, "1a")
+        addr = offset.bpt
     end
 
 
@@ -45,37 +69,33 @@ function filterControls(mod, value, source)
     -- tvf env time
     if string.find(name, "%-t1") then
         v1 = "Time 1"
-        addr = calcOffset(partial, "0b")
+        addr = offset.t1
 
     elseif string.find(name, "%-t2") then
         v1 = "Time 2"
-        addr = calcOffset(partial, "0c")
+        addr = offset.t2
 
     elseif string.find(name, "%-t3") then
         v1 = "Time 3"
-        addr = calcOffset(partial, "0d")
+        addr = offset.t3
 
     elseif string.find(name, "%-t4") then
         v1 = "Time 4"
-        addr = calcOffset(partial, "0e")
+        addr = offset.t4
 
 
     -- tvf env level
-    elseif string.find(name, "l0") then
-        v1 = "Level 0"
-        addr = calcOffset(partial, "0f")
-
     elseif string.find(name, "l1") then
         v1 = "Level 1"
-        addr = calcOffset(partial, "10")
+        addr = offset.l1
 
     elseif string.find(name, "l2") then
         v1 = "Level 2"
-        addr = calcOffset(partial, "11")
+        addr = offset.l2
 
     elseif string.find(name, "lsus") then
-        v1 = "End Level"
-        addr = calcOffset(partial, "13")
+        v1 = "Sus Level"
+        addr = offset.lsus
     end
 
 
@@ -97,5 +117,25 @@ function filterControls(mod, value, source)
 
     updateLCD(line1, line2)
 
-    sendSysex(sysEx .. addr .." ".. numToHex(value))
+    sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
+    
+    -- todo: verify that source 4 is the controller being manipulated
+    if source == 4 then
+        if P_EDIT[1] then
+            if partial ~= 1 then set(name.."1", value) end
+        end
+
+        if P_EDIT[2] then
+            if partial ~= 2 then set(name.."2", value) end
+        end
+
+        if P_EDIT[3] then
+            if partial ~= 3 then set(name.."3", value) end
+        end
+
+        if P_EDIT[4] then
+            if partial ~= 4 then set(name.."4", value) end
+        end
+    end
+
 end
