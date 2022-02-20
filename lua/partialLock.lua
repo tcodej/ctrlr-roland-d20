@@ -17,5 +17,5 @@ function partialLock(mod, value)
 
     P_EDIT[partial] = value
 
-    console(dump(P_EDIT))
+    --console(dump(P_EDIT))
 end

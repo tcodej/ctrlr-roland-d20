@@ -1,8 +1,8 @@
 --
--- TVF frequency and envelope
+-- TVA Level and Envelope
 --
 
-function filterControls(mod, value, source)
+function ampControls(mod, value, source)
     local addr = "00"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
@@ -15,89 +15,85 @@ function filterControls(mod, value, source)
         base = sysExTone[2]
     end
 
-    local line1 = "TVF s1"
+    local line1 = "TVA s1"
     local line2 = "s1s2s3s4"
     local v1 = "";
     local v2 = "s".. partial
     local valueStr = nil
 
     offset = {
-        cutoff = "17",
-        res = "18",
-        freqkf = "19",
-        bpt = "1a",
-        blv = "1b",
+        lvl = "29",
+        vel = "2a",
+        bp1 = "2b",
+        bl1 = "2c",
+        bp2 = "2d",
+        bl2 = "2e",
+        kftime = "2f",
 
-        dep = "1c",
-        vel = "1d",
-        depkf = "1e",
-
-        tkf = "1f",
-        t1 = "20",
-        t2 = "21",
-        t3 = "22",
-        t4 = "24",
-
-        l1 = "25",
-        l2 = "26",
-        lsus = "28"
+        kfvel = "30",
+        t1 = "31",
+        t2 = "32",
+        t3 = "33",
+        t4 = "35",
+        l1 = "36",
+        l2 = "37",
+        lsus = "39"
     }
 
 
     -- tvf frequency
-    if string.find(name, "cutoff") then
-        v1 = "Cutoff Freq"
-        addr = offset.cutoff
+    if string.find(name, "lvl") then
+        v1 = "Level"
+        addr = offset.lvl
 
-    elseif string.find(name, "res") then
-        v1 = "Resonance"
-        addr = offset.res
-
-    elseif string.find(name, "freqkf") then
-        line2 = "s11/2-1/4 0"
-        v1 = "Freq KF"
-        valueStr = KEY_FOL[value+1]
-        addr = offset.freqkf
-
-    elseif string.find(name, "bpt") then
-        line2 = "s1<A#6<B6 >C7"
-        v1 = "Bias Point"
-        valueStr = BIAS_PT[value+1]
-        addr = offset.bpt
-
-    elseif string.find(name, "blv") then
-        --line2 = "s1<A#6<B6 >C7"
-        v1 = "Bias Level"
-        valueStr = BIAS_PT[value+1]
-        addr = offset.blv
-
-    -- tvf depth
-    elseif name == "tvf-dep" then
-        v1 = "ENV Depth"
-        addr = offset.dep
-
-    elseif string.find(name, "vel") then
-        v1 = "ENV Velocity"
+    elseif name == "tva-vel" then
+        v1 = "Velocity"
         addr = offset.vel
+        valueStr = LEVELS[value+1]
 
-    elseif string.find(name, "depkf") then
-        v1 = "ENV Depth KF"
-        addr = offset.depkf
+    elseif string.find(name, "bp1") then
+        v1 = "Bias Point 1"
+        addr = offset.bp1
+        valueStr = BIAS_PT[value+1]
+
+    elseif string.find(name, "bl1") then
+        v1 = "Bial Level 1"
+        addr = offset.bl1
+        valueStr = BIAS_LVL[value+1]
+
+    elseif string.find(name, "bp2") then
+        v1 = "Bias Point 2"
+        addr = offset.bp2
+        valueStr = BIAS_PT[value+1]
+
+    elseif string.find(name, "bl2") then
+        v1 = "Bial Level 2"
+        addr = offset.bl2
+        valueStr = BIAS_LVL[value+1]
+
+    elseif string.find(name, "%-kftime") then
+        v1 = "ENV Time KF"
+        addr = offset.kftime
+
+    elseif string.find(name, "%-kfvel") then
+        v1 = "ENV T1 Velo"
+        addr = offset.kfvel
+        console("val "..value)
 
     -- tvf env time
-    elseif string.find(name, "%-t1") then
+    elseif string.find(name, "t1") then
         v1 = "Time 1"
         addr = offset.t1
 
-    elseif string.find(name, "%-t2") then
+    elseif string.find(name, "t2") then
         v1 = "Time 2"
         addr = offset.t2
 
-    elseif string.find(name, "%-t3") then
+    elseif string.find(name, "t3") then
         v1 = "Time 3"
         addr = offset.t3
 
-    elseif string.find(name, "%-t4") then
+    elseif string.find(name, "t4") then
         v1 = "Time 4"
         addr = offset.t4
 
