@@ -3,66 +3,138 @@
 --
 
 function pitchControls(mod, value, source)
-    console("pitch ".. source)
     local addr = "00"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
-    local sysEx = "04 00 "
-    local valueStr = nil
+    -- remove the partial number
+    name = string.sub(name, 0, -2)
 
-    if (partial > 2) then sysEx = "04 01 " end
+    local base = sysExTone[1]
+
+    if (partial > 2) then
+        base = sysExTone[2]
+    end
 
     local line1 = "s1"
-    local line2 = "s1100  99  00"
+    local line2 = "s1s2s3s4"
     local v1 = "";
     local v2 = "s".. partial
+    local valueStr = nil
+
+    offset = {
+        crs = "00",
+        fine = "01",
+        kfpitch = "02",
+        bender = "03",
+        
+        dep = "08",
+        vel = "09",
+        kf = "0a",
+
+        t1 = "0b",
+        t2 = "0c",
+        t3 = "0d",
+        t4 = "0e",
+        l0 = "0f",
+        l1 = "10",
+        l2 = "11",
+        lend = "13",
+
+        lrte = "14",
+        ldep = "15",
+        lmod = "16"
+    }
+
+    -- pitch mod
+    if string.find(name, "crs") then
+        v1 = "WG Pitch Coarse"
+        addr = offset.crs
+
+    elseif string.find(name, "fine") then
+        v1 = "WG Pitch Fine"
+        addr = offset.fine
+
+    elseif string.find(name, "kfpitch") then
+        v1 = "WG Pitch KF"
+        addr = offset.kfpitch
+        valueStr = KEY_FOL_PITCH[value+1]
+    end
 
     -- pitch env time
     if string.find(name, "t1") then
         v1 = "P-ENV Time 1"
-        addr = calcOffset(partial, "0b")
+        addr = offset.t1
 
     elseif string.find(name, "t2") then
         v1 = "P-ENV Time 2"
-        addr = calcOffset(partial, "0c")
+        addr = offset.t2
 
     elseif string.find(name, "t3") then
         v1 = "P-ENV Time 3"
-        addr = calcOffset(partial, "0d")
+        addr = offset.t3
 
     elseif string.find(name, "t4") then
         v1 = "P-ENV Time 4"
-        addr = calcOffset(partial, "0e")
+        addr = offset.t4
 
 
     -- pitch env level
     elseif string.find(name, "l0") then
         v1 = "P-ENV Level 0"
-        addr = calcOffset(partial, "0f")
+        addr = offset.l0
+        valueStr = LEVELS[value+1]
 
     elseif string.find(name, "l1") then
         v1 = "P-ENV Level 1"
-        addr = calcOffset(partial, "10")
+        addr = offset.l1
+        valueStr = LEVELS[value+1]
 
     elseif string.find(name, "l2") then
         v1 = "P-ENV Level 2"
-        addr = calcOffset(partial, "11")
+        addr = offset.l2
+        valueStr = LEVELS[value+1]
 
     elseif string.find(name, "lend") then
         v1 = "P-ENV End Level"
-        addr = calcOffset(partial, "13")
+        addr = offset.lend
+        valueStr = LEVELS[value+1]
     end
 
 
     -- pitch depth
-    if string.find(name, "kf") then
-        v1 = "WG Pitch KF"
-        addr = calcOffset(partial, "02")
-        valueStr = KEY_FOL_PITCH[value+1]
+    if string.find(name, "dep") then
+        v1 = "WG Pitch Depth"
+        addr = offset.dep
+
+    elseif string.find(name, "vel") then
+        v1 = "WG Pitch Velocity"
+        addr = offset.vel
+
+    elseif string.find(name, "kf") then
+        v1 = "P-ENV Time KF"
+        addr = offset.kf
+
+    -- pitch mod
+    elseif string.find(name, "rte") then
+        v1 = "LFO Rate"
+        addr = offset.rte
+
+    elseif string.find(name, "dep") then
+        v1 = "LFO Depth"
+        addr = offset.dep
+
+    elseif string.find(name, "mod") then
+        v1 = "WG Modulation"
+        addr = offset.mod
     end
 
 
-    sysEx = sysEx .. addr .." ".. numToHex(value)
+
+    s1 = get(name .."1")
+    s2 = get(name .."2")
+    s3 = get(name .."3")
+    s4 = get(name .."4")
+
 
     line1 = line1:gsub("s1", v1)
 
@@ -70,11 +142,30 @@ function pitchControls(mod, value, source)
         line2 = line2:gsub(v2, zeroPad(valueStr))
 
     else
-        line2 = line2:gsub(v2, zeroPad(value))
+
+        line2 = zeroPad(s1)..zeroPad(s2)..zeroPad(s3)..zeroPad(s4)
     end
 
     updateLCD(line1, line2)
 
-    sendSysex(sysEx)
+    sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
+    
+    -- todo: verify that source 4 is the controller being manipulated
+    if source == 4 then
+        if P_EDIT[1] then
+            if partial ~= 1 then set(name.."1", value) end
+        end
 
+        if P_EDIT[2] then
+            if partial ~= 2 then set(name.."2", value) end
+        end
+
+        if P_EDIT[3] then
+            if partial ~= 3 then set(name.."3", value) end
+        end
+
+        if P_EDIT[4] then
+            if partial ~= 4 then set(name.."4", value) end
+        end
+    end
 end

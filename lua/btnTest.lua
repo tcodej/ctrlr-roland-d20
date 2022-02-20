@@ -6,6 +6,7 @@
 
 function btnTest(mod, value)
 
+    updateLCD("D20 v1.0 2022-02", "By Trent Johnson")
 -- send part2/lower tone data from temp area
 -- f0 41 10 16 11 04 01 76 00 01 76 0e f7
 -- 
