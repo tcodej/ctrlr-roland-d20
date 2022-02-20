@@ -38,7 +38,7 @@
        ctrlrMenuBarHighlightColour="ff4364ff" ctrlrMenuBarFont="&lt;Sans-Serif&gt;;18;0;0;0;0;1;3"
        ctrlrUseEditorWrapper="0" panelIndex="1">
   <uiWindowManager>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="461 287 1300 827">
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="659 420 1114 700">
       <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/paintTVF&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;72c5a0c162c14c80996f598d4ebdac52:3c55150fe9fc4f708f38a98c92db38b5"/>
     </uiChildWindow>
   </uiWindowManager>
@@ -74,10 +74,10 @@
                    luaMethodLinkedProperty="" luaMethodSource="0" uuid="00000000000000000000000000000006"
                    luaMethodValid="1"/>
       </luaMethodGroup>
-      <luaMethod luaMethodName="graph" luaMethodCode="--&#10;-- Called when a modulator value changes&#10;-- @mod   http://ctrlr.org/api/class_ctrlr_modulator.html&#10;-- @value    new numeric value of the modulator&#10;--&#10;graph = function(--[[ CtrlrModulator --]] mod, --[[ number --]] value, --[[ number --]] source)&#13;&#10;&#13;&#10;&#9;panel:getComponent(&quot;tvfGraph&quot;):repaint()&#13;&#10;&#9;--graph = panel:getModulatorByName(&quot;tvfGraph&quot;)&#13;&#10;&#9;&#10;end"
+      <luaMethod luaMethodName="graph" luaMethodCode="--&#10;-- Called when a modulator value changes&#10;-- @mod   http://ctrlr.org/api/class_ctrlr_modulator.html&#10;-- @value    new numeric value of the modulator&#10;--&#10;graph = function(--[[ CtrlrModulator --]] mod, --[[ number --]] value, --[[ number --]] source)&#13;&#10;&#13;&#10;&#9;panel:getComponent(&quot;tvfGraph&quot;):repaint()&#13;&#10;&#9;&#10;end"
                  luaMethodLinkedProperty="" luaMethodSource="0" uuid="72c5a0c162c14c80996f598d4ebdac52"
                  luaMethodValid="1"/>
-      <luaMethod luaMethodName="paintTVF" luaMethodCode="--&#10;-- Called when a component needs repainting&#10;-- @comp&#10;-- @g    http://ctrlr.org/api/class_ctrlr_lua_graphics.html&#10;--              see also http://www.rawmaterialsoftware.com/juce/api/classGraphics.html&#10;--&#10;&#10;paintTVF = function(--[[ CtrlrComponent --]] comp, --[[ CtrlrComponent --]] g)&#13;&#10;&#9;t1 = panel:getModulatorByName(&quot;tvf-t1&quot;):getModulatorValue()&#10;&#9;l1 = panel:getModulatorByName(&quot;tvf-l1&quot;):getModulatorValue()&#13;&#10;&#13;&#10;&#9;--g:drawLine(10, 10, 50, 50)&#13;&#10;&#9;g:drawEllipse (t1*2, l1, 20, 30, 3)&#13;&#10;&#13;&#10;&#9;console(&quot;vals &quot;.. t1*2 ..&quot;,&quot;.. l1)&#13;&#10;end"
+      <luaMethod luaMethodName="paintTVF" luaMethodCode="--&#10;-- Called when a component needs repainting&#10;-- @comp&#10;-- @g    http://ctrlr.org/api/class_ctrlr_lua_graphics.html&#10;--              see also http://www.rawmaterialsoftware.com/juce/api/classGraphics.html&#10;--&#10;&#10;paintTVF = function(comp, g)&#13;&#10;&#13;&#10;&#9;baseX = 10&#13;&#10;&#9;baseY = 100&#13;&#10;&#9;width = 400&#13;&#10;&#9;height = 100&#13;&#10;&#13;&#10;&#9;t1 = panel:getModulatorByName(&quot;tvf-t1&quot;):getModulatorValue()&#10;&#9;t2 = panel:getModulatorByName(&quot;tvf-t2&quot;):getModulatorValue()&#10;&#9;t3 = panel:getModulatorByName(&quot;tvf-t3&quot;):getModulatorValue()&#10;&#9;t4 = panel:getModulatorByName(&quot;tvf-t4&quot;):getModulatorValue()&#10;&#13;&#10;&#9;l0 = height - panel:getModulatorByName(&quot;tvf-l0&quot;):getModulatorValue()&#13;&#10;&#9;l1 = height - panel:getModulatorByName(&quot;tvf-l1&quot;):getModulatorValue()&#13;&#10;&#9;l2 = height - panel:getModulatorByName(&quot;tvf-l2&quot;):getModulatorValue()&#13;&#10;&#9;lend = height - panel:getModulatorByName(&quot;tvf-lend&quot;):getModulatorValue()&#13;&#10;&#13;&#10;&#9;g:setColour(Colour(0xff000000))&#13;&#10;&#9;g:fillRect(0, 0, width, height)&#13;&#10;&#9;g:setColour(Colour(0xffffffff))&#13;&#10;&#9;g:drawLine(0, height/2, width, height/2, 1)&#13;&#10;&#13;&#10;&#9;g:drawLine(0, l0, t1, l1, 2)&#13;&#10;&#9;g:drawLine(t1, l1, t1+t2, l2, 2)&#13;&#10;&#9;g:drawLine(t1+t2, l2, t1+t2+t3, lend, 2)&#13;&#10;&#9;g:drawLine(t1+t2+t3, lend, t1+t2+t3+t4, lend, 2)&#13;&#10;&#13;&#10;&#13;&#10;end"
                  luaMethodLinkedProperty="" luaMethodSource="0" uuid="3c55150fe9fc4f708f38a98c92db38b5"
                  luaMethodValid="1"/>
     </luaManagerMethods>
@@ -127,7 +127,7 @@
                componentLuaMouseDown="-- None" componentLuaMouseDrag="-- None"
                componentLuaMouseDoubleClick="-- None" uiCustomResizedCallback="-- None"
                uiCustomPaintCallback="paintTVF" uiCustomPaintOverChildrenCallback="-- None"
-               componentRectangle="8 8 472 192" uiCustomMouseDownCallback="-- None"
+               componentRectangle="8 8 400 100" uiCustomMouseDownCallback="-- None"
                uiCustomMouseUpCallback="-- None" uiCustomMouseEnterCallback="-- None"
                uiCustomMouseExitCallback="-- None" uiCustomMouseMoveCallback="-- None"
                uiCustomMouseDragCallback="-- None" uiCustomKeyDownCallback="-- None"
@@ -150,7 +150,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
-             name="tvf-t1" modulatorMin="0" modulatorValue="55">
+             name="tvf-t1" modulatorMin="0" modulatorValue="70">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -180,7 +180,7 @@
                uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
                uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
                uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
-               uiSliderPopupBubble="0" uiType="uiSlider" componentRectangle="16 256 64 133"
+               uiSliderPopupBubble="0" uiType="uiSlider" componentRectangle="40 256 64 133"
                componentLayerUid="1e0a82eaa91401002001000000000000"/>
   </modulator>
   <modulator modulatorVstExported="1" modulatorMax="100" vstIndex="212" modulatorIsStatic="0"
@@ -193,7 +193,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
-             name="tvf-l1" modulatorMin="0" modulatorValue="29">
+             name="tvf-l1" modulatorMin="0" modulatorValue="34">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -224,7 +224,7 @@
                uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
                uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
                uiSliderPopupBubble="0" componentLayerUid="1e0a82eaa91401002001000000000000"
-               componentRectangle="72 256 64 133" uiType="uiSlider"/>
+               componentRectangle="328 256 64 133" uiType="uiSlider"/>
   </modulator>
   <modulator modulatorVstExported="1" modulatorMax="100" vstIndex="213" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -236,7 +236,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
-             name="tvf-t2" modulatorMin="0">
+             name="tvf-t2" modulatorMin="0" modulatorValue="75">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -267,7 +267,7 @@
                uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
                uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
                uiSliderPopupBubble="0" componentLayerUid="1e0a82eaa91401002001000000000000"
-               componentRectangle="120 256 64 133" uiType="uiSlider"/>
+               componentRectangle="88 256 64 133" uiType="uiSlider"/>
   </modulator>
   <modulator modulatorVstExported="1" modulatorMax="100" vstIndex="214" modulatorIsStatic="0"
              modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
@@ -279,7 +279,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
-             name="tvf-l2" modulatorMin="0">
+             name="tvf-l2" modulatorMin="0" modulatorValue="100">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
           midiMessageSysExFormula=""/>
@@ -309,7 +309,179 @@
                uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
                uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
                uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
-               uiSliderPopupBubble="0" uiType="uiSlider" componentRectangle="168 256 64 133"
+               uiSliderPopupBubble="0" uiType="uiSlider" componentRectangle="368 256 64 133"
                componentLayerUid="1e0a82eaa91401002001000000000000"/>
+  </modulator>
+  <modulator modulatorVstExported="1" modulatorMax="100" vstIndex="215" modulatorIsStatic="0"
+             modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
+             modulatorExcludeFromSnapshot="0" modulatorValueExpression="modulatorValue"
+             modulatorValueExpressionReverse="midiValue" modulatorControllerExpression="value"
+             luaModulatorGetValueForMIDI="-- None" luaModulatorGetValueFromMIDI="-- None"
+             modulatorLinkedToPanelProperty="-- None" modulatorLinkedToModulatorProperty="-- None"
+             modulatorLinkedToModulator="-- None" modulatorLinkedToModulatorSource="1"
+             modulatorLinkedToComponent="Modulator" modulatorBaseValue="-48961"
+             modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
+             modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
+             name="tvf-l0" modulatorMin="0" modulatorValue="2">
+    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
+          midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
+          midiMessageSysExFormula=""/>
+    <component componentLabelPosition="top" componentLabelJustification="centred"
+               componentLabelHeight="14" componentLabelWidth="0" componentLabelVisible="1"
+               componentLabelAlwaysOnTop="1" componentSentBack="0" componentLabelColour="0xff000000"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentVisibleName="L0"
+               componentMouseCursor="2" componentGroupName="" componentGroupped="0"
+               componentSnapSize="0" componentIsLocked="0" componentDisabled="0"
+               componentRadioGroupId="0" componentRadioGroupNotifyMidi="1" componentVisibility="1"
+               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseDrag="-- None"
+               componentLuaMouseDoubleClick="-- None" uiSliderStyle="LinearVertical"
+               uiSliderMin="0" uiSliderMax="100" uiSliderInterval="1" uiSliderDoubleClickEnabled="1"
+               uiSliderDoubleClickValue="0" uiSliderValuePosition="4" uiSliderValueHeight="12"
+               uiSliderValueWidth="64" uiSliderTrackCornerSize="5" uiSliderThumbCornerSize="3"
+               uiSliderThumbWidth="0" uiSliderThumbHeight="0" uiSliderThumbFlatOnLeft="0"
+               uiSliderThumbFlatOnRight="0" uiSliderThumbFlatOnTop="0" uiSliderThumbFlatOnBottom="0"
+               uiSliderValueTextColour="0xff000000" uiSliderValueBgColour="0xffffffff"
+               uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
+               uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
+               uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
+               uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
+               uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextJustification="centred"
+               uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
+               uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
+               uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
+               uiSliderPopupBubble="0" uiType="uiSlider" componentRectangle="280 256 64 133"
+               componentLayerUid="1e0a82eaa91401002001000000000000"/>
+  </modulator>
+  <modulator modulatorVstExported="1" modulatorMax="100" vstIndex="216" modulatorIsStatic="0"
+             modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
+             modulatorExcludeFromSnapshot="0" modulatorValueExpression="modulatorValue"
+             modulatorValueExpressionReverse="midiValue" modulatorControllerExpression="value"
+             luaModulatorGetValueForMIDI="-- None" luaModulatorGetValueFromMIDI="-- None"
+             modulatorLinkedToPanelProperty="-- None" modulatorLinkedToModulatorProperty="-- None"
+             modulatorLinkedToModulator="-- None" modulatorLinkedToModulatorSource="1"
+             modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
+             modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
+             modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
+             name="tvf-lend" modulatorMin="0" modulatorValue="52">
+    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
+          midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
+          midiMessageSysExFormula=""/>
+    <component componentLabelPosition="top" componentLabelJustification="centred"
+               componentLabelHeight="14" componentLabelWidth="0" componentLabelVisible="1"
+               componentLabelAlwaysOnTop="1" componentSentBack="0" componentLabelColour="0xff000000"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentVisibleName="END"
+               componentMouseCursor="2" componentGroupName="" componentGroupped="0"
+               componentSnapSize="0" componentIsLocked="0" componentDisabled="0"
+               componentRadioGroupId="0" componentRadioGroupNotifyMidi="1" componentVisibility="1"
+               componentEffect="0" componentEffectRadius="1" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseDrag="-- None"
+               componentLuaMouseDoubleClick="-- None" uiSliderStyle="LinearVertical"
+               uiSliderMin="0" uiSliderMax="100" uiSliderInterval="1" uiSliderDoubleClickEnabled="1"
+               uiSliderDoubleClickValue="0" uiSliderValuePosition="4" uiSliderValueHeight="12"
+               uiSliderValueWidth="64" uiSliderTrackCornerSize="5" uiSliderThumbCornerSize="3"
+               uiSliderThumbWidth="0" uiSliderThumbHeight="0" uiSliderThumbFlatOnLeft="0"
+               uiSliderThumbFlatOnRight="0" uiSliderThumbFlatOnTop="0" uiSliderThumbFlatOnBottom="0"
+               uiSliderValueTextColour="0xff000000" uiSliderValueBgColour="0xffffffff"
+               uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
+               uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
+               uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
+               uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
+               uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextJustification="centred"
+               uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
+               uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
+               uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
+               uiSliderPopupBubble="0" componentLayerUid="1e0a82eaa91401002001000000000000"
+               componentRectangle="416 256 64 133" uiType="uiSlider"/>
+  </modulator>
+  <modulator modulatorVstExported="1" modulatorMax="100" vstIndex="217" modulatorIsStatic="0"
+             modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
+             modulatorExcludeFromSnapshot="0" modulatorValueExpression="modulatorValue"
+             modulatorValueExpressionReverse="midiValue" modulatorControllerExpression="value"
+             luaModulatorGetValueForMIDI="-- None" luaModulatorGetValueFromMIDI="-- None"
+             modulatorLinkedToPanelProperty="-- None" modulatorLinkedToModulatorProperty="-- None"
+             modulatorLinkedToModulator="-- None" modulatorLinkedToModulatorSource="1"
+             modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
+             modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
+             modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
+             name="tvf-t3" modulatorMin="0" modulatorValue="88">
+    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
+          midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
+          midiMessageSysExFormula=""/>
+    <component componentLabelPosition="top" componentLabelJustification="centred"
+               componentLabelHeight="14" componentLabelWidth="0" componentLabelVisible="1"
+               componentLabelAlwaysOnTop="1" componentSentBack="0" componentLabelColour="0xff000000"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentVisibleName="T3"
+               componentMouseCursor="2" componentGroupName="" componentGroupped="0"
+               componentSnapSize="0" componentIsLocked="0" componentDisabled="0"
+               componentRadioGroupId="0" componentRadioGroupNotifyMidi="1" componentVisibility="1"
+               componentEffect="0" componentEffectRadius="0.5" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseDrag="-- None"
+               componentLuaMouseDoubleClick="-- None" uiSliderStyle="LinearVertical"
+               uiSliderMin="0" uiSliderMax="100" uiSliderInterval="1" uiSliderDoubleClickEnabled="1"
+               uiSliderDoubleClickValue="0" uiSliderValuePosition="4" uiSliderValueHeight="12"
+               uiSliderValueWidth="64" uiSliderTrackCornerSize="5" uiSliderThumbCornerSize="3"
+               uiSliderThumbWidth="0" uiSliderThumbHeight="0" uiSliderThumbFlatOnLeft="0"
+               uiSliderThumbFlatOnRight="0" uiSliderThumbFlatOnTop="0" uiSliderThumbFlatOnBottom="0"
+               uiSliderValueTextColour="0xff000000" uiSliderValueBgColour="0xffffffff"
+               uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
+               uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
+               uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
+               uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
+               uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextJustification="centred"
+               uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
+               uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
+               uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
+               uiSliderPopupBubble="0" uiType="uiSlider" componentRectangle="136 256 64 133"
+               componentLayerUid="1e0a82eaa91401002001000000000000"/>
+  </modulator>
+  <modulator modulatorVstExported="1" modulatorMax="100" vstIndex="218" modulatorIsStatic="0"
+             modulatorGlobalVariable="-1" modulatorMuteOnStart="0" modulatorMute="0"
+             modulatorExcludeFromSnapshot="0" modulatorValueExpression="modulatorValue"
+             modulatorValueExpressionReverse="midiValue" modulatorControllerExpression="value"
+             luaModulatorGetValueForMIDI="-- None" luaModulatorGetValueFromMIDI="-- None"
+             modulatorLinkedToPanelProperty="-- None" modulatorLinkedToModulatorProperty="-- None"
+             modulatorLinkedToModulator="-- None" modulatorLinkedToModulatorSource="1"
+             modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
+             modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
+             modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="graph"
+             name="tvf-t4" modulatorMin="0" modulatorValue="65">
+    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
+          midiMessageCtrlrNumber="1" midiMessageCtrlrValue="0" midiMessageMultiList=""
+          midiMessageSysExFormula=""/>
+    <component componentLabelPosition="top" componentLabelJustification="centred"
+               componentLabelHeight="14" componentLabelWidth="0" componentLabelVisible="1"
+               componentLabelAlwaysOnTop="1" componentSentBack="0" componentLabelColour="0xff000000"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentVisibleName="T4"
+               componentMouseCursor="2" componentGroupName="" componentGroupped="0"
+               componentSnapSize="0" componentIsLocked="0" componentDisabled="0"
+               componentRadioGroupId="0" componentRadioGroupNotifyMidi="1" componentVisibility="1"
+               componentEffect="0" componentEffectRadius="0.5" componentEffectColour="0xff000000"
+               componentEffectOffsetX="0" componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseDrag="-- None"
+               componentLuaMouseDoubleClick="-- None" uiSliderStyle="LinearVertical"
+               uiSliderMin="0" uiSliderMax="100" uiSliderInterval="1" uiSliderDoubleClickEnabled="1"
+               uiSliderDoubleClickValue="0" uiSliderValuePosition="4" uiSliderValueHeight="12"
+               uiSliderValueWidth="64" uiSliderTrackCornerSize="5" uiSliderThumbCornerSize="3"
+               uiSliderThumbWidth="0" uiSliderThumbHeight="0" uiSliderThumbFlatOnLeft="0"
+               uiSliderThumbFlatOnRight="0" uiSliderThumbFlatOnTop="0" uiSliderThumbFlatOnBottom="0"
+               uiSliderValueTextColour="0xff000000" uiSliderValueBgColour="0xffffffff"
+               uiSliderRotaryOutlineColour="0xff0000ff" uiSliderRotaryFillColour="0xff0000ff"
+               uiSliderThumbColour="0xffff0000" uiSliderValueHighlightColour="0xff0000ff"
+               uiSliderValueOutlineColour="0xffffffff" uiSliderTrackColour="0xff0f0f0f"
+               uiSliderIncDecButtonColour="0xff0000ff" uiSliderIncDecTextColour="0xffffffff"
+               uiSliderValueFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiSliderValueTextJustification="centred"
+               uiSliderVelocitySensitivity="1" uiSliderVelocityThreshold="1"
+               uiSliderVelocityOffset="0" uiSliderVelocityMode="0" uiSliderVelocityModeKeyTrigger="1"
+               uiSliderSpringMode="0" uiSliderSpringValue="0" uiSliderMouseWheelInterval="1"
+               uiSliderPopupBubble="0" componentLayerUid="1e0a82eaa91401002001000000000000"
+               componentRectangle="184 256 64 133" uiType="uiSlider"/>
   </modulator>
 </panel>
