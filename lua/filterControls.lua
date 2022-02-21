@@ -134,6 +134,9 @@ function filterControls(mod, value, source)
 
     updateLCD(line1, line2)
 
+    setEnv("tvf", partial)
+    panel:getComponent("envelope-graph"):repaint()
+
     sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
     
     -- todo: verify that source 4 is the controller being manipulated

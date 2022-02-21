@@ -147,6 +147,9 @@ function pitchControls(mod, value, source)
     end
 
     updateLCD(line1, line2)
+    
+    setEnv("pitch", partial)
+    panel:getComponent("envelope-graph"):repaint()
 
     sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
     
