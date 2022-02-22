@@ -5,12 +5,21 @@
 --              see also http://www.rawmaterialsoftware.com/juce/api/classGraphics.html
 --
 
-local g
 local envs = {
     pitch = 1,
     tvf = 2,
-    tva = 3
+    tva = 3,
+    lfo = 4
 }
+
+local colors = {
+    bg = 0xFF001100,
+    xy = 0x4400ff21,
+    line = 0xff00ff21,
+    text = 0xff00ff21
+}
+
+local g
 local envType
 local partial
 local width
@@ -19,13 +28,6 @@ local lineTh = 2
 local ratioX = 1
 local ratioY = 1
 local keyoff
-local colors = {
-    bg = 0xFF003300,
-    xy = 0xFFFFFFFF,
-    line = 0xff00ff21,
-    text = 0xff00ff21
-}
-
 
 function paintEnvelope(comp, graphic)
     g = graphic
@@ -39,37 +41,48 @@ function paintEnvelope(comp, graphic)
     g:setFont(9)
 	g:fillAll(Colour(colors.bg))
 
-    g:setColour(Colour(colors.xy))
-    g:drawLine(keyoff, 0, keyoff, height, lineTh)
-
     if envType == nil then
         setEnv("pitch", 1)
     end
 
-    if envType == 1 then
+    if envType == envs.pitch then
         paintPitchEnv()
 
-    elseif envType == 2 then
+    elseif envType == envs.tvf then
         paintADSR("tvf")
 
-    elseif envType == 3 then
+    elseif envType == envs.tva then
         paintADSR("tva")
+
+    elseif envType == envs.lfo then
+        paintLFO()
+    end
+
+    if envType ~= envs.lfo then
+        g:setColour(Colour(colors.xy))
+        g:drawLine(keyoff, 0, keyoff, height, lineTh)
     end
 
     grid = resources:getResource("grid-screen"):asImage()
     g:fillAll(g:setTiledImageFill(grid, 0, 0, 1.0))
 
     g:setColour(Colour(colors.text))
-    g:drawSingleLineText("KEY OFF", keyoff+4, 10, Justification(Justification.left))
 
-    if envType == 1 then
+    if envType == envs.pitch then
         g:drawSingleLineText("PITCH", 4, 10, Justification(Justification.left))
 
-    elseif envType == 2 then
+    elseif envType == envs.tvf then
         g:drawSingleLineText("TVF", 4, 10, Justification(Justification.left))
 
-    elseif envType == 3 then
+    elseif envType == envs.tva then
         g:drawSingleLineText("TVA", 4, 10, Justification(Justification.left))
+
+    elseif envType == envs.lfo then
+        g:drawSingleLineText("LFO", 4, 10, Justification(Justification.left))
+    end
+
+    if envType ~= envs.lfo then
+        g:drawSingleLineText("KEY OFF", keyoff+4, 10, Justification(Justification.left))
     end
 
     showEnv()
@@ -97,6 +110,7 @@ function setEnv(type, part)
 
     if part == nil then
         partial = 1
+
     else
         partial = part
     end
@@ -134,9 +148,8 @@ function paintPitchEnv()
     lsus = math.floor(height / 2)
 
 	g:setColour(Colour(colors.xy))
-	g:drawLine(0, lsus, width, lsus, 1)
-
-
+	g:drawLine(0, lsus, width, lsus, lineTh)
+ 
     g:setColour(Colour(colors.line))
 	g:drawLine(0, l0, t1, l1, lineTh)
 	g:drawLine(t1, l1, t1+t2, l2, lineTh)
@@ -159,7 +172,7 @@ function paintADSR(type)
     lsus = calcY(type .."-lsus-p".. partial)
 
 	g:setColour(Colour(colors.xy))
-	g:drawLine(0, height-1, width, height-1)
+	g:drawLine(0, height-1, width, height-1, lineTh)
 
     g:setColour(Colour(colors.line))
 	g:drawLine(0, height-1, t1, l1, lineTh)
@@ -169,4 +182,30 @@ function paintADSR(type)
 	g:drawLine(keyoff, lsus, keyoff+t4, height, lineTh)
     g:drawLine(keyoff+t4, height-1, width, height-1, lineTh)
 
+end
+
+
+
+function paintLFO()
+    local center = math.floor(height/2)
+    local y = center
+    local prevY = y
+    local frequency = get("penv-lrte-p1")
+    local amplitude = (height / 2) * (get("penv-ldep-p1") / 100)
+
+    -- Radians per step. A smaller number increases waveform resolution
+    local radstep = .05
+    local interval = 1000 / (2 * math.pi * (frequency / radstep))
+    local rads = 0
+
+	g:setColour(Colour(colors.xy))
+	g:drawLine(0, center, width, center, lineTh)
+    g:setColour(Colour(colors.line))
+
+    for x=1, width, interval do
+        prevY = y
+        y = (math.sin(rads) * amplitude) + center
+        rads = rads + radstep
+        g:drawLine(x-1, prevY, x, y, lineTh)
+    end
 end

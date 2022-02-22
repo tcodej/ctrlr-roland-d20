@@ -8,10 +8,10 @@ local p4 = 1
 
 function partialMute(mod, value)
 
-    p1 = get("btn-mute1")
-    p2 = get("btn-mute2")
-    p3 = get("btn-mute3")
-    p4 = get("btn-mute4")
+    p1 = get("btn-mute-p1")
+    p2 = get("btn-mute-p2")
+    p3 = get("btn-mute-p3")
+    p4 = get("btn-mute-p4")
 
     if p1 ~= nil and p2 ~= nul and p3 ~= nil and p4 ~= nil then
         -- Form a binary string based on button values

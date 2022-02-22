@@ -106,6 +106,10 @@ function filterControls(mod, value, source)
         addr = offset.t4
         refreshTVF()
 
+    elseif string.find(name, "tkf") then
+        v1 = "ENV Time KF"
+        addr = offset.tkf
+
 
     -- tvf env level
     elseif string.find(name, "l1") then

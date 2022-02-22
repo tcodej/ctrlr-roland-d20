@@ -45,8 +45,7 @@ function arpControls(mod, value)
         value = 20 - value
 
         rate = (value + 1) * 50
-        noteLength = rate / 2
-        console("rate: ".. rate)
+        noteLength = rate - (rate * .1)
 
         if ARP_ON then
             timer:stopTimer(1)
@@ -61,11 +60,15 @@ function reset()
     notes = {"3c", "40", "43", "47", "48"}
     velocity = "64"
     curNote = 0
+
     if rate == nil then
         rate = 250
     end
-    noteLength = rate / 2
+
+    noteLength = rate - (rate * .1)
 end
+
+
 
 function addNote(num, vel)
     if num ~= notes[curNote] then
@@ -79,6 +82,8 @@ function addNote(num, vel)
     table.insert(notes, num)
     velocity = vel
 end
+
+
 
 function sendNote()
     activity(ACT_OUT)
@@ -98,6 +103,8 @@ function sendNote()
 	timer:setCallback(2, stopNote)
 	timer:startTimer(2, noteLength)
 end
+
+
 
 function stopNote()
     activity(ACT_OFF)

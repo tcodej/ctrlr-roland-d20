@@ -15,6 +15,7 @@ function pitchControls(mod, value, source)
         base = sysExTone[2]
     end
 
+
     local line1 = "s1"
     local line2 = "s1s2s3s4"
     local v1 = "";
@@ -25,11 +26,11 @@ function pitchControls(mod, value, source)
         crs = "00",
         fine = "01",
         kfpitch = "02",
-        bender = "03",
+        bend = "03",
         
-        dep = "08",
+        pdep = "08",
         vel = "09",
-        kf = "0a",
+        kftime = "0a",
 
         t1 = "0b",
         t2 = "0c",
@@ -51,19 +52,26 @@ function pitchControls(mod, value, source)
     if string.find(name, "crs") then
         v1 = "WG Pitch Coarse"
         addr = offset.crs
+        valueStr = PITCH_COARSE[value+1]
 
     elseif string.find(name, "fine") then
         v1 = "WG Pitch Fine"
         addr = offset.fine
+        valueStr = LEVELS[value+1]
 
     elseif string.find(name, "kfpitch") then
         v1 = "WG Pitch KF"
         addr = offset.kfpitch
         valueStr = KEY_FOL_PITCH[value+1]
-    end
+
+    elseif string.find(name, "bend") then
+        v1 = "WG Bender Switch"
+        addr = offset.bend
+        valueStr = OFF_ON[value+1]
+
 
     -- pitch env time
-    if string.find(name, "t1") then
+    elseif string.find(name, "t1") then
         v1 = "P-ENV Time 1"
         addr = offset.t1
         refreshPitchEnv()
@@ -107,34 +115,35 @@ function pitchControls(mod, value, source)
         addr = offset.lend
         valueStr = LEVELS[value+1]
         refreshPitchEnv()
-    end
 
 
     -- pitch depth
-    if string.find(name, "dep") then
-        v1 = "WG Pitch Depth"
-        addr = offset.dep
+    elseif string.find(name, "pdep") then
+        v1 = "P-ENV Depth"
+        addr = offset.pdep
 
     elseif string.find(name, "vel") then
-        v1 = "WG Pitch Velocity"
+        v1 = "P-ENV Velocity"
         addr = offset.vel
 
-    elseif string.find(name, "kf") then
+    elseif string.find(name, "kftime") then
         v1 = "P-ENV Time KF"
-        addr = offset.kf
+        addr = offset.kftime
 
     -- pitch mod
-    elseif string.find(name, "rte") then
+    elseif string.find(name, "lrte") then
         v1 = "LFO Rate"
-        addr = offset.rte
+        addr = offset.lrte
+        refreshLfo()
 
-    elseif string.find(name, "dep") then
+    elseif string.find(name, "ldep") then
         v1 = "LFO Depth"
-        addr = offset.dep
+        addr = offset.ldep
+        refreshLfo()
 
-    elseif string.find(name, "mod") then
+    elseif string.find(name, "lmod") then
         v1 = "WG Modulation"
-        addr = offset.mod
+        addr = offset.lmod
     end
 
 
@@ -182,5 +191,11 @@ end
 
 function refreshPitchEnv()
     setEnv("pitch", partial)
+    panel:getComponent("envelope-graph"):repaint()
+end
+
+
+function refreshLfo()
+    setEnv("lfo", partial)
     panel:getComponent("envelope-graph"):repaint()
 end
