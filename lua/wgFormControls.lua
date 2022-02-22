@@ -28,6 +28,9 @@ function wgFormControls(mod, value, source)
 	local addr = "00"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
+    -- remove the partial number
+    name = string.sub(name, 0, -4)
+
     local sysEx = "04 00 "
 
     if (partial > 2) then sysEx = "04 01 " end
@@ -38,7 +41,7 @@ function wgFormControls(mod, value, source)
     local v2 = "s".. partial
     local valueStr = nul
 
-    local bank = panel:getModulatorByName("btn-bank1"):getModulatorValue()
+    local bank = get("btn-bank-p".. partial)
 
     hideEnv()
 
@@ -59,9 +62,10 @@ function wgFormControls(mod, value, source)
     if string.find(name, "btn%-bank") then
         v1 = "PCM Wave Bank"
         addr = calcOffset(partial, "04")
+        bank = value
 
-        waveCombo = panel:getComponent("list-pcm-wave-number".. partial)
-	    waveCombo:setProperty("uiComboContent", pcmBank[bank], false)
+        waveCombo = panel:getComponent("list-pcm-wave-number-p".. partial)
+	    waveCombo:setProperty("uiComboContent", table.concat(pcmBank[bank], "\n"), false)
 
         if value == 0 then
             value = 1
@@ -78,6 +82,7 @@ function wgFormControls(mod, value, source)
     if string.find(name, "wave%-number") then
         v1 = "PCM Wave No."
         addr = calcOffset(partial, "05")
+        --valueStr = zeroPad(value+1) ..":".. pcmBank[bank][value+1]
         valueStr = pcmBank[bank][value+1]
     end
 

@@ -50,7 +50,9 @@ end
 function toggleForm(partial, value)
     -- 0 is wav
     -- 1 is pcm
-    panel:getComponent("tabs-form".. partial):setProperty ("uiTabsCurrentTab", value, false)
+
+    panel:getComponent("tabs-form".. partial):setProperty("uiTabsCurrentTab", value, false)
+
 
     -- pcm hides group-tvf-freq, group-tvf-env
     if value == 0 then value = true end
@@ -81,25 +83,26 @@ end
 function structureMatrix(partialGroup, val)
     if partialGroup ~= 1 then partialGroup = 3 end
 
-        if val == 0 or val == 1 or val == 7 or val == 9  then
-            -- ss
-            toggleForm(partialGroup, 0)
-            toggleForm(partialGroup+1, 0)
+    --console(tostring(val))
 
-        elseif val == 5 or val == 6 or val == 8 or val == 12 then
-            -- pp
-            toggleForm(partialGroup, 1)
-            toggleForm(partialGroup+1, 1)
+    if val == 0 or val == 1 or val == 7 or val == 9  then
+        -- ss
+        toggleForm(partialGroup, 0)
+        toggleForm(partialGroup+1, 0)
 
-        elseif val == 2 or val == 3 or val == 10 then
-            -- ps
-            toggleForm(partialGroup, 1)
-            toggleForm(partialGroup+1, 0)
+    elseif val == 5 or val == 6 or val == 8 or val == 12 then
+        -- pp
+        toggleForm(partialGroup, 1)
+        toggleForm(partialGroup+1, 1)
 
-        else if val == 4 or val == 11 then
-            -- sp
-            toggleForm(partialGroup, 0)
-            toggleForm(partialGroup+1, 1)
-        end
+    elseif val == 2 or val == 3 or val == 10 then
+        -- ps
+        toggleForm(partialGroup, 1)
+        toggleForm(partialGroup+1, 0)
+
+    elseif val == 4 or val == 11 then
+        -- sp
+        toggleForm(partialGroup, 0)
+        toggleForm(partialGroup+1, 1)
     end
 end
