@@ -191,7 +191,7 @@ function paintLFO()
     local y = center
     local prevY = y
     local frequency = get("penv-lrte-p1")
-    local amplitude = (height / 2) * (get("penv-ldep-p1") / 100)
+    local amplitude = ((height / 2) - 1) * (get("penv-ldep-p1") / 100)
 
     -- Radians per step. A smaller number increases waveform resolution
     local radstep = .05
