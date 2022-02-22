@@ -7,7 +7,7 @@ local notes = {"3c"}
 local velocity = "64"
 
 local curNote = 0
-local maxNotes = 5
+local maxNotes = 9
 local dir = 1
 local updown = 0
 
@@ -18,6 +18,8 @@ local noteLength = nil
 function arpControls(mod, value)
 
     local name = L(mod:getName())
+
+    hideEnv()
 
     if name == "btn-arp" then
         if value == 0 then
@@ -75,8 +77,6 @@ function addNote(num, vel)
     end
 
     table.insert(notes, num)
-    console(dump(notes))
-
     velocity = vel
 end
 

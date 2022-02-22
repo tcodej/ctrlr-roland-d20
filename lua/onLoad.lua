@@ -3,6 +3,7 @@
 --
 
 function onLoad(type)
+    hideEnv()
     updateLCD("* Roland  D-20 *", " LA Synthesizer ")
 
 	timer:setCallback(20, updateCounter)

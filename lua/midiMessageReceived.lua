@@ -7,6 +7,7 @@ function midiMessageReceived(midiMessage)
 		return
 	end
 
+    hideEnv()
     --console(getByte(0))
 
     if getByte(0) == "b0" then

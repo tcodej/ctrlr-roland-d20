@@ -16,35 +16,79 @@ local partial
 local width
 local height
 local lineTh = 2
+local ratioX = 1
+local ratioY = 1
+local keyoff
+local colors = {
+    bg = 0xFF003300,
+    xy = 0xFFFFFFFF,
+    line = 0xff00ff21,
+    text = 0xff00ff21
+}
+
 
 function paintEnvelope(comp, graphic)
     g = graphic
 
 	width = g:getClipBounds():getWidth()
 	height = g:getClipBounds():getHeight()
-	g:fillAll(Colour(0xff000000))
+    ratioX = width / 100
+    ratioY = height / 100
+    keyoff = math.floor(width - (width / 5))
+
+    g:setFont(9)
+	g:fillAll(Colour(colors.bg))
+
+    g:setColour(Colour(colors.xy))
+    g:drawLine(keyoff, 0, keyoff, height, lineTh)
 
     if envType == nil then
         setEnv("pitch", 1)
     end
-    console("type ".. envType)
+
     if envType == 1 then
         paintPitchEnv()
 
     elseif envType == 2 then
-        paintTVFEnv()
+        paintADSR("tvf")
 
     elseif envType == 3 then
-        paintTVAEnv()
+        paintADSR("tva")
     end
 
     grid = resources:getResource("grid-screen"):asImage()
     g:fillAll(g:setTiledImageFill(grid, 0, 0, 1.0))
+
+    g:setColour(Colour(colors.text))
+    g:drawSingleLineText("KEY OFF", keyoff+4, 10, Justification(Justification.left))
+
+    if envType == 1 then
+        g:drawSingleLineText("PITCH", 4, 10, Justification(Justification.left))
+
+    elseif envType == 2 then
+        g:drawSingleLineText("TVF", 4, 10, Justification(Justification.left))
+
+    elseif envType == 3 then
+        g:drawSingleLineText("TVA", 4, 10, Justification(Justification.left))
+    end
+
+    showEnv()
 end
 
 
+function hideEnv()
+    panel:getModulatorByName("envelope-graph"):getComponent():setVisible(false)
+end
+
+
+function showEnv()
+    panel:getModulatorByName("envelope-graph"):getComponent():setVisible(true)
+end
+
 
 function setEnv(type, part)
+    showEnv()
+
     if type == nil then
         envType = envs.pitch
     else
@@ -59,54 +103,70 @@ function setEnv(type, part)
 end
 
 
+function calcX(name)
+    -- divide by number of time faders and 1 sustain period
+    x = (get(name) * ratioX) / 5
+    if x < 0 then x = 0 end
+    if x > width then x = width end
+    return math.floor(x)
+end
+
+
+function calcY(name)
+    y = height - get(name) * ratioY
+    if y < 0 then y = 0 end
+    if y > height-1 then y = height-1 end
+    return math.floor(y)
+end
+
 
 function paintPitchEnv()
-	t1 = get("penv-t1-p".. partial)
-    t2 = get("penv-t2-p".. partial)
-    t3 = get("penv-t3-p".. partial)
-    t4 = get("penv-t4-p".. partial)
+	t1 = calcX("penv-t1-p".. partial)
+    t2 = calcX("penv-t2-p".. partial)
+    t3 = calcX("penv-t3-p".. partial)
+    tsus = math.floor((100 * ratioX) / 5)
+    t4 = calcX("penv-t4-p".. partial)
 
-    l0 = height - get("penv-l0-p".. partial)
-    l1 = height - get("penv-l1-p".. partial)
-    l2 = height - get("penv-l2-p".. partial)
-    lend = height - get("penv-lend-p".. partial)
+    l0 = calcY("penv-l0-p".. partial)
+    l1 = calcY("penv-l1-p".. partial)
+    l2 = calcY("penv-l2-p".. partial)
+    lend = calcY("penv-lend-p".. partial)
+    lsus = math.floor(height / 2)
 
-	g:setColour(Colour(0xffffffff))
-	g:drawLine(0, height/2, width, height/2, 1)
+	g:setColour(Colour(colors.xy))
+	g:drawLine(0, lsus, width, lsus, 1)
 
-    g:setColour(Colour(0xff00ff21))
+
+    g:setColour(Colour(colors.line))
 	g:drawLine(0, l0, t1, l1, lineTh)
 	g:drawLine(t1, l1, t1+t2, l2, lineTh)
-	g:drawLine(t1+t2, l2, t1+t2+t3, lend, lineTh)
-	g:drawLine(t1+t2+t3, lend, t1+t2+t3+t4, lend, lineTh)
+	g:drawLine(t1+t2, l2, t1+t2+t3, lsus, lineTh)
+    g:drawLine(t1+t2+t3, lsus, keyoff, lsus, lineTh)
+	g:drawLine(keyoff, lsus, keyoff+t4, lend, lineTh)
+    g:drawLine(keyoff+t4, lend, width, lend, lineTh)
 end
 
 
+function paintADSR(type)
+	t1 = calcX(type .."-t1-p".. partial)
+    t2 = calcX(type .."-t2-p".. partial)
+    t3 = calcX(type .."-t3-p".. partial)
+    tsus = (100 * ratioX) / 5
+    t4 = calcX(type .."-t4-p".. partial)
 
-function paintTVFEnv()
-    console("paintTVFEnv")
-	g:setColour(Colour(0xffffffff))
-	g:drawLine(0, height, width, height)
-end
+    l1 = calcY(type .."-l1-p".. partial)
+    l2 = calcY(type .."-l2-p".. partial)
+    lsus = calcY(type .."-lsus-p".. partial)
 
+	g:setColour(Colour(colors.xy))
+	g:drawLine(0, height-1, width, height-1)
 
-
-function paintTVAEnv()
-	t1 = get("tva-t1-p".. partial)
-    t2 = get("tva-t2-p".. partial)
-    t3 = get("tva-t3-p".. partial)
-    t4 = get("tva-t4-p".. partial)
-
-    l1 = height - get("tva-l1-p".. partial)
-    l2 = height - get("tva-l2-p".. partial)
-    lsus = height - get("tva-lsus-p".. partial)
-
-	g:setColour(Colour(0xffffffff))
-	g:drawLine(0, height, width, height)
-
-    g:setColour(Colour(0xff00ff21))
-	g:drawLine(0, height, t1, l1, lineTh)
+    g:setColour(Colour(colors.line))
+	g:drawLine(0, height-1, t1, l1, lineTh)
 	g:drawLine(t1, l1, t1+t2, l2, lineTh)
 	g:drawLine(t1+t2, l2, t1+t2+t3, lsus, lineTh)
-	g:drawLine(t1+t2+t3, lsus, t1+t2+t3+t4, lsus, lineTh)
+    g:drawLine(t1+t2+t3, lsus, keyoff, lsus, lineTh)
+	g:drawLine(keyoff, lsus, keyoff+t4, height, lineTh)
+    g:drawLine(keyoff+t4, height-1, width, height-1, lineTh)
+
 end

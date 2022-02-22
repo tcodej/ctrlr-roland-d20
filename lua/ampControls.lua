@@ -40,6 +40,7 @@ function ampControls(mod, value, source)
         lsus = "39"
     }
 
+    hideEnv()
 
     -- tvf frequency
     if string.find(name, "lvl") then
@@ -84,32 +85,39 @@ function ampControls(mod, value, source)
     elseif string.find(name, "t1") then
         v1 = "Time 1"
         addr = offset.t1
+        refreshTVA()
 
     elseif string.find(name, "t2") then
         v1 = "Time 2"
         addr = offset.t2
+        refreshTVA()
 
     elseif string.find(name, "t3") then
         v1 = "Time 3"
         addr = offset.t3
+        refreshTVA()
 
     elseif string.find(name, "t4") then
         v1 = "Time 4"
         addr = offset.t4
+        refreshTVA()
 
 
     -- tvf env level
     elseif string.find(name, "l1") then
         v1 = "Level 1"
         addr = offset.l1
+        refreshTVA()
 
     elseif string.find(name, "l2") then
         v1 = "Level 2"
         addr = offset.l2
+        refreshTVA()
 
     elseif string.find(name, "lsus") then
         v1 = "Sus Level"
         addr = offset.lsus
+        refreshTVA()
     end
 
 
@@ -129,9 +137,6 @@ function ampControls(mod, value, source)
     end
 
     updateLCD(line1, line2)
-
-    setEnv("tva", partial)
-    panel:getComponent("envelope-graph"):repaint()
 
     sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
     
@@ -154,4 +159,10 @@ function ampControls(mod, value, source)
         end
     end
 
+end
+
+
+function refreshTVA()
+    setEnv("tva", partial)
+    panel:getComponent("envelope-graph"):repaint()
 end

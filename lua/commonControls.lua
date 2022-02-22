@@ -13,6 +13,8 @@ function commonControls(mod, value, source)
     local v1 = "";
     local v2 = "s1"
 
+    hideEnv()
+
     if name == "btn-env-mode" then
         line1 = "ENV Mode"
         if value == 0 then line2 = "NORMAL" end
@@ -26,7 +28,7 @@ function commonControls(mod, value, source)
 
     elseif name == "mod-struct2" then
         v1 = "3&4"
-        sysex = "04 00 0b"
+        sysEx = "04 00 0b"
         structureMatrix(2, value)
     end
 

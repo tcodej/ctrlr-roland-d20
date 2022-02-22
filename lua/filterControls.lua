@@ -7,7 +7,7 @@ function filterControls(mod, value, source)
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
     -- remove the partial number
-    name = string.sub(name, 0, -2)
+    name = string.sub(name, 0, -4)
 
     local base = sysExTone[1]
 
@@ -43,6 +43,7 @@ function filterControls(mod, value, source)
         lsus = "28"
     }
 
+    hideEnv()
 
     -- tvf frequency
     if string.find(name, "cutoff") then
@@ -88,39 +89,46 @@ function filterControls(mod, value, source)
     elseif string.find(name, "%-t1") then
         v1 = "Time 1"
         addr = offset.t1
+        refreshTVF()
 
     elseif string.find(name, "%-t2") then
         v1 = "Time 2"
         addr = offset.t2
+        refreshTVF()
 
     elseif string.find(name, "%-t3") then
         v1 = "Time 3"
         addr = offset.t3
+        refreshTVF()
 
     elseif string.find(name, "%-t4") then
         v1 = "Time 4"
         addr = offset.t4
+        refreshTVF()
 
 
     -- tvf env level
     elseif string.find(name, "l1") then
         v1 = "Level 1"
         addr = offset.l1
+        refreshTVF()
 
     elseif string.find(name, "l2") then
         v1 = "Level 2"
         addr = offset.l2
+        refreshTVF()
 
     elseif string.find(name, "lsus") then
         v1 = "Sus Level"
         addr = offset.lsus
+        refreshTVF()
     end
 
 
-    s1 = get(name .."1")
-    s2 = get(name .."2")
-    s3 = get(name .."3")
-    s4 = get(name .."4")
+    s1 = get(name .."-p1")
+    s2 = get(name .."-p2")
+    s3 = get(name .."-p3")
+    s4 = get(name .."-p4")
     
 
     line1 = line1:gsub("s1", v1)
@@ -134,28 +142,30 @@ function filterControls(mod, value, source)
 
     updateLCD(line1, line2)
 
-    setEnv("tvf", partial)
-    panel:getComponent("envelope-graph"):repaint()
-
     sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
     
     -- todo: verify that source 4 is the controller being manipulated
     if source == 4 then
         if P_EDIT[1] then
-            if partial ~= 1 then set(name.."1", value) end
+            if partial ~= 1 then set(name.."-p1", value) end
         end
 
         if P_EDIT[2] then
-            if partial ~= 2 then set(name.."2", value) end
+            if partial ~= 2 then set(name.."-p2", value) end
         end
 
         if P_EDIT[3] then
-            if partial ~= 3 then set(name.."3", value) end
+            if partial ~= 3 then set(name.."-p3", value) end
         end
 
         if P_EDIT[4] then
-            if partial ~= 4 then set(name.."4", value) end
+            if partial ~= 4 then set(name.."-p4", value) end
         end
     end
 
+end
+
+function refreshTVF()
+    setEnv("tvf", partial)
+    panel:getComponent("envelope-graph"):repaint()
 end

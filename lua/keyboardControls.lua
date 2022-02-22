@@ -3,12 +3,13 @@
 --
 
 function keyboardControls(mod, value)
+    --hideEnv()
+
     activity(ACT_OUT)
     m = mod:getMidiMessage(0)
     
     note = numToHex(m:getNumber())
     velocity = numToHex(m:getValue())
-
 
     if value == 0 then activity(ACT_OFF) end
 

@@ -40,9 +40,7 @@ function wgFormControls(mod, value, source)
 
     local bank = panel:getModulatorByName("btn-bank1"):getModulatorValue()
 
-    --console(name ..": ".. value)
-
-
+    hideEnv()
 
     -- wave shape
     if string.find(name, "btn%-shape") then
