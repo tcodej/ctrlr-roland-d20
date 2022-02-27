@@ -258,7 +258,8 @@ function set(name, value)
     if mod ~= nil then
         mod:setModulatorValue(value, false, false, false)
     else
-        --console("Modulator ".. name .." not found.")
+        console("Modulator ".. name .." not found.")
+        return 0
     end
 end
 
