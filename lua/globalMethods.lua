@@ -8,6 +8,10 @@ ACT_IN = 1
 ACT_OUT = 2
 ACT_SYS = 3
 
+-- when receiving data from the synth, set this to false to avoid
+-- spamming those values back to the synth while modulators are set
+ENABLE_OUT = true
+
 ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 
 P_EDIT = {true, false, false, false}
@@ -48,16 +52,20 @@ suffix = " f7"
 
 
 function sendSysex(msg)
-    --console(msg)
-    activity(ACT_SYS)
+    if ENABLE_OUT == true then
+        activity(ACT_SYS)
 
-    timer:setCallback(10, stopSysexTimer)
-    timer:startTimer(10, 100)
+        timer:setCallback(10, stopSysexTimer)
+        timer:startTimer(10, 100)
 
-    sysex = prefixSend .. msg .. " " .. checkSum(msg) .. suffix
-    panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
+        sysex = prefixSend .. msg .. " " .. checkSum(msg) .. suffix
+        panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
 
-    return sysex
+        return sysex
+
+    else
+        --console('Output disabled')
+    end
 end
 
 
@@ -258,7 +266,7 @@ function set(name, value)
     if mod ~= nil then
         mod:setModulatorValue(value, false, false, false)
     else
-        console("Modulator ".. name .." not found.")
+        --console("Modulator ".. name .." not found.")
         return 0
     end
 end

@@ -2,10 +2,14 @@
 -- getByte is available in midiMessageReceived which contains the data
 
 function setTone()
+    timer:setCallback(30, reenable)
+    timer:startTimer(30, 100)
+    ENABLE_OUT = false
+
     -- partial
     local p = 1
 
-    -- partial starting byte
+    -- partial 1 starting byte
     local b = 22
 
     -- common
@@ -97,4 +101,9 @@ function setTone()
         b = b + 58
         console("byte: "..b)
     end
+end
+
+function reenable()
+    timer:stopTimer(30)
+    ENABLE_OUT = true
 end
