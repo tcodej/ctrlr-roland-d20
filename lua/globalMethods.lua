@@ -29,7 +29,7 @@ for i=-50,50,1 do
     end
 end
 
-console(string.sub(ASCII, 5, 5))
+
 
 
 -- partial base values

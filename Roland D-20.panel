@@ -46,8 +46,8 @@
     <uiChildWindow uiChildWindowName="ModulatorList" uiChildWindowState="fs 0 0 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="1924 31 1267 693">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/setTone&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;6d48ca18a7af42129109af8d83a0e0c2:8b67fc37a2cc4f94b0304b2c3159bcc6:ef086f2ca288430c9ea73e8070f6d962:7863817704464130a9f863ed1610b774:397bd9192ec147939e398ac41893b858:eda8781969b94d6ab2539811e4cfc8ef:9d7299d37cff4e5a99c29420cf6e477d:37eb3d1d83074f3c954a483035006ca8:c44e07531821497ba4f658b8be57d061"/>
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="fs 1934 31 1267 693">
+      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/setTone&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;6d48ca18a7af42129109af8d83a0e0c2:8b67fc37a2cc4f94b0304b2c3159bcc6:ef086f2ca288430c9ea73e8070f6d962:c44e07531821497ba4f658b8be57d061"/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="LayerEditor" uiChildWindowState="1932 858 475 144">
       <uiChildWindowContentState/>

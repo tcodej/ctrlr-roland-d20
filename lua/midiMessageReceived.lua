@@ -47,7 +47,7 @@ function midiMessageReceived(midiMessage)
 
     if size == 256 then
         if getByte(0) .. getByte(1) .. getByte(2) == "f04110" then
-            setTone(mm:getLuaData():getRange(8, 64))
+            setTone()
         end
     end
 
