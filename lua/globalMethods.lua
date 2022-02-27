@@ -2,14 +2,13 @@
 -- Variables and functions available globally
 --
 
--- pBase is populated down below...
-pBase = {}
-
 ARP_ON = false
 ACT_OFF = 0
 ACT_IN = 1
 ACT_OUT = 2
 ACT_SYS = 3
+
+ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 
 P_EDIT = {true, false, false, false}
 
@@ -30,6 +29,11 @@ for i=-50,50,1 do
     end
 end
 
+console(string.sub(ASCII, 5, 5))
+
+
+-- partial base values
+pBase = {"0e", "48", "02", "3c"}
 
 -- send prefix
 prefixSend = "f0 41 10 16 12 "
@@ -44,12 +48,13 @@ suffix = " f7"
 
 
 function sendSysex(msg)
+    --console(msg)
     activity(ACT_SYS)
 
     timer:setCallback(10, stopSysexTimer)
     timer:startTimer(10, 100)
 
-    sysex = prefixSend .. msg .. " " .. z4(msg) .. suffix
+    sysex = prefixSend .. msg .. " " .. checkSum(msg) .. suffix
     panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
 
     return sysex
@@ -63,12 +68,11 @@ function stopSysexTimer()
 end
 
 
-
+-- this sends a receive request, but does not return data
+-- use midiMessageReceived
 function recieveSysex(msg)
-    sysex = prefixRecieve .. msg .. suffix
+    sysex = prefixRecieve .. msg .. checkSum(msg) .. suffix
     panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
-
-    return sysex
 end
 
 
@@ -109,13 +113,21 @@ function tableLength(t)
 end
 
 
-function z4(msg)
+function checkSum(msg)
+    total = 0
     pieces = split(msg, " ")
-    total = hexToNum(pieces[1]) + hexToNum(pieces[2]) + hexToNum(pieces[3]) + hexToNum(pieces[4])
+    
+    for k,hex in pairs(pieces) do
+        total = total + hexToNum(hex)
+    end
 
-    checksum = (128 - total) % 128
+    --total = hexToNum(pieces[1]) + hexToNum(pieces[2]) + hexToNum(pieces[3]) + hexToNum(pieces[4])
 
-    return numToHex(checksum)
+    cs = (128 - total) % 128
+
+    --console(msg .." checkSum: ".. numToHex(cs))
+
+    return numToHex(cs)
 end
 
 
@@ -130,7 +142,7 @@ function numToHex(num)
     hex = string.format("%x", num)
 
     if (string.len(hex) < 2) then
-        hex = "0" .. hex
+        hex = "0".. hex
     end
 
     return hex
@@ -195,7 +207,7 @@ end
 
 
 function calcOffset(partial, hex)
-    return numToHex(pBase[partial] + hexToNum(hex))
+    return numToHex(hexToNum(pBase[partial]) + hexToNum(hex))
 end
 
 
@@ -251,11 +263,6 @@ function set(name, value)
 end
 
 
--- down here so hexToNum() is available
-pBase[1] = hexToNum("0e")
-pBase[2] = hexToNum("48")
-pBase[3] = hexToNum("02")
-pBase[4] = hexToNum("3c")
 
 -- down here so tableConcat() is available
 KEY_FOL_PITCH = tableConcat(KEY_FOL, {"s1","s2"})

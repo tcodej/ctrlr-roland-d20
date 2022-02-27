@@ -1,14 +1,15 @@
-local mm = nil;
+local mm = nil
+local count = 0
 
 function midiMessageReceived(midiMessage)
     mm = midiMessage
+    count = count + 1
 
 	if panel:getRestoreState() == true or panel:getProgramState() == true then
 		return
 	end
 
     hideEnv()
-    --console(getByte(0))
 
     if getByte(0) == "b0" then
         activity(ACT_OFF)
@@ -17,13 +18,38 @@ function midiMessageReceived(midiMessage)
         activity(ACT_IN)
     end
 
+
+    data = mm:getLuaData() -- or getLuaData():getRange(0,24) etc.
+    file = File("d:\\sysexdump\\chunk".. count ..".syx")
+    file:replaceWithData(data)
+
+
     --data = mm:getLuaData():getRange(0, 1)
-	--s = mm:getSize()
+	size = mm:getSize()
+    --console(tostring(size))
 
     updateLCD(
         getByte(0) .." ".. getByte(1) .." ".. getByte(2) .." ".. getByte(3) .." ".. getByte(4),
         getByte(5) .." ".. getByte(6) .." ".. getByte(7) .." ".. getByte(8) .." ".. getByte(9)
     )
+--]]
+    tempTones = {
+        "04 00 00",
+        "04 01 76",
+        "04 03 6c",
+        "04 05 62",
+        "04 07 58",
+        "04 09 4E",
+        "04 0b 44",
+        "04 0d 3a"
+    }
+--]]
+
+    if size == 256 then
+        if getByte(0) .. getByte(1) .. getByte(2) == "f04110" then
+            setTone(mm:getLuaData():getRange(8, 64))
+        end
+    end
 
 
 --[[
@@ -48,7 +74,7 @@ end
 function getByte(num)
     if mm == nil then return end
 
-    return numToHex(mm:getLuaData():getByte(num))
+    return numToHex(mm:getData():getByte(num))
 end
 
 --UP1_Coarse = midiMessage:getLuaData():getByte(8)

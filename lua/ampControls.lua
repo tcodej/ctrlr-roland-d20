@@ -79,7 +79,6 @@ function ampControls(mod, value, source)
     elseif string.find(name, "%-kfvel") then
         v1 = "ENV T1 Velo"
         addr = offset.kfvel
-        console("val "..value)
 
     -- tvf env time
     elseif string.find(name, "t1") then
@@ -140,7 +139,9 @@ function ampControls(mod, value, source)
 
     sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
     
+    -- todo: revisit this later. need to try toggling locked partial with selected partial
     -- todo: verify that source 4 is the controller being manipulated
+--[[
     if source == 4 then
         if P_EDIT[1] then
             if partial ~= 1 then set(name.."-p1", value) end
@@ -158,6 +159,7 @@ function ampControls(mod, value, source)
             if partial ~= 4 then set(name.."-p4", value) end
         end
     end
+--]]
 
 end
 

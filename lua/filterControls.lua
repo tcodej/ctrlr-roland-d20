@@ -148,7 +148,9 @@ function filterControls(mod, value, source)
 
     sendSysex(base .. calcOffset(partial, addr) .." ".. numToHex(value))
     
+    -- todo: revisit this later. need to try toggling locked partial with selected partial
     -- todo: verify that source 4 is the controller being manipulated
+--[[
     if source == 4 then
         if P_EDIT[1] then
             if partial ~= 1 then set(name.."-p1", value) end
@@ -166,6 +168,7 @@ function filterControls(mod, value, source)
             if partial ~= 4 then set(name.."-p4", value) end
         end
     end
+--]]
 
 end
 
