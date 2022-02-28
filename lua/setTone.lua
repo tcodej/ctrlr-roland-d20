@@ -27,6 +27,7 @@ function setTone()
     set("mod-struct1", getByteNum(18))
     set("mod-struct2", getByteNum(19))
     -- partial mute, get back to this getByteNum(20)
+    setMuteValue(getByteNum(20))
     set("btn-env-mode", getByteNum(21))
 
     -- partials
@@ -38,10 +39,10 @@ function setTone()
         set("penv-kfpitch-p".. p, getByteNum(b+2))
         set("btn-bend-p".. p, getByteNum(b+3))
 
-        --set("btn-bank-p".. p, getByteNum(b+4))
-        --set("pcm-wave-number-p".. p, getByteNum(b+5))
-        --set("form-pw-p".. p, getByteNum(b+6))
-        --set("form-vel-p".. p, getByteNum(b+7))
+        set("btn-bank-p".. p, getByteNum(b+4))
+        set("pcm-wave-number-slider-p".. p, getByteNum(b+5))
+        set("form-pw-p".. p, getByteNum(b+6))
+        set("form-vel-p".. p, getByteNum(b+7))
 
         set("penv-pdep-p".. p, getByteNum(b+8))
         set("penv-vel-p".. p, getByteNum(b+9))
@@ -99,11 +100,12 @@ function setTone()
         set("tva-lsus-p".. p, getByteNum(b+57))
 
         b = b + 58
-        console("byte: "..b)
+        --console("byte: "..b)
     end
 end
 
 function reenable()
     timer:stopTimer(30)
     ENABLE_OUT = true
+    activity(ACT_OFF)
 end
