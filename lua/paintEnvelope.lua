@@ -30,6 +30,9 @@ local ratioY = 1
 local keyoff
 
 function paintEnvelope(comp, graphic)
+    -- do nothing if true
+    if DISPLAY_ENVS == false then return end
+
     g = graphic
 
 	width = g:getClipBounds():getWidth()

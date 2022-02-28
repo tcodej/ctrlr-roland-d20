@@ -2,10 +2,14 @@
 -- WG Pitch controls
 --
 
+local partial
+
 function pitchControls(mod, value, source)
     local addr = "00"
     local name = L(mod:getName())
-    local partial = tonumber(string.sub(name, -1))
+
+    partial = tonumber(string.sub(name, -1))
+
     -- remove the partial number
     name = string.sub(name, 0, -4)
 

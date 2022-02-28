@@ -12,6 +12,10 @@ ACT_SYS = 3
 -- spamming those values back to the synth while modulators are set
 ENABLE_OUT = true
 
+-- whether or not to simulate envelope shape on LCD screen
+-- if false, displays normal LCD values
+DISPLAY_ENVS = false
+
 ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 
 P_EDIT = {true, false, false, false}
