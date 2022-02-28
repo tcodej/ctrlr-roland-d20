@@ -106,6 +106,12 @@ function pitchControls(mod, value, source)
         v1 = "P-ENV Level 1"
         addr = offset.l1
         valueStr = LEVELS[value+1]
+        s1 = getLevel(get(name .."-p1"))
+        s2 = getLevel(get(name .."-p2"))
+        s3 = getLevel(get(name .."-p3"))
+        s4 = getLevel(get(name .."-p4"))
+
+        valueStr = zeroPad(s1)..zeroPad(s2)..zeroPad(s3)..zeroPad(s4)
         refreshPitchEnv()
 
     elseif string.find(name, "l2") then
@@ -150,18 +156,23 @@ function pitchControls(mod, value, source)
         addr = offset.lmod
     end
 
-    s1 = get(name .."-p1")
-    s2 = get(name .."-p2")
-    s3 = get(name .."-p3")
-    s4 = get(name .."-p4")
+
 
     line1 = line1:gsub("s1", v1)
 
     if valueStr ~= nil then
-        line2 = line2:gsub(v2, zeroPad(valueStr))
+        if string.len(valueStr) > 4 then
+            line2 = valueStr
+
+        else
+            line2 = line2:gsub(v2, valueStr)
+        end
 
     else
-
+        s1 = get(name .."-p1")
+        s2 = get(name .."-p2")
+        s3 = get(name .."-p3")
+        s4 = get(name .."-p4")
         line2 = zeroPad(s1)..zeroPad(s2)..zeroPad(s3)..zeroPad(s4)
     end
 

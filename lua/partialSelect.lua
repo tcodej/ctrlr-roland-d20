@@ -9,7 +9,7 @@ function partialSelect(mod, value, source)
     hideEnv()
 
     panel:getComponent("tabs-partials"):setProperty("uiTabsCurrentTab", partial-1, false)
-    updateLCD("Tone Edit", "Partial ".. partial)
+    --updateLCD("Tone Edit", "Partial ".. partial)
 
     -- don't allow the currently pressed button to get in an off state
     if get("btn-p".. partial) == 0 then

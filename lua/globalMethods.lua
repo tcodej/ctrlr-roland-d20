@@ -37,7 +37,9 @@ for i=-50,50,1 do
     end
 end
 
-
+function getLevel(num)
+    return LEVELS[num+1]
+end
 
 
 -- partial base values

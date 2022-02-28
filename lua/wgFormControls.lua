@@ -117,7 +117,12 @@ function wgFormControls(mod, value, source)
     line1 = line1:gsub("s1", v1)
 
     if valueStr ~= nil then
-        line2 = line2:gsub(v2, valueStr)
+        if string.len(valueStr) > 4 then
+            line2 = valueStr
+
+        else
+            line2 = line2:gsub(v2, valueStr)
+        end
 
     else
         line2 = line2:gsub(v2, zeroPad(value))
