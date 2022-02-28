@@ -4,7 +4,6 @@ local count = 1
 function midiMessageReceived(midiMessage)
     mm = midiMessage
     --count = count + 1
-console(tostring(mm))
 
 	if panel:getRestoreState() == true or panel:getProgramState() == true then
 		return
