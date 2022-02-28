@@ -7,7 +7,6 @@ local p3 = 1
 local p4 = 1
 
 function partialMute(mod, value)
-
     p1 = get("btn-mute-p1")
     p2 = get("btn-mute-p2")
     p3 = get("btn-mute-p3")
@@ -25,19 +24,17 @@ end
 
 -- called from setTone
 function setMuteValue(value)
-    --console(value .." ".. numToBinary(value))
     binary = numToBinary(value)
 
     for i=1, 4, 1 do
-        console("btn-mute-p".. i .." ".. binary[i])
         set("btn-mute-p".. i, binary[i])
     end
 
 end
 
 
+-- returns a table of bits, least significant first.
 function numToBinary(num)
-    -- returns a table of bits, least significant first.
     local t={}
     for b = 1, 4, 1 do
         rest=math.fmod(num,2)

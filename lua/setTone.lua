@@ -39,6 +39,9 @@ function setTone()
         set("penv-kfpitch-p".. p, getByteNum(b+2))
         set("btn-bend-p".. p, getByteNum(b+3))
 
+        -- todo: handle the shape/bank combos based on partial type
+        -- SQU/1, SAW/1, SQU/2, SAW/2
+
         set("btn-bank-p".. p, getByteNum(b+4))
         set("pcm-wave-number-slider-p".. p, getByteNum(b+5))
         set("form-pw-p".. p, getByteNum(b+6))
