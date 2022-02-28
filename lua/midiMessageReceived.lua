@@ -1,9 +1,10 @@
-local mm = nil
+local mm
 local count = 1
 
 function midiMessageReceived(midiMessage)
     mm = midiMessage
     --count = count + 1
+console(tostring(mm))
 
 	if panel:getRestoreState() == true or panel:getProgramState() == true then
 		return
@@ -11,7 +12,7 @@ function midiMessageReceived(midiMessage)
 
     hideEnv()
 
-    if getByte(0) == "b0" then
+    if getByteHex(0) == "b0" then
         activity(ACT_OFF)
 
     else
