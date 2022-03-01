@@ -8,6 +8,15 @@ ACT_IN = 1
 ACT_OUT = 2
 ACT_SYS = 3
 
+-- timers need a unique id
+TIMER = {
+    ARP_CLOCK = 1,
+    ARP_NOTE = 2,
+    SYSEX = 3,
+    ONLOAD = 4,
+    SET_TONE = 5
+}
+
 -- when receiving data from the synth, set this to false to avoid
 -- spamming those values back to the synth while modulators are set
 ENABLE_OUT = true
@@ -17,29 +26,67 @@ ENABLE_OUT = true
 DISPLAY_ENVS = false
 
 ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
-
 P_EDIT = {true, false, false, false}
-
 OFF_ON = {"OFF","ON"}
-BIAS_PT = {"<A1","<A#1","<B1","<C1","<C#1","<D1","<D#1","<E1","<F1","<F#1","<G1","<G#1","<A2","<A#2","<B2","<C2","<C#2","<D2","<D#2","<E2","<F2","<F#2","<G2","<G#2","<A3","<A#3","<B3","<C3","<C#3","<D3","<D#3","<E3","<F3","<F#3","<G3","<G#3","<A4","<A#4","<B4","<C4","<C#4","<D4","<D#4","<E4","<F4","<F#4","<G4","<G#4","<A5","<A#5","<B5","<C5","<C#5","<D5","<D#5","<E5","<F5","<F#5","<G5","<G#5","<A6","<A#6","<B6","<C7",">A1",">A#1",">B1",">C1",">C#1",">D1",">D#1",">E1",">F1",">F#1",">G1",">G#1",">A2",">A#2",">B2",">C2",">C#2",">D2",">D#2",">E2",">F2",">F#2",">G2",">G#2",">A3",">A#3",">B3",">C3",">C#3",">D3",">D#3",">E3",">F3",">F#3",">G3",">G#3",">A4",">A#4",">B4",">C4",">C#4",">D4",">D#4",">E4",">F4",">F#4",">G4",">G#4",">A5",">A#5",">B5",">C5",">C#5",">D5",">D#5",">E5",">F5",">F#5",">G5",">G#5",">A6",">A#6",">B6",">C7"}
+
+
+
+BIAS_PT = {"<A1 ","<A#1","<B1 ","<C1 ","<C#1","<D1 ","<D#1","<E1 ","<F1 ","<F#1","<G1 ","<G#1","<A2 ","<A#2","<B2 ","<C2 ","<C#2","<D2 ","<D#2","<E2 ","<F2 ","<F#2","<G2 ","<G#2","<A3 ","<A#3","<B3 ","<C3 ","<C#3","<D3 ","<D#3","<E3 ","<F3 ","<F#3","<G3 ","<G#3","<A4 ","<A#4","<B4 ","<C4 ","<C#4","<D4 ","<D#4","<E4 ","<F4 ","<F#4","<G4 ","<G#4","<A5 ","<A#5","<B5 ","<C5 ","<C#5","<D5 ","<D#5","<E5 ","<F5 ","<F#5","<G5 ","<G#5","<A6 ","<A#6","<B6 ","<C7 ",">A1 ",">A#1",">B1 ",">C1 ",">C#1",">D1 ",">D#1",">E1 ",">F1 ",">F#1",">G1 ",">G#1",">A2 ",">A#2",">B2 ",">C2 ",">C#2",">D2 ",">D#2",">E2 ",">F2 ",">F#2",">G2 ",">G#2",">A3 ",">A#3",">B3 ",">C3 ",">C#3",">D3 ",">D#3",">E3 ",">F3 ",">F#3",">G3 ",">G#3",">A4 ",">A#4",">B4 ",">C4 ",">C#4",">D4 ",">D#4",">E4 ",">F4 ",">F#4",">G4 ",">G#4",">A5 ",">A#5",">B5 ",">C5 ",">C#5",">D5 ",">D#5",">E5 ",">F5 ",">F#5",">G5 ",">G#5",">A6 ",">A#6",">B6 ",">C7 "}
 BIAS_LVL = {"-12","-11","-10","-09","-08","-07","-06","-05","-04","-03","-02","-01"," 00"}
-KEY_FOL = {"-1","-1/2","-1/4","0","1/8","1/4","3/8","1/2","5/8","3/4","7/8","1","5/4","3/2","2"}
+KEY_FOL = {"-1  ","-1/2","-1/4"," 0  "," 1/8"," 1/4"," 3/8"," 1/2"," 5/8"," 3/4"," 7/8"," 1  "," 5/4"," 3/2"," 2  "}
 KEY_FOL_PITCH = {} -- values set below
-PITCH_COARSE = {"C1","C#1","D1","D#1","E1","F1","F#1","G1","G#1","A1","A#1","B1","C2","C#2","D2","D#2","E2","F2","F#2","G2","G#2","A2","A#2","B2","C3","C#3","D3","D#3","E3","F3","F#3","G3","G#3","A3","A#3","B3","C4","C#4","D4","D#4","E4","F4","F#4","G4","G#4","A4","A#4","B4","C5","C#5","D5","D#5","E5","F5","F#5","G5","G#5","A5","A#5","B5","C6","C#6","D6","D#6","E6","F6","F#6","G6","G#6","A6","A#6","B6","C7","C#7","D7","D#7","E7","F7","F#7","G7","G#7","A7","A#7","B7","C8","C#8","D8","D#8","E8","F8","F#8","G8","G#8","C9"}
+PITCH_COARSE = {" C1 "," C#1"," D1 "," D#1"," E1 "," F1 "," F#1"," G1 "," G#1"," A1 "," A#1"," B1 "," C2 "," C#2"," D2 "," D#2"," E2 "," F2 "," F#2"," G2 "," G#2"," A2 "," A#2"," B2 "," C3 "," C#3"," D3 "," D#3"," E3 "," F3 "," F#3"," G3 "," G#3"," A3 "," A#3"," B3 "," C4 "," C#4"," D4 "," D#4"," E4 "," F4 "," F#4"," G4 "," G#4"," A4 "," A#4"," B4 "," C5 "," C#5"," D5 "," D#5"," E5 "," F5 "," F#5"," G5 "," G#5"," A5 "," A#5"," B5 "," C6 "," C#6"," D6 "," D#6"," E6 "," F6 "," F#6"," G6 "," G#6"," A6 "," A#6"," B6 "," C7 "," C#7"," D7 "," D#7"," E7 "," F7 "," F#7"," G7 "," G#7"," A7 "," A#7"," B7 "," C8 "," C#8"," D8 "," D#8"," E8 "," F8 "," F#8"," G8 "," G#8"," C9 "}
 
 LEVELS = {}
 
 for i=-50,50,1 do
-    if i < 1 then
-        table.insert(LEVELS, i)
+    local str
+
+    if i == 0 then
+        str = " 00"
+    
+    elseif i < 1 then
+        if i > -10 then
+            str = "-0".. math.abs(i)
+        else
+            str = i
+        end
+
     else
-        table.insert(LEVELS, "+"..i)
+        if i < 10 then
+            str = "+0".. i
+        else
+
+            str = "+"..i
+        end
+    end
+
+    table.insert(LEVELS, str)
+end
+
+
+-- used to build the lcd display values
+function getValueStr(TABLE, name, nopad)
+    s1 = TABLE[get(name .."-p1")+1]
+    s2 = TABLE[get(name .."-p2")+1]
+    s3 = TABLE[get(name .."-p3")+1]
+    s4 = TABLE[get(name .."-p4")+1]
+
+    if nopad == nil then
+        return s1 .." ".. s2 .." ".. s3 .." ".. s4
+
+    else
+        return s1..s2..s3..s4
     end
 end
 
-function getLevel(num)
-    return LEVELS[num+1]
-end
+
+
+
+
+
+
+
 
 
 -- partial base values
@@ -61,8 +108,8 @@ function sendSysex(msg)
     if ENABLE_OUT == true then
         activity(ACT_SYS)
 
-        timer:setCallback(10, stopSysexTimer)
-        timer:startTimer(10, 100)
+        timer:setCallback(TIMER.SYSEX, stopSysexTimer)
+        timer:startTimer(TIMER.SYSEX, 100)
 
         sysex = prefixSend .. msg .. " " .. checkSum(msg) .. suffix
         panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
@@ -78,7 +125,7 @@ end
 -- auto turn off led
 function stopSysexTimer()
     activity(ACT_OFF)
-    timer:stopTimer(10)
+    timer:stopTimer(TIMER.SYSEX)
 end
 
 
@@ -164,7 +211,7 @@ end
 
 
 -- Fit values into a 4 char grid to preserve LCD column format.
--- example: 3 becomes " 03 ", 10 becomes " 10 " and -1/2 becomes "-1/2 "
+-- example: 3 becomes " 03 ", 10 becomes " 10 "
 function zeroPad(val)
     padded = ""
 
@@ -173,7 +220,7 @@ function zeroPad(val)
     end
 
     -- number
-    if type(val) == "number" then
+    --if type(val) == "number" then
         if val < 10 then
             padded = " 0".. val
 
@@ -185,7 +232,9 @@ function zeroPad(val)
         end
 
         padded = padded .." "
-    
+
+
+--[[
     -- string
     elseif type(val) == "string" then
         local len = string.len(val)
@@ -214,6 +263,7 @@ function zeroPad(val)
             padded = val
         end
     end
+--]]
 
     return padded
 end
@@ -280,4 +330,4 @@ end
 
 
 -- down here so tableConcat() is available
-KEY_FOL_PITCH = tableConcat(KEY_FOL, {"s1","s2"})
+KEY_FOL_PITCH = tableConcat(KEY_FOL, {" s1 "," s2 "})

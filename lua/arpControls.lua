@@ -24,7 +24,7 @@ function arpControls(mod, value)
     if name == "btn-arp" then
         if value == 0 then
             ARP_ON = false
-            timer:stopTimer(1)
+            timer:stopTimer(TIMER.ARP_CLOCK)
 
             -- all notes off
             panel:sendMidiMessageNow(CtrlrMidiMessage("b0 7b 00"))
@@ -36,8 +36,8 @@ function arpControls(mod, value)
             sendNote()
 
             ARP_ON = true
-            timer:setCallback(1, sendNote)
-            timer:startTimer(1, rate)
+            timer:setCallback(TIMER.ARP_CLOCK, sendNote)
+            timer:startTimer(TIMER.ARP_CLOCK, rate)
         end
 
     elseif name == "arp-rate" then
@@ -48,8 +48,8 @@ function arpControls(mod, value)
         noteLength = rate - (rate * .1)
 
         if ARP_ON then
-            timer:stopTimer(1)
-            timer:startTimer(1, rate)
+            timer:stopTimer(TIMER.ARP_CLOCK)
+            timer:startTimer(TIMER.ARP_CLOCK, rate)
         end
     end
 end
@@ -100,8 +100,8 @@ function sendNote()
     -- note on
     panel:sendMidiMessageNow(CtrlrMidiMessage("90 ".. notes[curNote] .." ".. velocity))
 
-	timer:setCallback(2, stopNote)
-	timer:startTimer(2, noteLength)
+	timer:setCallback(TIMER.ARP_NOTE, stopNote)
+	timer:startTimer(TIMER.ARP_NOTE, noteLength)
 end
 
 
@@ -112,5 +112,5 @@ function stopNote()
     -- note off
     panel:sendMidiMessageNow(CtrlrMidiMessage("80 ".. notes[curNote] .." 00"))
 
-    timer:stopTimer(2)
+    timer:stopTimer(TIMER.ARP_NOTE)
 end

@@ -56,17 +56,17 @@ function pitchControls(mod, value, source)
     if string.find(name, "crs") then
         v1 = "WG Pitch Coarse"
         addr = offset.crs
-        valueStr = PITCH_COARSE[value+1]
+        valueStr = getValueStr(PITCH_COARSE, name, true)
 
     elseif string.find(name, "fine") then
         v1 = "WG Pitch Fine"
         addr = offset.fine
-        valueStr = LEVELS[value+1]
+        valueStr = getValueStr(LEVELS, name)
 
     elseif string.find(name, "kfpitch") then
         v1 = "WG Pitch KF"
         addr = offset.kfpitch
-        valueStr = KEY_FOL_PITCH[value+1]
+        valueStr = getValueStr(KEY_FOL_PITCH, name, true)
 
     elseif string.find(name, "bend") then
         v1 = "WG Bender Switch"
@@ -99,31 +99,25 @@ function pitchControls(mod, value, source)
     elseif string.find(name, "l0") then
         v1 = "P-ENV Level 0"
         addr = offset.l0
-        valueStr = LEVELS[value+1]
+        valueStr = getValueStr(LEVELS, name)
         refreshPitchEnv()
 
     elseif string.find(name, "l1") then
         v1 = "P-ENV Level 1"
         addr = offset.l1
-        valueStr = LEVELS[value+1]
-        s1 = getLevel(get(name .."-p1"))
-        s2 = getLevel(get(name .."-p2"))
-        s3 = getLevel(get(name .."-p3"))
-        s4 = getLevel(get(name .."-p4"))
-
-        valueStr = zeroPad(s1)..zeroPad(s2)..zeroPad(s3)..zeroPad(s4)
+        valueStr = getValueStr(LEVELS, name)
         refreshPitchEnv()
 
     elseif string.find(name, "l2") then
         v1 = "P-ENV Level 2"
         addr = offset.l2
-        valueStr = LEVELS[value+1]
+        valueStr = getValueStr(LEVELS, name)
         refreshPitchEnv()
 
     elseif string.find(name, "lend") then
         v1 = "P-ENV End Level"
         addr = offset.lend
-        valueStr = LEVELS[value+1]
+        valueStr = getValueStr(LEVELS, name)
         refreshPitchEnv()
 
 

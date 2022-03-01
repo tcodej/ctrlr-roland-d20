@@ -133,7 +133,12 @@ function ampControls(mod, value, source)
     line1 = line1:gsub("s1", v1)
 
     if valueStr ~= nil then
-        line2 = line2:gsub(v2, zeroPad(valueStr))
+        if string.len(valueStr) > 4 then
+            line2 = valueStr
+
+        else
+            line2 = line2:gsub(v2, valueStr)
+        end
 
     else
         line2 = zeroPad(s1)..zeroPad(s2)..zeroPad(s3)..zeroPad(s4)

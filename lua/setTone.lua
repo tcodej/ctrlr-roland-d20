@@ -2,8 +2,8 @@
 -- getByte is available in midiMessageReceived which contains the data
 
 function setTone()
-    timer:setCallback(30, reenable)
-    timer:startTimer(30, 100)
+    timer:setCallback(TIMER.SET_TONE, reenable)
+    timer:startTimer(TIMER.SET_TONE, 100)
     ENABLE_OUT = false
 
     -- partial
@@ -108,7 +108,7 @@ function setTone()
 end
 
 function reenable()
-    timer:stopTimer(30)
+    timer:stopTimer(TIMER.SET_TONE)
     ENABLE_OUT = true
     activity(ACT_OFF)
 end
