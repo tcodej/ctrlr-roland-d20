@@ -33,7 +33,7 @@ function wgFormControls(mod, value, source)
     if (partial > 2) then sysEx = "04 01 " end
 
     local line1 = "WG s1"
-    local line2 = "s1 s2 s3 s4"
+    local line2 = "s1s2s3s4"
     local v1 = "";
     local v2 = "s".. partial
     local valueStr = nul
@@ -44,20 +44,14 @@ function wgFormControls(mod, value, source)
 
     -- wave shape
     if string.find(name, "btn%-shape") then
-        console("shape: "..value)
         v1 = "Waveform"
         addr = calcOffset(partial, "04")
+        valueStr = getValueStr(WAVE_SHAPE, name, false)
+        
 
-        if value == 0 or value == 2 then
-            valueStr = "SQU"
-
-        elseif value == 1 or value == 3 then
-            valueStr = "SAW"
-        end
-    end
 
     -- pcm bank
-    if string.find(name, "btn%-bank") then
+    elseif string.find(name, "btn%-bank") then
         v1 = "PCM Wave Bank"
         addr = calcOffset(partial, "04")
         bank = value
@@ -68,6 +62,7 @@ function wgFormControls(mod, value, source)
         -- triggers an update of the wave name display
         set("pcm-wave-number-slider-p".. partial, get("pcm-wave-number-slider-p".. partial))
 
+        -- todo: not sure this is correct
         if value == 0 then
             value = 1
             valueStr = "01"
@@ -76,11 +71,11 @@ function wgFormControls(mod, value, source)
             value = 3
             valueStr = "02"
         end
-    end
+
 
 
     -- pcm wave
-    if string.find(name, "wave%-number") then
+    elseif string.find(name, "wave%-number") then
         if string.find(name, "slider") then
             -- set combo value which triggers an update
             waveCombo = panel:getModulatorByName("list-pcm-wave-number-p".. partial)
@@ -93,17 +88,18 @@ function wgFormControls(mod, value, source)
             --valueStr = zeroPad(value+1) ..":".. pcmBank[bank][value+1]
             valueStr = pcmBank[bank][value+1]
         end
-    end
+
 
     
     -- wave pulse width
-    if string.find(name, "form%-pw") then
+    elseif string.find(name, "form%-pw") then
         v1 = "Pulse Width"
         addr = calcOffset(partial, "06")
 
     elseif string.find(name, "form%-vel") then
         v1 = "PW Velocity"
         addr = calcOffset(partial, "07")
+        valueStr = getValueStr(BIAS_LVL_TVF, name, true)
 
     end
 
@@ -125,7 +121,11 @@ function wgFormControls(mod, value, source)
         end
 
     else
-        line2 = line2:gsub(v2, zeroPad(value))
+        s1 = get(name .."-p1")
+        s2 = get(name .."-p2")
+        s3 = get(name .."-p3")
+        s4 = get(name .."-p4")
+        line2 = zeroPad(s1)..zeroPad(s2)..zeroPad(s3)..zeroPad(s4)
     end
 
     updateLCD(line1, line2)

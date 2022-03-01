@@ -19,7 +19,6 @@ function pitchControls(mod, value, source)
         base = sysExTone[2]
     end
 
-
     local line1 = "s1"
     local line2 = "s1s2s3s4"
     local v1 = "";

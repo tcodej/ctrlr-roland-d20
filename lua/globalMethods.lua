@@ -28,6 +28,7 @@ DISPLAY_ENVS = false
 ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 P_EDIT = {true, false, false, false}
 OFF_ON = {"OFF","ON"}
+WAVE_SHAPE = {"SQU ","SAW ","SQU ","SAW "}
 
 -- tva bl -12 to 00
 -- tvf vl -07 to +07
