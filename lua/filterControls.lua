@@ -59,21 +59,20 @@ function filterControls(mod, value, source)
         addr = offset.res
 
     elseif string.find(name, "freqkf") then
-        line2 = "s11/2-1/4 0"
+        line2 = "s1"
         v1 = "Freq KF"
-        valueStr = KEY_FOL[value+1]
+        valueStr = getValueStr(KEY_FOL, name, false)
         addr = offset.freqkf
 
     elseif string.find(name, "bpt") then
-        line2 = "s1<A#6<B6 >C7"
+        line2 = "s1"
         v1 = "Bias Point"
-        valueStr = BIAS_PT[value+1]
+        valueStr = getValueStr(BIAS_PT, name, false)
         addr = offset.bpt
 
     elseif string.find(name, "blv") then
-        --line2 = "s1<A#6<B6 >C7"
         v1 = "Bias Level"
-        valueStr = BIAS_PT[value+1]
+        valueStr = getValueStr(BIAS_LVL_TVF, name, true)
         addr = offset.blv
 
     -- tvf depth

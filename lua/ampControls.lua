@@ -54,27 +54,27 @@ function ampControls(mod, value, source)
     elseif name == "tva-vel" then
         v1 = "Velocity"
         addr = offset.vel
-        valueStr = LEVELS[value+1]
+        valueStr = getValueStr(LEVELS, name, true)
 
     elseif string.find(name, "bp1") then
         v1 = "Bias Point 1"
         addr = offset.bp1
-        valueStr = BIAS_PT[value+1]
+        valueStr = getValueStr(BIAS_PT, name, false)
 
     elseif string.find(name, "bl1") then
         v1 = "Bial Level 1"
         addr = offset.bl1
-        valueStr = BIAS_LVL[value+1]
+        valueStr = getValueStr(BIAS_LVL_TVA, name, false)
 
     elseif string.find(name, "bp2") then
         v1 = "Bias Point 2"
         addr = offset.bp2
-        valueStr = BIAS_PT[value+1]
+        valueStr = getValueStr(BIAS_PT, name, false)
 
     elseif string.find(name, "bl2") then
         v1 = "Bial Level 2"
         addr = offset.bl2
-        valueStr = BIAS_LVL[value+1]
+        valueStr = getValueStr(BIAS_LVL_TVA, name, false)
 
     elseif string.find(name, "%-kftime") then
         v1 = "ENV Time KF"

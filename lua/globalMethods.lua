@@ -29,10 +29,12 @@ ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abc
 P_EDIT = {true, false, false, false}
 OFF_ON = {"OFF","ON"}
 
-
+-- tva bl -12 to 00
+-- tvf vl -07 to +07
 
 BIAS_PT = {"<A1 ","<A#1","<B1 ","<C1 ","<C#1","<D1 ","<D#1","<E1 ","<F1 ","<F#1","<G1 ","<G#1","<A2 ","<A#2","<B2 ","<C2 ","<C#2","<D2 ","<D#2","<E2 ","<F2 ","<F#2","<G2 ","<G#2","<A3 ","<A#3","<B3 ","<C3 ","<C#3","<D3 ","<D#3","<E3 ","<F3 ","<F#3","<G3 ","<G#3","<A4 ","<A#4","<B4 ","<C4 ","<C#4","<D4 ","<D#4","<E4 ","<F4 ","<F#4","<G4 ","<G#4","<A5 ","<A#5","<B5 ","<C5 ","<C#5","<D5 ","<D#5","<E5 ","<F5 ","<F#5","<G5 ","<G#5","<A6 ","<A#6","<B6 ","<C7 ",">A1 ",">A#1",">B1 ",">C1 ",">C#1",">D1 ",">D#1",">E1 ",">F1 ",">F#1",">G1 ",">G#1",">A2 ",">A#2",">B2 ",">C2 ",">C#2",">D2 ",">D#2",">E2 ",">F2 ",">F#2",">G2 ",">G#2",">A3 ",">A#3",">B3 ",">C3 ",">C#3",">D3 ",">D#3",">E3 ",">F3 ",">F#3",">G3 ",">G#3",">A4 ",">A#4",">B4 ",">C4 ",">C#4",">D4 ",">D#4",">E4 ",">F4 ",">F#4",">G4 ",">G#4",">A5 ",">A#5",">B5 ",">C5 ",">C#5",">D5 ",">D#5",">E5 ",">F5 ",">F#5",">G5 ",">G#5",">A6 ",">A#6",">B6 ",">C7 "}
-BIAS_LVL = {"-12","-11","-10","-09","-08","-07","-06","-05","-04","-03","-02","-01"," 00"}
+BIAS_LVL_TVA = {"-12","-11","-10","-09","-08","-07","-06","-05","-04","-03","-02","-01"," 00"}
+BIAS_LVL_TVF = {"-07","-06","-05","-04","-03","-02","-01"," 00","+01","+02","+03","+04","+05","+06","+07"}
 KEY_FOL = {"-1  ","-1/2","-1/4"," 0  "," 1/8"," 1/4"," 3/8"," 1/2"," 5/8"," 3/4"," 7/8"," 1  "," 5/4"," 3/2"," 2  "}
 KEY_FOL_PITCH = {} -- values set below
 PITCH_COARSE = {" C1 "," C#1"," D1 "," D#1"," E1 "," F1 "," F#1"," G1 "," G#1"," A1 "," A#1"," B1 "," C2 "," C#2"," D2 "," D#2"," E2 "," F2 "," F#2"," G2 "," G#2"," A2 "," A#2"," B2 "," C3 "," C#3"," D3 "," D#3"," E3 "," F3 "," F#3"," G3 "," G#3"," A3 "," A#3"," B3 "," C4 "," C#4"," D4 "," D#4"," E4 "," F4 "," F#4"," G4 "," G#4"," A4 "," A#4"," B4 "," C5 "," C#5"," D5 "," D#5"," E5 "," F5 "," F#5"," G5 "," G#5"," A5 "," A#5"," B5 "," C6 "," C#6"," D6 "," D#6"," E6 "," F6 "," F#6"," G6 "," G#6"," A6 "," A#6"," B6 "," C7 "," C#7"," D7 "," D#7"," E7 "," F7 "," F#7"," G7 "," G#7"," A7 "," A#7"," B7 "," C8 "," C#8"," D8 "," D#8"," E8 "," F8 "," F#8"," G8 "," G#8"," C9 "}
@@ -66,13 +68,13 @@ end
 
 
 -- used to build the lcd display values
-function getValueStr(TABLE, name, nopad)
+function getValueStr(TABLE, name, pad)
     s1 = TABLE[get(name .."-p1")+1]
     s2 = TABLE[get(name .."-p2")+1]
     s3 = TABLE[get(name .."-p3")+1]
     s4 = TABLE[get(name .."-p4")+1]
 
-    if nopad == nil then
+    if pad == true then
         return s1 .." ".. s2 .." ".. s3 .." ".. s4
 
     else
@@ -219,8 +221,8 @@ function zeroPad(val)
         val = 0
     end
 
-    -- number
-    --if type(val) == "number" then
+    -- numbers only
+    if type(val) == "number" then
         if val < 10 then
             padded = " 0".. val
 
@@ -233,37 +235,10 @@ function zeroPad(val)
 
         padded = padded .." "
 
-
---[[
-    -- string
-    elseif type(val) == "string" then
-        local len = string.len(val)
-
-        if len == 1 then
-            padded = " ".. val .."  "
-
-        elseif len == 2 then
-            -- for negative kf values < 3 chars, don't add first space
-            if string.sub(val, 0, 1) == "-" then
-                padded = val .."  "
-
-            else
-                padded = " ".. val .." "
-            end
-
-        elseif len == 3 then
-            -- bias vals start with < or > and are always left justified
-            if string.sub(val, 0, 1) == "<" or string.sub(val, 0, 1) == ">" then
-                padded = val .." "
-            else
-                padded = " ".. val
-            end
-
-        else
-            padded = val
-        end
+    -- strings no update
+    else
+        padded = val
     end
---]]
 
     return padded
 end

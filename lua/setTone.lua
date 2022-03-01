@@ -111,4 +111,5 @@ function reenable()
     timer:stopTimer(TIMER.SET_TONE)
     ENABLE_OUT = true
     activity(ACT_OFF)
+    updateLCD("Tone Data Recvd.", "Part1 CH01  256B")
 end
