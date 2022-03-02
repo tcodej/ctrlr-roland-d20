@@ -5,6 +5,10 @@
 local partial
 
 function pitchControls(mod, value, source)
+
+    -- disable blinker during mod update
+    stopBlinker()
+
     local addr = "00"
     local name = L(mod:getName())
 
@@ -70,7 +74,7 @@ function pitchControls(mod, value, source)
     elseif string.find(name, "bend") then
         v1 = "WG Bender Switch"
         addr = offset.bend
-        valueStr = OFF_ON[value+1]
+        valueStr = getValueStr(OFF_ON, name, false)
 
 
     -- pitch env time
@@ -194,6 +198,8 @@ function pitchControls(mod, value, source)
         end
     end
 --]]
+
+    startBlinker()
 end
 
 

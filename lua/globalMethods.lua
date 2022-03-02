@@ -28,7 +28,7 @@ DISPLAY_ENVS = false
 
 ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 P_EDIT = {true, false, false, false}
-OFF_ON = {"OFF","ON"}
+OFF_ON = {" OFF"," ON "}
 WAVE_SHAPE = {"SQU ","SAW ","SQU ","SAW "}
 
 -- tva bl -12 to 00
@@ -83,9 +83,6 @@ function getValueStr(TABLE, name, pad)
         return s1..s2..s3..s4
     end
 end
-
-
-
 
 
 
@@ -309,10 +306,13 @@ end
 
 
 
-blinkOn = false
-blinks = 0
+local blinkOn = false
+local blinks = 0
+local blinkImg
 
 function startBlinker()
+    -- first reset as this function gets spammed when adjusting sliders
+    stopBlinker()
     timer:setCallback(TIMER.BLINKER, blink)
     timer:startTimer(TIMER.BLINKER, 500)
 end
@@ -322,22 +322,35 @@ function blink()
 
     if blinkOn == false then
         blinkOn = true
-        panel:getModulatorByName("img-blink"):getComponent():setPropertyString("uiImageResource", "blink-on")
+        blinkImg = "blink-on"
+
     else
         blinkOn = false
-        panel:getModulatorByName("img-blink"):getComponent():setPropertyString("uiImageResource", "blink-off")
+        blinkImg = "blink-off"
     end
 
-    console(tostring(blinkOn))
 
-    if blinks > 11 then
+    for i=1, 4, 1 do
+        if (P_EDIT[i] == true) then
+            panel:getModulatorByName("img-blink-p".. i):getComponent():setPropertyString("uiImageResource", blinkImg)
+        end
+    end
+
+    if blinks > 50 then
         stopBlinker()
     end
 end
 
 function stopBlinker()
+    blinks = 0
     timer:stopTimer(TIMER.BLINKER)
+    blinkImg = "blink-off"
+
+    for i=1, 4, 1 do
+        panel:getModulatorByName("img-blink-p".. i):getComponent():setPropertyString("uiImageResource", blinkImg)
+    end
 end
+
 
 
 

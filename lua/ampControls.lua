@@ -5,6 +5,10 @@
 local partial
 
 function ampControls(mod, value, source)
+
+    -- disable blinker during mod update
+    stopBlinker()
+
     local addr = "00"
     local name = L(mod:getName())
 
@@ -62,9 +66,9 @@ function ampControls(mod, value, source)
         valueStr = getValueStr(BIAS_PT, name, false)
 
     elseif string.find(name, "bl1") then
-        v1 = "Bial Level 1"
+        v1 = "Bias Level 1"
         addr = offset.bl1
-        valueStr = getValueStr(BIAS_LVL_TVA, name, false)
+        valueStr = getValueStr(BIAS_LVL_TVA, name, true)
 
     elseif string.find(name, "bp2") then
         v1 = "Bias Point 2"
@@ -72,9 +76,9 @@ function ampControls(mod, value, source)
         valueStr = getValueStr(BIAS_PT, name, false)
 
     elseif string.find(name, "bl2") then
-        v1 = "Bial Level 2"
+        v1 = "Bias Level 2"
         addr = offset.bl2
-        valueStr = getValueStr(BIAS_LVL_TVA, name, false)
+        valueStr = getValueStr(BIAS_LVL_TVA, name, true)
 
     elseif string.find(name, "%-kftime") then
         v1 = "ENV Time KF"
@@ -169,6 +173,8 @@ function ampControls(mod, value, source)
         end
     end
 --]]
+
+    startBlinker()
 
 end
 
