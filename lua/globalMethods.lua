@@ -14,7 +14,8 @@ TIMER = {
     ARP_NOTE = 2,
     SYSEX = 3,
     ONLOAD = 4,
-    SET_TONE = 5
+    SET_TONE = 5,
+    BLINKER = 6
 }
 
 -- when receiving data from the synth, set this to false to avoid
@@ -304,6 +305,38 @@ function set(name, value)
         console("Modulator ".. name .." not found.")
         return 0
     end
+end
+
+
+
+blinkOn = false
+blinks = 0
+
+function startBlinker()
+    timer:setCallback(TIMER.BLINKER, blink)
+    timer:startTimer(TIMER.BLINKER, 500)
+end
+
+function blink()
+    blinks = blinks + 1
+
+    if blinkOn == false then
+        blinkOn = true
+        panel:getModulatorByName("img-blink"):getComponent():setPropertyString("uiImageResource", "blink-on")
+    else
+        blinkOn = false
+        panel:getModulatorByName("img-blink"):getComponent():setPropertyString("uiImageResource", "blink-off")
+    end
+
+    console(tostring(blinkOn))
+
+    if blinks > 11 then
+        stopBlinker()
+    end
+end
+
+function stopBlinker()
+    timer:stopTimer(TIMER.BLINKER)
 end
 
 
