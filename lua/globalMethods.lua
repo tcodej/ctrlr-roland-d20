@@ -276,6 +276,7 @@ function tableConcat(t1, t2)
    for i=1,#t2 do
       t1[#t1+1] = t2[i]
    end
+
    return t1
 end
 
@@ -285,6 +286,7 @@ function get(name)
     mod = panel:getModulatorByName(name)
     if mod ~= nil then
         return mod:getModulatorValue()
+
     else
         --console("Modulator ".. name .." not found.")
         return 0
@@ -297,6 +299,7 @@ function set(name, value)
     local mod = panel:getModulatorByName(name)
     if mod ~= nil then
         mod:setModulatorValue(value, false, false, false)
+
     else
         console("Modulator ".. name .." not found.")
         return 0
