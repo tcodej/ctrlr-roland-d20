@@ -46,8 +46,8 @@
     <uiChildWindow uiChildWindowName="ModulatorList" uiChildWindowState="fs 2139 31 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="1920 37 1275 764">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/btnLoadData&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;6d48ca18a7af42129109af8d83a0e0c2:397bd9192ec147939e398ac41893b858:7863817704464130a9f863ed1610b774:9d7299d37cff4e5a99c29420cf6e477d:eda8781969b94d6ab2539811e4cfc8ef:ef086f2ca288430c9ea73e8070f6d962:c44e07531821497ba4f658b8be57d061:7da7f22f721649d58380ee58ce4bc3f2:cce3c2f5dc2541db9862d27d0fff31ca"/>
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="fs 269 31 845 764">
+      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/btnResetTone&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;6d48ca18a7af42129109af8d83a0e0c2:397bd9192ec147939e398ac41893b858:7863817704464130a9f863ed1610b774:9d7299d37cff4e5a99c29420cf6e477d:eda8781969b94d6ab2539811e4cfc8ef:ef086f2ca288430c9ea73e8070f6d962:c44e07531821497ba4f658b8be57d061:772c496da2c14298a93a02eddc1436b8"/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="LayerEditor" uiChildWindowState="1924 782 475 210">
       <uiChildWindowContentState/>
@@ -124,6 +124,8 @@
                  luaMethodSource="1" uuid="37eb3d1d83074f3c954a483035006ca8" luaMethodValid="1"/>
       <luaMethod luaMethodName="wgFormControls" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\wgFormControls.lua"
                  luaMethodSource="1" uuid="eda8781969b94d6ab2539811e4cfc8ef" luaMethodValid="1"/>
+      <luaMethod luaMethodName="btnResetTone" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\btnResetTone.lua"
+                 luaMethodSource="1" uuid="772c496da2c14298a93a02eddc1436b8" luaMethodValid="1"/>
     </luaManagerMethods>
   </luaManager>
   <panelResources>
@@ -478,7 +480,7 @@
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
              name="list-pcm-wave-number-p1" modulatorMin="0" uiComboContent=""
-             modulatorValue="-1">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="0.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -500,7 +502,7 @@
                uiComboMenuFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiComboButtonColour="0xff0000ff"
                uiComboBgColour="ff000000" uiComboMenuBackgroundColour="0xfff0f0f0"
                uiComboMenuFontColour="0xff000000" uiComboMenuHighlightColour="ffadd8e6"
-               uiComboMenuFontHighlightedColour="0xff232323" uiComboContent="Bass Drum 1*&#10;Bass Drum 2*&#10;Bass Drum 3*&#10;Snare Drum 1*&#10;Snare Drum 2*&#10;Snare Drum 3*&#10;Snare Drum 4*&#10;Tom Tom 1*&#10;Tom Tom 2*&#10;High Hat*&#10;High Hat* (Loop)&#10;Crash Cymbal 1*&#10;Crash Cymbal 2* (Loop)&#10;Ride Cymbal 1*&#10;Ride Cymbal 2* (Loop)&#10;Cup*&#10;China Cymbal 1*&#10;China Cymbal 2* (Loop)&#10;Rim Shot*&#10;Hand Clap*&#10;Mute High Conga*&#10;Conga*&#10;Bongo*&#10;Cowbell*&#10;Tambourine*&#10;Agogo*&#10;Claves*&#10;Timbale High*&#10;Timbale Low*&#10;Cabasa*&#10;Loop 1&#10;Loop 2&#10;Loop 3&#10;Loop 4&#10;Loop 5&#10;Loop 6&#10;Loop 7&#10;Loop 8&#10;Loop 9&#10;Loop 10&#10;Loop 11&#10;Loop 12&#10;Loop 13&#10;Loop 14&#10;Loop 15&#10;Loop 16&#10;Loop 17&#10;Loop 18&#10;Loop 19&#10;Loop 20&#10;Loop 21&#10;Loop 22&#10;Loop 23&#10;Loop 24&#10;Loop 25&#10;Loop 26&#10;Loop 27&#10;Loop 28&#10;Loop 29&#10;Loop 30&#10;Loop 31&#10;Loop 32&#10;Loop 33&#10;Loop 34&#10;Loop 35&#10;Loop 36&#10;Loop 37&#10;Loop 38&#10;Loop 39&#10;Loop 40&#10;Loop 41&#10;Loop 42&#10;Loop 43&#10;Loop 44&#10;Loop 45&#10;Loop 46&#10;Loop 47&#10;Loop 48&#10;Loop 49&#10;Loop 50&#10;Loop 51&#10;Loop 52&#10;Loop 53&#10;Loop 54&#10;Loop 55&#10;Loop 56&#10;Loop 57&#10;Loop 58&#10;Loop 59&#10;Loop 60&#10;Loop 61&#10;Loop 62&#10;Loop 63&#10;Loop 64&#10;Jam 1&#10;Jam 2&#10;Jam 3&#10;Jam 4&#10;Jam 5&#10;Jam 6&#10;Jam 7&#10;Jam 8&#10;Jam 9&#10;Jam 10&#10;Jam 11&#10;Jam 12&#10;Jam 13&#10;Jam 14&#10;Jam 15&#10;Jam 16&#10;Jam 17&#10;Jam 18&#10;Jam 19&#10;Jam 20&#10;Jam 21&#10;Jam 22&#10;Jam 23&#10;Jam 24&#10;Jam 25&#10;Jam 26&#10;Jam 27&#10;Jam 28&#10;Jam 29&#10;Jam 30&#10;Jam 31&#10;Jam 32&#10;Jam 33&#10;Jam 34"
+               uiComboMenuFontHighlightedColour="0xff232323" uiComboContent="Bass Drum 1&#10;Bass Drum 2&#10;Bass Drum 3&#10;Snare Drum 1&#10;Snare Drum 2&#10;Snare Drum 3&#10;Snare Drum 4&#10;Tom Tom 1&#10;Tom Tom 2&#10;High Hat&#10;High Hat Loop&#10;Crash&#10;Crash Loop&#10;Ride&#10;Ride Loop&#10;Cup&#10;China&#10;China Loop&#10;Rim Shot&#10;Hand Clap&#10;Mute High Conga&#10;Conga&#10;Bongo&#10;Cowbell&#10;Tambourine&#10;Agogo&#10;Claves&#10;Timbale High&#10;Timbale Low&#10;Cabasa&#10;Timpani Attack&#10;Timpani&#10;Acoustic Piano High&#10;Acoustic Piano Low&#10;Piano Forte Thump&#10;Organ Percussion&#10;Trumpet&#10;Lips&#10;Trombone&#10;Clarinet&#10;Flute High&#10;Flute Low&#10;Steamer&#10;Indian Flute&#10;Breath&#10;Vibraphone High&#10;Vibraphone Low&#10;Marimba&#10;Xylophone High&#10;Xylophone Low&#10;Kalimba&#10;Wind Bell&#10;Chime Bar&#10;Hammer&#10;Guiro&#10;Chink&#10;Nails&#10;Fretless Bass&#10;Pull Bass&#10;Slap Bass&#10;Thump Bass&#10;Acoustic Bass&#10;Electric Bass&#10;Gut Guitar&#10;Steel Guitar&#10;Dirty Guitar&#10;Pizzicato&#10;Harp&#10;Contrabass&#10;Cello&#10;Violin 1&#10;Violin 2&#10;Koto&#10;Draw bars (Loop)&#10;High Organ (Loop)&#10;Low Organ (Loop)&#10;Trumpet (Loop)&#10;Trombone (Loop)&#10;Sax 1 (Loop)&#10;Sax 2 (Loop)&#10;Reed (Loop)&#10;Slap Bass (Loop)&#10;Acoustic Bass (Loop)&#10;Electric Bass 1 (Loop)&#10;Electric Bass 2 (Loop)&#10;Gut Guitar (Loop)&#10;Steel Guitar (Loop)&#10;Electric Guitar (Loop)&#10;Clav (Loop)&#10;Cello (Loop)&#10;Violin (Loop)&#10;Electric Piano 1 (Loop)&#10;Electric Piano 2 (Loop)&#10;Harpsichord 1 (Loop)&#10;Harpsichord 2 (Loop)&#10;Telephone Bell (Loop)&#10;Female Voice 1 (Loop)&#10;Female Voice 2 (Loop)&#10;Male Voice 1 (Loop)&#10;Male Voice 2 (Loop)&#10;Spectrum 1 (Loop)&#10;Spectrum 2 (Loop)&#10;Spectrum 3 (Loop)&#10;Spectrum 4 (Loop)&#10;Spectrum 5 (Loop)&#10;Spectrum 6 (Loop)&#10;Spectrum 7 (Loop)&#10;Spectrum 8 (Loop)&#10;Spectrum 9 (Loop)&#10;Spectrum 10 (Loop)&#10;Noise (Loop)&#10;Shot 1&#10;Shot 2&#10;Shot 3&#10;Shot 4&#10;Shot 5&#10;Shot 6&#10;Shot 7&#10;Shot 8&#10;Shot 9&#10;Shot 10&#10;Shot 11&#10;Shot 12&#10;Shot 13&#10;Shot 14&#10;Shot 15&#10;Shot 16&#10;Shot 17"
                uiComboMenuBackgroundRibbed="1" uiComboButtonGradient="0" uiComboButtonGradientColour1="ff0000ff"
                uiComboButtonGradientColour2="ff00008b" uiComboButtonWidthOverride="1"
                uiComboButtonWidth="0" uiComboDynamicContent="0" uiComboSelectedId="1"
@@ -576,7 +578,7 @@
                uiTabsOutlineGlobalBackgroundColour="0" uiTabsOutlineTabColour="0"
                uiTabsTextTabColour="ffffffff" uiTabsFrontTabOutlineColour="0"
                uiTabsFrontTabTextColour="ffffffff" uiTabsAddTab="0" uiTabsRemoveTab="0"
-               componentRectangle="0 120 1044 370" uiTabsCurrentTab="3" componentLayerUid="5d1c508766000000feffffffffffffff"
+               componentRectangle="0 120 1044 370" uiTabsCurrentTab="0" componentLayerUid="5d1c508766000000feffffffffffffff"
                uiType="uiTabs" componentTabName="" componentTabId="0">
       <uiTabsTab uiTabsTabIndex="0" uiTabsTabName="Partial 1" uiTabsTabContentBackgroundColour="0"
                  uiTabsTabBackgroundColour="0" uiTabsTabBackgroundImage="-- None"
@@ -612,7 +614,7 @@
                componentLuaMouseDoubleClick="-- None" uiLabelBgColour="0" uiLabelTextColour="ff00ff00"
                uiLabelOutline="0.00000000000000000000" uiLabelOutlineColour="0"
                uiLabelJustification="left" uiLabelFitFont="0" uiLabelFont="LED Calculator;22;0;0;0;0;1;1"
-               uiLabelText="TVF Cutoff Freq&#10;100 100  90  90 " uiLabelDisplaysAllValues="0"
+               uiLabelText="WG PCM Wave No.&#10;Bass Drum 1" uiLabelDisplaysAllValues="0"
                uiLabelDisplayFormat="%n(%N) = %v(%h)" uiLabelInputHighlightTextColour="0xffffffff"
                uiLabelInputHighlightColour="0xff0000ff" uiLabelEditOnSingleClick="0"
                uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
@@ -823,7 +825,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="partialSelect"
-             name="btn-p1" modulatorMin="0" modulatorValue="0">
+             name="btn-p1" modulatorMin="0" modulatorValue="1">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -931,7 +933,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="partialSelect"
-             name="btn-p4" modulatorMin="0" modulatorValue="1">
+             name="btn-p4" modulatorMin="0" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="6913.00000000000000000000" midiMessageCtrlrValue="4608.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -1047,7 +1049,7 @@
              modulatorBaseValue="0.00000000000000000000" modulatorCustomIndex="0"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
-             name="form-pw-p1" modulatorMin="0.00000000000000000000" modulatorValue="0">
+             name="form-pw-p1" modulatorMin="0.00000000000000000000" modulatorValue="50">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="2305.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -1708,7 +1710,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
-             name="btn-bank-p1" modulatorMin="0" modulatorValue="1">
+             name="btn-bank-p1" modulatorMin="0" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -1744,7 +1746,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="-4608.00000000000000000000"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
-             name="btn-bank-p2" modulatorMin="0" modulatorValue="1">
+             name="btn-bank-p2" modulatorMin="0" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -1960,7 +1962,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="btnLoadData"
-             name="btn-test" modulatorMin="0" modulatorValue="1">
+             name="btn-test" modulatorMin="0" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2238,7 +2240,7 @@
              modulatorBaseValue="-9216.00000000000000000000" modulatorCustomIndex="0"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="filterControls"
-             name="tvf-cutoff-p1" modulatorMin="0.00000000000000000000" modulatorValue="100">
+             name="tvf-cutoff-p1" modulatorMin="0.00000000000000000000" modulatorValue="90">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2281,7 +2283,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-freqkf-p1"
-             modulatorMin="0.00000000000000000000" modulatorValue="4">
+             modulatorMin="0.00000000000000000000" modulatorValue="11">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2324,7 +2326,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-bpt-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="39">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2410,7 +2412,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-cutoff-p2"
-             modulatorMin="0.00000000000000000000" modulatorValue="100">
+             modulatorMin="0.00000000000000000000" modulatorValue="90">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2683,7 +2685,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-res-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="16">
+             modulatorValue="25">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2812,7 +2814,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-t1-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="6">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2854,7 +2856,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-t2-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="20">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2897,7 +2899,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-t3-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="33">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2939,7 +2941,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-t4-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="63">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2982,7 +2984,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-l1-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="45">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3024,7 +3026,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-l2-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="69">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3109,7 +3111,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-res-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="0">
+             modulatorValue="25">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3152,7 +3154,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-blv-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="8">
+             modulatorValue="7">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3263,7 +3265,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-lvl-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="87">
+             modulatorValue="100">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3349,7 +3351,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-vel-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="70">
+             modulatorValue="50">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3392,7 +3394,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp1-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="91">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3435,7 +3437,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl1-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3478,7 +3480,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp2-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="27">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3520,7 +3522,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl2-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3774,7 +3776,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-t4-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="23">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3817,7 +3819,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-l1-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="100">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3860,7 +3862,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-l2-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="100">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3945,7 +3947,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-dep-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="24">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -3988,7 +3990,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-vel-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="100">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -4158,7 +4160,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="-- None" name="mod-modulation" modulatorMin="0.00000000000000000000"
-             modulatorValue="61">
+             modulatorValue="0">
     <midi midiMessageType="0" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -4497,7 +4499,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-lrte-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="64">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -4540,7 +4542,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-ldep-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="23">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -4582,7 +4584,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-lmod-p1" modulatorMin="0.00000000000000000000"
-             modulatorValue="100">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -4661,7 +4663,7 @@
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
              name="list-pcm-wave-number-p2" modulatorMin="0" uiComboContent=""
-             modulatorValue="-1">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="0.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -4683,7 +4685,7 @@
                uiComboMenuFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiComboButtonColour="0xff0000ff"
                uiComboBgColour="ff000000" uiComboMenuBackgroundColour="0xfff0f0f0"
                uiComboMenuFontColour="0xff000000" uiComboMenuHighlightColour="ffadd8e6"
-               uiComboMenuFontHighlightedColour="0xff232323" uiComboContent="Bass Drum 1*&#10;Bass Drum 2*&#10;Bass Drum 3*&#10;Snare Drum 1*&#10;Snare Drum 2*&#10;Snare Drum 3*&#10;Snare Drum 4*&#10;Tom Tom 1*&#10;Tom Tom 2*&#10;High Hat*&#10;High Hat* (Loop)&#10;Crash Cymbal 1*&#10;Crash Cymbal 2* (Loop)&#10;Ride Cymbal 1*&#10;Ride Cymbal 2* (Loop)&#10;Cup*&#10;China Cymbal 1*&#10;China Cymbal 2* (Loop)&#10;Rim Shot*&#10;Hand Clap*&#10;Mute High Conga*&#10;Conga*&#10;Bongo*&#10;Cowbell*&#10;Tambourine*&#10;Agogo*&#10;Claves*&#10;Timbale High*&#10;Timbale Low*&#10;Cabasa*&#10;Loop 1&#10;Loop 2&#10;Loop 3&#10;Loop 4&#10;Loop 5&#10;Loop 6&#10;Loop 7&#10;Loop 8&#10;Loop 9&#10;Loop 10&#10;Loop 11&#10;Loop 12&#10;Loop 13&#10;Loop 14&#10;Loop 15&#10;Loop 16&#10;Loop 17&#10;Loop 18&#10;Loop 19&#10;Loop 20&#10;Loop 21&#10;Loop 22&#10;Loop 23&#10;Loop 24&#10;Loop 25&#10;Loop 26&#10;Loop 27&#10;Loop 28&#10;Loop 29&#10;Loop 30&#10;Loop 31&#10;Loop 32&#10;Loop 33&#10;Loop 34&#10;Loop 35&#10;Loop 36&#10;Loop 37&#10;Loop 38&#10;Loop 39&#10;Loop 40&#10;Loop 41&#10;Loop 42&#10;Loop 43&#10;Loop 44&#10;Loop 45&#10;Loop 46&#10;Loop 47&#10;Loop 48&#10;Loop 49&#10;Loop 50&#10;Loop 51&#10;Loop 52&#10;Loop 53&#10;Loop 54&#10;Loop 55&#10;Loop 56&#10;Loop 57&#10;Loop 58&#10;Loop 59&#10;Loop 60&#10;Loop 61&#10;Loop 62&#10;Loop 63&#10;Loop 64&#10;Jam 1&#10;Jam 2&#10;Jam 3&#10;Jam 4&#10;Jam 5&#10;Jam 6&#10;Jam 7&#10;Jam 8&#10;Jam 9&#10;Jam 10&#10;Jam 11&#10;Jam 12&#10;Jam 13&#10;Jam 14&#10;Jam 15&#10;Jam 16&#10;Jam 17&#10;Jam 18&#10;Jam 19&#10;Jam 20&#10;Jam 21&#10;Jam 22&#10;Jam 23&#10;Jam 24&#10;Jam 25&#10;Jam 26&#10;Jam 27&#10;Jam 28&#10;Jam 29&#10;Jam 30&#10;Jam 31&#10;Jam 32&#10;Jam 33&#10;Jam 34"
+               uiComboMenuFontHighlightedColour="0xff232323" uiComboContent="Bass Drum 1&#10;Bass Drum 2&#10;Bass Drum 3&#10;Snare Drum 1&#10;Snare Drum 2&#10;Snare Drum 3&#10;Snare Drum 4&#10;Tom Tom 1&#10;Tom Tom 2&#10;High Hat&#10;High Hat Loop&#10;Crash&#10;Crash Loop&#10;Ride&#10;Ride Loop&#10;Cup&#10;China&#10;China Loop&#10;Rim Shot&#10;Hand Clap&#10;Mute High Conga&#10;Conga&#10;Bongo&#10;Cowbell&#10;Tambourine&#10;Agogo&#10;Claves&#10;Timbale High&#10;Timbale Low&#10;Cabasa&#10;Timpani Attack&#10;Timpani&#10;Acoustic Piano High&#10;Acoustic Piano Low&#10;Piano Forte Thump&#10;Organ Percussion&#10;Trumpet&#10;Lips&#10;Trombone&#10;Clarinet&#10;Flute High&#10;Flute Low&#10;Steamer&#10;Indian Flute&#10;Breath&#10;Vibraphone High&#10;Vibraphone Low&#10;Marimba&#10;Xylophone High&#10;Xylophone Low&#10;Kalimba&#10;Wind Bell&#10;Chime Bar&#10;Hammer&#10;Guiro&#10;Chink&#10;Nails&#10;Fretless Bass&#10;Pull Bass&#10;Slap Bass&#10;Thump Bass&#10;Acoustic Bass&#10;Electric Bass&#10;Gut Guitar&#10;Steel Guitar&#10;Dirty Guitar&#10;Pizzicato&#10;Harp&#10;Contrabass&#10;Cello&#10;Violin 1&#10;Violin 2&#10;Koto&#10;Draw bars (Loop)&#10;High Organ (Loop)&#10;Low Organ (Loop)&#10;Trumpet (Loop)&#10;Trombone (Loop)&#10;Sax 1 (Loop)&#10;Sax 2 (Loop)&#10;Reed (Loop)&#10;Slap Bass (Loop)&#10;Acoustic Bass (Loop)&#10;Electric Bass 1 (Loop)&#10;Electric Bass 2 (Loop)&#10;Gut Guitar (Loop)&#10;Steel Guitar (Loop)&#10;Electric Guitar (Loop)&#10;Clav (Loop)&#10;Cello (Loop)&#10;Violin (Loop)&#10;Electric Piano 1 (Loop)&#10;Electric Piano 2 (Loop)&#10;Harpsichord 1 (Loop)&#10;Harpsichord 2 (Loop)&#10;Telephone Bell (Loop)&#10;Female Voice 1 (Loop)&#10;Female Voice 2 (Loop)&#10;Male Voice 1 (Loop)&#10;Male Voice 2 (Loop)&#10;Spectrum 1 (Loop)&#10;Spectrum 2 (Loop)&#10;Spectrum 3 (Loop)&#10;Spectrum 4 (Loop)&#10;Spectrum 5 (Loop)&#10;Spectrum 6 (Loop)&#10;Spectrum 7 (Loop)&#10;Spectrum 8 (Loop)&#10;Spectrum 9 (Loop)&#10;Spectrum 10 (Loop)&#10;Noise (Loop)&#10;Shot 1&#10;Shot 2&#10;Shot 3&#10;Shot 4&#10;Shot 5&#10;Shot 6&#10;Shot 7&#10;Shot 8&#10;Shot 9&#10;Shot 10&#10;Shot 11&#10;Shot 12&#10;Shot 13&#10;Shot 14&#10;Shot 15&#10;Shot 16&#10;Shot 17"
                uiComboMenuBackgroundRibbed="1" uiComboButtonGradient="0" uiComboButtonGradientColour1="ff0000ff"
                uiComboButtonGradientColour2="ff00008b" uiComboButtonWidthOverride="1"
                uiComboButtonWidth="0" uiComboDynamicContent="0" uiComboSelectedId="1"
@@ -4998,7 +5000,7 @@
              modulatorBaseValue="0.00000000000000000000" modulatorCustomIndex="0"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
-             name="form-pw-p2" modulatorMin="0.00000000000000000000" modulatorValue="0">
+             name="form-pw-p2" modulatorMin="0.00000000000000000000" modulatorValue="50">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="2305.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -5084,7 +5086,7 @@
              modulatorBaseValue="0.00000000000000000000" modulatorCustomIndex="0"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
-             name="form-pw-p3" modulatorMin="0.00000000000000000000" modulatorValue="0">
+             name="form-pw-p3" modulatorMin="0.00000000000000000000" modulatorValue="50">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="2305.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -5170,7 +5172,7 @@
              modulatorBaseValue="0.00000000000000000000" modulatorCustomIndex="0"
              modulatorCustomName="" modulatorCustomIndexGroup="0" modulatorCustomNameGroup=""
              modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
-             name="form-pw-p4" modulatorMin="0.00000000000000000000" modulatorValue="0">
+             name="form-pw-p4" modulatorMin="0.00000000000000000000" modulatorValue="50">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="2305.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -5427,7 +5429,7 @@
                componentLuaMouseDoubleClick="-- None" uiLabelBgColour="0" uiLabelTextColour="ff00ff21"
                uiLabelOutline="0" uiLabelOutlineColour="0x00000000" uiLabelJustification="centredLeft"
                uiLabelFitFont="0" uiLabelFont="LED Calculator;18;0;0;0;0;1;1"
-               uiLabelText="Sawteeth  " uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
+               uiLabelText="Default   " uiLabelDisplaysAllValues="0" uiLabelDisplayFormat="%n(%N) = %v(%h)"
                uiLabelInputHighlightTextColour="0xffffffff" uiLabelInputHighlightColour="0xff0000ff"
                uiLabelEditOnSingleClick="0" uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
                uiLabelInputAllowedChars="" uiLabelInputMaxLength="1024" uiLabelChangedCbk="-- None"
@@ -6172,7 +6174,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-fine-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="55">
+             modulatorValue="50">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -6258,7 +6260,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-lrte-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="64">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -6300,7 +6302,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-ldep-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="23">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -6343,7 +6345,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-lmod-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="93">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -7500,7 +7502,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-freqkf-p2"
-             modulatorMin="0.00000000000000000000" modulatorValue="5">
+             modulatorMin="0.00000000000000000000" modulatorValue="11">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -7543,7 +7545,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-bpt-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="103">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -7585,7 +7587,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="filterControls" name="tvf-blv-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="6">
+             modulatorValue="7">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9246,7 +9248,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-lvl-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="74">
+             modulatorValue="100">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9332,7 +9334,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp1-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="91">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9374,7 +9376,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl1-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9416,7 +9418,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp2-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="27">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9459,7 +9461,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl2-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9630,7 +9632,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp1-p3" modulatorMin="0.00000000000000000000"
-             modulatorValue="91">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9672,7 +9674,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl1-p3" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9714,7 +9716,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp2-p3" modulatorMin="0.00000000000000000000"
-             modulatorValue="27">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9757,7 +9759,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl2-p3" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9928,7 +9930,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp1-p4" modulatorMin="0.00000000000000000000"
-             modulatorValue="91">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -9970,7 +9972,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl1-p4" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10012,7 +10014,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bp2-p4" modulatorMin="0.00000000000000000000"
-             modulatorValue="27">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10055,7 +10057,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-bl2-p4" modulatorMin="0.00000000000000000000"
-             modulatorValue="12">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10140,7 +10142,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-t1-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="9">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10183,7 +10185,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-t2-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="5">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10225,7 +10227,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-t3-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="11">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10268,7 +10270,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-t4-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="10">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10779,7 +10781,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-l1-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="77">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -10821,7 +10823,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="ampControls" name="tva-l2-p2" modulatorMin="0.00000000000000000000"
-             modulatorValue="92">
+             modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -11442,7 +11444,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="btnControls"
-             name="btn-toggle-env" modulatorMin="0" modulatorValue="1">
+             name="btn-toggle-env" modulatorMin="0" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -11502,6 +11504,42 @@
                uiButtonTextFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" uiButtonTextJustification="centred"
                uiButtonRepeat="0" uiButtonRepeatRate="100.00000000000000000000"
                componentLayerUid="2f1570cf86090000feffffffffffffff" uiType="uiImageButton"/>
+  </modulator>
+  <modulator modulatorVstExported="1" modulatorMax="1" vstIndex="875" modulatorIsStatic="0"
+             modulatorGlobalVariable="-1.00000000000000000000" modulatorMuteOnStart="0"
+             modulatorMute="0" modulatorExcludeFromSnapshot="0" modulatorValueExpression="modulatorValue"
+             modulatorValueExpressionReverse="midiValue" modulatorControllerExpression="value"
+             luaModulatorGetValueForMIDI="-- None" luaModulatorGetValueFromMIDI="-- None"
+             modulatorLinkedToPanelProperty="-- None" modulatorLinkedToModulatorProperty="-- None"
+             modulatorLinkedToModulator="-- None" modulatorLinkedToModulatorSource="1"
+             modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
+             modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
+             modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="btnResetTone"
+             name="btn-reset" modulatorMin="0" modulatorValue="1">
+    <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
+          midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
+          midiMessageMultiList="" midiMessageSysExFormula=""/>
+    <component componentLabelPosition="top" componentLabelJustification="centred"
+               componentLabelHeight="14" componentLabelWidth="0" componentLabelVisible="0"
+               componentLabelAlwaysOnTop="1" componentSentBack="0" componentLabelColour="0xff000000"
+               componentLabelFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3" componentVisibleName="p1"
+               componentMouseCursor="2" componentGroupName="" componentGroupped="0"
+               componentSnapSize="0" componentIsLocked="0" componentDisabled="0"
+               componentRadioGroupId="0.00000000000000000000" componentRadioGroupNotifyMidi="1"
+               componentVisibility="1" componentEffect="0" componentEffectRadius="1.00000000000000000000"
+               componentEffectColour="0xff000000" componentEffectOffsetX="0"
+               componentEffectOffsetY="0" componentExcludedFromLabelDisplay="0"
+               componentValueDecimalPlaces="0" componentLuaMouseMoved="-- None"
+               componentLuaMouseDown="-- None" componentLuaMouseDrag="-- None"
+               componentLuaMouseDoubleClick="-- None" uiImageButtonMode="0"
+               uiImageButtonResource="btn-red" componentRectangle="427 68 50 16"
+               resourceImageWidth="50" resourceImageHeight="16" resourceImagePaintMode="256"
+               resourceImageOrientation="1" uiImageButtonTextColour="0xff000000"
+               uiImageButtonContent="False&#10;True" uiImageButtonTextPosition="none"
+               uiImageButtonTextWidth="0" uiImageButtonTextHeight="32" uiButtonTextFont="&lt;Sans-Serif&gt;;12;0;0;0;0;1;3"
+               uiButtonTextJustification="centred" uiButtonRepeat="0" uiButtonRepeatRate="100.00000000000000000000"
+               componentLayerUid="5d1c508766000000feffffffffffffff" uiType="uiImageButton"
+               componentTabName="" componentTabId="0.00000000000000000000"/>
   </modulator>
   <panelCustomData/>
 </panel>
