@@ -3,7 +3,7 @@
 --
 
 function editableTextField(label, newContent)
-    local name = label
-    console("textfield: ".. name)
+    --local name = label
+    console("textfield: ".. newContent)
 
 end
