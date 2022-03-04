@@ -3,6 +3,7 @@
 --
 
 function partialLock(mod, value)
+    stopBlinker()
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
     name = string.sub(name, 0, -2)
@@ -17,5 +18,5 @@ function partialLock(mod, value)
 
     P_EDIT[partial] = value
 
-    --console(dump(P_EDIT))
+    startBlinker()
 end

@@ -33,6 +33,8 @@ function paintEnvelope(comp, graphic)
     -- do nothing if true
     if DISPLAY_ENVS == false then return end
 
+    stopBlinker()
+
     g = graphic
 
 	width = g:getClipBounds():getWidth()

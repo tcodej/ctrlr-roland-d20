@@ -36,7 +36,7 @@ function midiMessageReceived(midiMessage)
             setTone()
         end
 
-        console(data:toHexString(1))
+        --console(data:toHexString(1))
         file = File("d:\\sysexdump\\tone1.syx")
         file:replaceWithData(data)
     end

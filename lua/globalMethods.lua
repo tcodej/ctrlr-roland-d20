@@ -18,22 +18,21 @@ TIMER = {
     BLINKER = 6
 }
 
+
 -- when receiving data from the synth, set this to false to avoid
 -- spamming those values back to the synth while modulators are set
 ENABLE_OUT = true
+
 
 -- whether or not to simulate envelope shape on LCD screen
 -- if false, displays normal LCD values
 DISPLAY_ENVS = false
 
+
 ASCII = " !\"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~"
 P_EDIT = {true, false, false, false}
 OFF_ON = {" OFF"," ON "}
 WAVE_SHAPE = {"SQU ","SAW ","SQU ","SAW "}
-
--- tva bl -12 to 00
--- tvf vl -07 to +07
-
 BIAS_PT = {"<A1 ","<A#1","<B1 ","<C1 ","<C#1","<D1 ","<D#1","<E1 ","<F1 ","<F#1","<G1 ","<G#1","<A2 ","<A#2","<B2 ","<C2 ","<C#2","<D2 ","<D#2","<E2 ","<F2 ","<F#2","<G2 ","<G#2","<A3 ","<A#3","<B3 ","<C3 ","<C#3","<D3 ","<D#3","<E3 ","<F3 ","<F#3","<G3 ","<G#3","<A4 ","<A#4","<B4 ","<C4 ","<C#4","<D4 ","<D#4","<E4 ","<F4 ","<F#4","<G4 ","<G#4","<A5 ","<A#5","<B5 ","<C5 ","<C#5","<D5 ","<D#5","<E5 ","<F5 ","<F#5","<G5 ","<G#5","<A6 ","<A#6","<B6 ","<C7 ",">A1 ",">A#1",">B1 ",">C1 ",">C#1",">D1 ",">D#1",">E1 ",">F1 ",">F#1",">G1 ",">G#1",">A2 ",">A#2",">B2 ",">C2 ",">C#2",">D2 ",">D#2",">E2 ",">F2 ",">F#2",">G2 ",">G#2",">A3 ",">A#3",">B3 ",">C3 ",">C#3",">D3 ",">D#3",">E3 ",">F3 ",">F#3",">G3 ",">G#3",">A4 ",">A#4",">B4 ",">C4 ",">C#4",">D4 ",">D#4",">E4 ",">F4 ",">F#4",">G4 ",">G#4",">A5 ",">A#5",">B5 ",">C5 ",">C#5",">D5 ",">D#5",">E5 ",">F5 ",">F#5",">G5 ",">G#5",">A6 ",">A#6",">B6 ",">C7 "}
 BIAS_LVL_TVA = {"-12","-11","-10","-09","-08","-07","-06","-05","-04","-03","-02","-01"," 00"}
 BIAS_LVL_TVF = {"-07","-06","-05","-04","-03","-02","-01"," 00","+01","+02","+03","+04","+05","+06","+07"}
@@ -251,20 +250,22 @@ end
 
 -- blink the midi activity light
 function activity(num)
+    local activityImg = panel:getModulatorByName("img-activity"):getComponent()
+
     if num == ACT_OFF then
-        panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-off")
+        activityImg:setPropertyString("uiImageResource", "led-off")
 
     elseif num == ACT_IN then
         -- in, blink red
-        panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-red")
+        activityImg:setPropertyString("uiImageResource", "led-red")
 
     elseif num == ACT_OUT then
         -- out, blink green
-        panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-green")
+        activityImg:setPropertyString("uiImageResource", "led-green")
 
     elseif num == ACT_SYS then
         -- sysex in or out blink blue
-        panel:getModulatorByName("img-activity"):getComponent():setPropertyString("uiImageResource", "led-blue")
+        activityImg:setPropertyString("uiImageResource", "led-blue")
     end
 end
 

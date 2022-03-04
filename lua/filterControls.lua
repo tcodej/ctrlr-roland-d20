@@ -5,6 +5,10 @@
 local partial
 
 function filterControls(mod, value, source)
+
+    -- disable blinker during mod update
+    stopBlinker()
+
     local addr = "00"
     local name = L(mod:getName())
 
@@ -177,6 +181,8 @@ function filterControls(mod, value, source)
         end
     end
 --]]
+
+    startBlinker()
 
 end
 
