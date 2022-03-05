@@ -3,6 +3,10 @@
 --
 
 function editableTextField(label, newContent)
+	if panel:getRestoreState() == true or panel:getProgramState() == true then
+		return
+	end
+
     toneName = L(panel:getLabel("label-tone-name"):getText())
 
     console(toneName)

@@ -2,12 +2,12 @@ local mm
 local data
 
 function midiMessageReceived(midiMessage)
-    mm = midiMessage
-    data = mm:getData()
-
 	if panel:getRestoreState() == true or panel:getProgramState() == true then
 		return
 	end
+
+    mm = midiMessage
+    data = mm:getData()
 
     hideEnv()
 
