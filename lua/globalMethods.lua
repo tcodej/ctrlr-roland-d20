@@ -15,8 +15,11 @@ TIMER = {
     SYSEX = 3,
     ONLOAD = 4,
     SET_TONE = 5,
-    BLINKER = 6
+    BLINKER = 6,
+    LFO = { 7, 8, 9, 10 }
 }
+
+LFO = { false, false, false, false }
 
 
 -- when receiving data from the synth, set this to false to avoid

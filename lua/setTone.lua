@@ -26,7 +26,7 @@ function setTone(output)
         name = name .. letter
     end
 
-    panel:getLabel("label-name"):setText(name)
+    panel:getLabel("label-tone-name"):setText(name)
 
     set("mod-struct1", getByteNum(18))
     set("mod-struct2", getByteNum(19))
