@@ -22,6 +22,10 @@ pcmBank[2] = pcmBank[0]
 pcmBank[3] = pcmBank[1]
 
 function wgFormControls(mod, value, source)
+
+    -- disable blinker during mod update
+    stopBlinker()
+
 	local addr = "00"
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
@@ -131,4 +135,6 @@ function wgFormControls(mod, value, source)
     updateLCD(line1, line2)
 
     sendSysex(sysEx)
+
+    startBlinker()
 end
