@@ -356,10 +356,28 @@ function stopBlinker()
 end
 
 function toggleVisible(name, bool)
-    mod = panel:getModulatorByName(name)
+    local mod = panel:getModulatorByName(name)
 
     if mod ~= nil then
         mod:getComponent():setVisible(bool)
+    end
+end
+
+
+function toggleLayerVisible(name, bool)
+    local layer = panel:getCanvas():getLayerByName(name)
+    local int
+
+    -- this insists on an integer vs boolean
+    if bool == true then
+        int = 1
+
+    else
+        int = 0
+    end
+
+    if layer ~= nil then
+        layer:setPropertyInt("uiPanelCanvasLayerVisibility", int)
     end
 end
 
