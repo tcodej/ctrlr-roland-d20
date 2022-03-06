@@ -11,5 +11,19 @@ function btnControls(mod, value)
         end
     end
 
-    console(name.." "..tostring(DISPLAY_ENVS))
+    if name == "btn-toggle-performance" then
+        local common = panel:getCanvas():getLayerByName("common")
+
+        if value == 0 then
+            console("performance off, tone on")
+            toggleVisible("tabs-partials", true)
+            common:setPropertyInt("uiPanelCanvasLayerVisibility", 1)
+
+        else
+            console("performance on, tone off")
+            toggleVisible("tabs-partials", false)
+            common:setPropertyInt("uiPanelCanvasLayerVisibility", 0)
+        end
+    end
+
 end

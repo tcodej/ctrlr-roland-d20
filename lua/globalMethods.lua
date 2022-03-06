@@ -355,6 +355,14 @@ function stopBlinker()
     end
 end
 
+function toggleVisible(name, bool)
+    mod = panel:getModulatorByName(name)
+
+    if mod ~= nil then
+        mod:getComponent():setVisible(bool)
+    end
+end
+
 
 
 
