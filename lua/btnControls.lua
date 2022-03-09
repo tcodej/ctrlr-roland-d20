@@ -2,12 +2,16 @@ function btnControls(mod, value)
     local name = L(mod:getName())
 
     if name == "btn-toggle-env" then
+        startBlinker()
+
         if value == 0 then
             DISPLAY_ENVS = false
             hideEnv()
+            updateLCD("ENV Visualizer", OFF_ON[1])
 
         else
             DISPLAY_ENVS = true
+            updateLCD("ENV Visualizer", OFF_ON[2])
         end
     end
 

@@ -32,13 +32,13 @@ function midiMessageReceived(midiMessage)
 
     if size == 256 then
         activity(ACT_SYS)
-       --if getByteHex(0) .. getByteHex(1) .. getByteHex(2) == "f04110" then
-       --    setTone()
-       --end
+        if getByteHex(0) .. getByteHex(1) .. getByteHex(2) == "f04110" then
+            setTone()
+        end
 
         --console(data:toHexString(1))
-        file = File("d:\\sysexdump\\tone1.syx")
-        file:replaceWithData(data)
+        --file = File("d:\\sysexdump\\tone1.syx")
+        --file:replaceWithData(data)
     end
 
 end
