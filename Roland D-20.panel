@@ -46,8 +46,8 @@
     <uiChildWindow uiChildWindowName="ModulatorList" uiChildWindowState="fs 2139 31 800 500">
       <uiChildWindowContentState/>
     </uiChildWindow>
-    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="1926 34 1268 823">
-      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/commonControls&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;6d48ca18a7af42129109af8d83a0e0c2:71d36476fafd4b70b0322e45bbb68f39:4a45448c402b4b1a967b2eeb65a824e3:eda8781969b94d6ab2539811e4cfc8ef:fc22162afb2e4268866ad80bbda38c35:37aded3a04c8453fa7431c8a054142f2"/>
+    <uiChildWindow uiChildWindowName="LuaMethodEditor" uiChildWindowState="1926 33 1268 824">
+      <uiChildWindowContentState luaMethodEditor="&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;&#13;&#10;&#13;&#10;&lt;OPEN id=&quot;LUA&quot; scrollPos=&quot;0&quot;&gt;&#13;&#10;  &lt;SELECTED id=&quot;/LUA/patchControls&quot;/&gt;&#13;&#10;&lt;/OPEN&gt;&#13;&#10;;6d48ca18a7af42129109af8d83a0e0c2:71d36476fafd4b70b0322e45bbb68f39:4a45448c402b4b1a967b2eeb65a824e3:eda8781969b94d6ab2539811e4cfc8ef:fc22162afb2e4268866ad80bbda38c35:a24e2eb192814552a0458be8e5127a24:539f7770347f4c4e83054933d12ae9fc"/>
     </uiChildWindow>
     <uiChildWindow uiChildWindowName="LayerEditor" uiChildWindowState="1924 765 475 227">
       <uiChildWindowContentState/>
@@ -122,10 +122,14 @@
                  luaMethodSource="1" uuid="e6d2122859994c5ba71c6166410a4e00" luaMethodValid="1"/>
       <luaMethod luaMethodName="partialSelect" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\partialSelect.lua"
                  luaMethodSource="1" uuid="d586d6a31dd14727bc07560356e21a1a" luaMethodValid="1"/>
+      <luaMethod luaMethodName="patchControls" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\patchControls.lua"
+                 luaMethodSource="1" uuid="539f7770347f4c4e83054933d12ae9fc" luaMethodValid="1"/>
       <luaMethod luaMethodName="pitchControls" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\pitchControls.lua"
                  luaMethodSource="1" uuid="397bd9192ec147939e398ac41893b858" luaMethodValid="1"/>
       <luaMethod luaMethodName="setTone" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\setTone.lua"
                  luaMethodSource="1" uuid="c44e07531821497ba4f658b8be57d061" luaMethodValid="1"/>
+      <luaMethod luaMethodName="timbreControls" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\timbreControls.lua"
+                 luaMethodSource="1" uuid="a24e2eb192814552a0458be8e5127a24" luaMethodValid="1"/>
       <luaMethod luaMethodName="updateLCD" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\updateLCD.lua"
                  luaMethodSource="1" uuid="37eb3d1d83074f3c954a483035006ca8" luaMethodValid="1"/>
       <luaMethod luaMethodName="wgFormControls" luaMethodSourcePath="D:\audio\ctrlr\ctrlr-roland-d20\lua\wgFormControls.lua"
@@ -133,70 +137,70 @@
     </luaManagerMethods>
   </luaManager>
   <panelResources>
-    <resource resourceHash="3303679912332672404" resourceLoadedTime="1646676585066"
+    <resource resourceHash="3303679912332672404" resourceLoadedTime="1646791253848"
               resourceSize="191620" resourceFile="background-panel.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\background-panel.png"
               resourceName="background-panel" resourceType="Image"/>
-    <resource resourceHash="5512385960676118383" resourceLoadedTime="1646676585072"
+    <resource resourceHash="5512385960676118383" resourceLoadedTime="1646791253854"
               resourceSize="20940" resourceFile="background-tone.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\background-tone.png"
               resourceName="background-tone" resourceType="Image"/>
-    <resource resourceHash="93249765380134871" resourceLoadedTime="1646676585083"
+    <resource resourceHash="93249765380134871" resourceLoadedTime="1646791253864"
               resourceSize="66440" resourceFile="bender-18x76.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\bender-18x76.png"
               resourceName="bender-18x76" resourceType="Image"/>
-    <resource resourceHash="2620449436731188956" resourceLoadedTime="1646676585085"
+    <resource resourceHash="2620449436731188956" resourceLoadedTime="1646791253866"
               resourceSize="4945" resourceFile="bg-wg-pcm.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\bg-wg-pcm.png"
               resourceName="bg-wg-pcm" resourceType="Image"/>
-    <resource resourceHash="2620456847288595688" resourceLoadedTime="1646676585087"
+    <resource resourceHash="2620456847288595688" resourceLoadedTime="1646791253867"
               resourceSize="3645" resourceFile="bg-wg-wav.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\bg-wg-wav.png"
               resourceName="bg-wg-wav" resourceType="Image"/>
-    <resource resourceHash="-1364520405674268104" resourceLoadedTime="1646676585088"
+    <resource resourceHash="-1364520405674268104" resourceLoadedTime="1646791253868"
               resourceSize="141" resourceFile="blink-off.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\blink-off.png"
               resourceName="blink-off" resourceType="Image"/>
-    <resource resourceHash="-6040662476625194254" resourceLoadedTime="1646676585089"
+    <resource resourceHash="-6040662476625194254" resourceLoadedTime="1646791253869"
               resourceSize="122" resourceFile="blink-on.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\blink-on.png"
               resourceName="blink-on" resourceType="Image"/>
-    <resource resourceHash="-3970510040506643082" resourceLoadedTime="1646676585090"
+    <resource resourceHash="-3970510040506643082" resourceLoadedTime="1646791253870"
               resourceSize="465" resourceFile="btn-blue-green.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\btn-blue-green.png"
               resourceName="btn-blue-green" resourceType="Image"/>
-    <resource resourceHash="-3023006166349568703" resourceLoadedTime="1646676585090"
+    <resource resourceHash="-3023006166349568703" resourceLoadedTime="1646791253872"
               resourceSize="466" resourceFile="btn-blue.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\btn-blue.png"
               resourceName="btn-blue" resourceType="Image"/>
-    <resource resourceHash="8325631116865468282" resourceLoadedTime="1646676585090"
+    <resource resourceHash="8325631116865468282" resourceLoadedTime="1646791253873"
               resourceSize="464" resourceFile="btn-green.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\btn-green.png"
               resourceName="btn-green" resourceType="Image"/>
-    <resource resourceHash="-7518194464487054272" resourceLoadedTime="1646676585092"
+    <resource resourceHash="-7518194464487054272" resourceLoadedTime="1646791253873"
               resourceSize="459" resourceFile="btn-red.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\btn-red.png"
               resourceName="btn-red" resourceType="Image"/>
-    <resource resourceHash="8935208696384240954" resourceLoadedTime="1646676585097"
+    <resource resourceHash="8935208696384240954" resourceLoadedTime="1646791253875"
               resourceSize="2824" resourceFile="grid-screen.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\grid-screen.png"
               resourceName="grid-screen" resourceType="Image"/>
-    <resource resourceHash="-4340996843122772485" resourceLoadedTime="1646676585107"
+    <resource resourceHash="-4340996843122772485" resourceLoadedTime="1646791253885"
               resourceSize="59174" resourceFile="knob-49x49.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\knob-49x49.png"
               resourceName="knob-49x49" resourceType="Image"/>
-    <resource resourceHash="-846813488917407528" resourceLoadedTime="1646676585107"
+    <resource resourceHash="-846813488917407528" resourceLoadedTime="1646791253886"
               resourceSize="160" resourceFile="lcd-bezel.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\lcd-bezel.png"
               resourceName="lcd-bezel" resourceType="Image"/>
-    <resource resourceHash="-791946549971307893" resourceLoadedTime="1646676585109"
+    <resource resourceHash="-791946549971307893" resourceLoadedTime="1646791253888"
               resourceSize="6335" resourceFile="lcd-glass.png" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\lcd-glass.png"
               resourceName="lcd-glass" resourceType="Image"/>
-    <resource resourceHash="8687172434095120848" resourceLoadedTime="1646676585110"
+    <resource resourceHash="8687172434095120848" resourceLoadedTime="1646791253889"
               resourceSize="172" resourceFile="led-blue.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\led-blue.png"
               resourceName="led-blue" resourceType="Image"/>
-    <resource resourceHash="-7984695053194672989" resourceLoadedTime="1646676585110"
+    <resource resourceHash="-7984695053194672989" resourceLoadedTime="1646791253890"
               resourceSize="171" resourceFile="led-green.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\led-green.png"
               resourceName="led-green" resourceType="Image"/>
-    <resource resourceHash="-7767537336578036646" resourceLoadedTime="1646676585110"
+    <resource resourceHash="-7767537336578036646" resourceLoadedTime="1646791253890"
               resourceSize="172" resourceFile="led-off.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\led-off.png"
               resourceName="led-off" resourceType="Image"/>
-    <resource resourceHash="-7767534162735781209" resourceLoadedTime="1646676585111"
+    <resource resourceHash="-7767534162735781209" resourceLoadedTime="1646791253891"
               resourceSize="167" resourceFile="led-red.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\led-red.png"
               resourceName="led-red" resourceType="Image"/>
-    <resource resourceHash="-7313148783479905285" resourceLoadedTime="1646676585113"
+    <resource resourceHash="-7313148783479905285" resourceLoadedTime="1646791253899"
               resourceSize="830004" resourceFile="LEDCalculator.ttf" resourceSourceFile="D:\audio\ctrlr\ctrlr-roland-d20\resources\LEDCalculator.ttf"
               resourceName="LEDCalculator" resourceType="Font"/>
-    <resource resourceHash="2887605700233187066" resourceLoadedTime="1646676585122"
+    <resource resourceHash="2887605700233187066" resourceLoadedTime="1646791253910"
               resourceSize="42000" resourceFile="Roland D-20 slider.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\Roland D-20 slider.png"
               resourceName="Roland D-20 slider" resourceType="Image"/>
-    <resource resourceHash="-6122091085067960038" resourceLoadedTime="1646676585124"
+    <resource resourceHash="-6122091085067960038" resourceLoadedTime="1646791253912"
               resourceSize="3199" resourceFile="structure-73x39.png" resourceSourceFile="C:\Users\Trent Johnson\AppData\Roaming\Ctrlr\8.htcQIrzikcM\structure-73x39.png"
               resourceName="structure-73x39" resourceType="Image"/>
   </panelResources>
@@ -215,19 +219,19 @@
                  uiPanelTooltipOutlineColour="0xff000000" uiPanelTooltipColour="0xff000000"
                  uiPanelTooltipCornerRound="1.00000000000000000000" uiPanelTooltipPlacement="2"
                  uiPanelTooltipFont="&lt;Sans-Serif&gt;;15;1;0;0;0;1;3" uiPanelZoom="1.00000000000000000000"
-                 uiPanelViewPortSize="1530" uiPanelPropertiesSize="382" lastBrowsedComponentDir="C:\Users\Trent Johnson\Documents"
+                 uiPanelViewPortSize="1310" uiPanelPropertiesSize="602" lastBrowsedComponentDir="C:\Users\Trent Johnson\Documents"
                  uiPanelDisableCombosOnEdit="1">
     <uiPanelCanvasLayer uiPanelCanvasLayerName="Controls" uiPanelCanvasLayerUid="5d1c508766000000feffffffffffffff"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="0"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="tone-common" uiPanelCanvasLayerUid="480cea1406000000feffffffffffffff"
-                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
+                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
                         uiPanelCanvasLayerIndex="1"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="InvisiButtons" uiPanelCanvasLayerUid="2f1570cf86090000feffffffffffffff"
                         uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
                         uiPanelCanvasLayerIndex="3"/>
     <uiPanelCanvasLayer uiPanelCanvasLayerName="performance" uiPanelCanvasLayerUid="5cf048a4b8000000feffffffffffffff"
-                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="1"
+                        uiPanelCanvasLayerColour="0x000000" uiPanelCanvasLayerVisibility="0"
                         uiPanelCanvasLayerIndex="2"/>
   </uiPanelEditor>
   <modulator modulatorVstExported="1" modulatorMax="65536.00000000000000000000"
@@ -277,7 +281,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="mod-reverb-type" modulatorMin="0" modulatorValue="0">
+             name="mod-reverb-type" modulatorMin="0" modulatorValue="7">
     <midi midiMessageType="5" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula="f0 41 10 16 12 10 00 01 xx z4 f7"/>
@@ -403,7 +407,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="-- None"
-             name="list-tone-group" modulatorMin="0" modulatorValue="0">
+             name="list-tone-group" modulatorMin="0" modulatorValue="3">
     <midi midiMessageType="5" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula="f0 41 10 16 12 03 00 00 xx z4 f7"/>
@@ -482,7 +486,7 @@
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="wgFormControls"
              name="list-pcm-wave-number-p1" modulatorMin="0" uiComboContent=""
-             modulatorValue="100">
+             modulatorValue="21">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="0.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -618,7 +622,7 @@
                componentLuaMouseDoubleClick="-- None" uiLabelBgColour="0" uiLabelTextColour="ff00ff00"
                uiLabelOutline="0.00000000000000000000" uiLabelOutlineColour="0"
                uiLabelJustification="left" uiLabelFitFont="0" uiLabelFont="LED Calculator;22;0;0;0;0;1;1"
-               uiLabelText="TVF Resonance&#10; 70  25  25  25 " uiLabelDisplaysAllValues="0"
+               uiLabelText="WG Pitch KF&#10; 5/4 1   1   1  " uiLabelDisplaysAllValues="0"
                uiLabelDisplayFormat="%n(%N) = %v(%h)" uiLabelInputHighlightTextColour="0xffffffff"
                uiLabelInputHighlightColour="0xff0000ff" uiLabelEditOnSingleClick="0"
                uiLabelEditOnDoubleClick="0" uiLabelEditFocusDiscardsChanges="1"
@@ -830,7 +834,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="partialSelect"
-             name="btn-p1" modulatorMin="0" modulatorValue="0">
+             name="btn-p1" modulatorMin="0" modulatorValue="1">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -938,7 +942,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="partialSelect"
-             name="btn-p4" modulatorMin="0" modulatorValue="1">
+             name="btn-p4" modulatorMin="0" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="6913.00000000000000000000" midiMessageCtrlrValue="4608.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -1386,7 +1390,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="commonControls" name="mod-struct1" modulatorMin="0.00000000000000000000"
-             modulatorValue="8">
+             modulatorValue="6">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -2199,7 +2203,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="arpControls" name="arp-rate" modulatorMin="1.00000000000000000000"
-             modulatorValue="14">
+             modulatorValue="8">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -4459,7 +4463,7 @@
              modulatorBaseValue="0" modulatorCustomIndex="0" modulatorCustomName=""
              modulatorCustomIndexGroup="0" modulatorCustomNameGroup="" modulatorVstNameFormat="%n"
              luaModulatorValueChange="pitchControls" name="penv-kfpitch-p1"
-             modulatorMin="0.00000000000000000000" modulatorValue="11">
+             modulatorMin="0.00000000000000000000" modulatorValue="12">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
@@ -11696,7 +11700,7 @@
              modulatorLinkedToComponent="Modulator" modulatorBaseValue="0"
              modulatorCustomIndex="0" modulatorCustomName="" modulatorCustomIndexGroup="0"
              modulatorCustomNameGroup="" modulatorVstNameFormat="%n" luaModulatorValueChange="btnControls"
-             name="btn-toggle-performance" modulatorMin="0" modulatorValue="1">
+             name="btn-toggle-performance" modulatorMin="0" modulatorValue="0">
     <midi midiMessageType="9" midiMessageChannelOverride="0" midiMessageChannel="1"
           midiMessageCtrlrNumber="1.00000000000000000000" midiMessageCtrlrValue="0.00000000000000000000"
           midiMessageMultiList="" midiMessageSysExFormula=""/>
