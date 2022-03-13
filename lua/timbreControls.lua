@@ -9,5 +9,55 @@ local TONES = {
 }
 
 function timbreControls(mod, value)
-	console("timbreControls")
+
+    -- disable blinker during mod update
+    stopBlinker()
+
+    local sysex = nil
+    local base = "03 00 "
+    local addr = "00"
+    local name = L(mod:getName())
+
+	console(name)
+
+    local offset = {
+        tgroup = "00",
+        tnum = "01",
+        kshift = "02",
+        ftune = "03",
+        brange = "04",
+        assign = "05",
+        reverb = "06"
+    }
+
+    local line1 = ""
+    local line2 = ""
+    local v1 = "";
+    local v2 = ""
+
+    if string.find(name, "keyshft") then
+        line1 = "Key Shift"
+        line2 = zeroPad(value)
+        addr = offset.kshift
+
+    elseif string.find(name, "ftune") then
+        line1 = "Fine Tune"
+        line2 = zeroPad(value)
+        addr = offset.ftune
+
+    elseif string.find(name, "brange") then
+        line1 = "Bender Range"
+        line2 = zeroPad(value)
+        addr = offset.brange
+
+    elseif string.find(name, "assign") then
+        line1 = "Assign Mode"
+        line2 = " ".. (value+1)
+        addr = offset.assign
+
+    end
+
+    updateLCD(line1, line2)
+    sendSysex(base .. addr .." ".. numToHex(value))
+    startBlinker()
 end
