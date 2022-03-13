@@ -18,6 +18,8 @@ local noteLength = nil
 function arpControls(mod, value)
 
     local name = L(mod:getName())
+    local line1 = ""
+    local line2 = ""
 
     hideEnv()
 
@@ -28,6 +30,8 @@ function arpControls(mod, value)
 
             -- all notes off
             panel:sendMidiMessageNow(CtrlrMidiMessage("b0 7b 00"))
+            line1 = "Arpeggiator"
+            line2 = OFF_ON[1]
         end
 
         if value == 1 then
@@ -38,25 +42,43 @@ function arpControls(mod, value)
             ARP_ON = true
             timer:setCallback(TIMER.ARP_CLOCK, sendNote)
             timer:startTimer(TIMER.ARP_CLOCK, rate)
+            line1 = "Arpeggiator"
+            line2 = OFF_ON[2]
         end
 
     elseif name == "arp-rate" then
-        -- convert to high to low
-        value = 20 - value
+        -- value is in beats per minute
+        value = value + 60
 
-        rate = (value + 1) * 50
+        -- convert bpm to ms
+        rate =  math.floor(60000 / value)
+
+        --rate = (value + 1) * 50
         noteLength = rate - (rate * .1)
+
+        line1 = "ARP Rate"
+        line2 = value .."bpm ".. rate .."ms"
 
         if ARP_ON then
             timer:stopTimer(TIMER.ARP_CLOCK)
             timer:startTimer(TIMER.ARP_CLOCK, rate)
         end
+
+    -- todo: need to shorten table if the new length is less than the current length
+    elseif name == "arp-len" then
+        maxNotes = value
+
+        line1 = "ARP Note Count"
+        line2 = zeroPad(value)
     end
+
+    updateLCD(line1, line2)
 end
 
 
 
 function reset()
+    maxNotes = 5
     notes = {"3c", "40", "43", "47", "48"}
     velocity = "64"
     curNote = 0

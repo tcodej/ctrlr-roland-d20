@@ -29,7 +29,7 @@ function pitchControls(mod, value, source)
     local v2 = "s".. partial
     local valueStr = nil
 
-    offset = {
+    local offset = {
         crs = "00",
         fine = "01",
         kfpitch = "02",

@@ -29,7 +29,7 @@ function filterControls(mod, value, source)
     local v2 = "s".. partial
     local valueStr = nil
 
-    offset = {
+    local offset = {
         cutoff = "17",
         res = "18",
         freqkf = "19",

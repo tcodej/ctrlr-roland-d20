@@ -76,6 +76,8 @@ for i=-50,50,1 do
     table.insert(LEVELS, str)
 end
 
+REVERB_TYPES = {"Small Room","Medium Room","Medium Hall","Large Hall","Plate","Delay 1","Delay 2","Delay 3","OFF"}
+
 
 -- used to build the lcd display values
 function getValueStr(TABLE, name, pad)

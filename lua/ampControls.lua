@@ -29,7 +29,7 @@ function ampControls(mod, value, source)
     local v2 = "s".. partial
     local valueStr = nil
 
-    offset = {
+    local offset = {
         lvl = "29",
         vel = "2a",
         bp1 = "2b",
