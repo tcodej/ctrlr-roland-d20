@@ -21,6 +21,9 @@ TIMER = {
 
 LFO = { false, false, false, false }
 
+-- note off/on by channel
+MIDI_OFF = {"80","81","82","83","84","85","86","87"}
+MIDI_ON = {"90","91","92","93","94","95","96","97"}
 
 -- when receiving data from the synth, set this to false to avoid
 -- spamming those values back to the synth while modulators are set
@@ -49,32 +52,39 @@ table.insert(KEY_FOL_PITCH, " s2 ")
 
 PITCH_COARSE = {" C1 "," C#1"," D1 "," D#1"," E1 "," F1 "," F#1"," G1 "," G#1"," A1 "," A#1"," B1 "," C2 "," C#2"," D2 "," D#2"," E2 "," F2 "," F#2"," G2 "," G#2"," A2 "," A#2"," B2 "," C3 "," C#3"," D3 "," D#3"," E3 "," F3 "," F#3"," G3 "," G#3"," A3 "," A#3"," B3 "," C4 "," C#4"," D4 "," D#4"," E4 "," F4 "," F#4"," G4 "," G#4"," A4 "," A#4"," B4 "," C5 "," C#5"," D5 "," D#5"," E5 "," F5 "," F#5"," G5 "," G#5"," A5 "," A#5"," B5 "," C6 "," C#6"," D6 "," D#6"," E6 "," F6 "," F#6"," G6 "," G#6"," A6 "," A#6"," B6 "," C7 "," C#7"," D7 "," D#7"," E7 "," F7 "," F#7"," G7 "," G#7"," A7 "," A#7"," B7 "," C8 "," C#8"," D8 "," D#8"," E8 "," F8 "," F#8"," G8 "," G#8"," C9 "}
 
-LEVELS = {}
+function populateNegPos(length)
+    local t = {}
 
-for i=-50,50,1 do
-    local str
+    for i=-length,length,1 do
+        local str
 
-    if i == 0 then
-        str = " 00"
-    
-    elseif i < 1 then
-        if i > -10 then
-            str = "-0".. math.abs(i)
+        if i == 0 then
+            str = " 00"
+        
+        elseif i < 1 then
+            if i > -10 then
+                str = "-0".. math.abs(i)
+            else
+                str = i
+            end
+
         else
-            str = i
+            if i < 10 then
+                str = "+0".. i
+            else
+
+                str = "+"..i
+            end
         end
 
-    else
-        if i < 10 then
-            str = "+0".. i
-        else
-
-            str = "+"..i
-        end
+        table.insert(t, str)
     end
 
-    table.insert(LEVELS, str)
+    return t
 end
+
+LEVELS = populateNegPos(50)
+KEY_SHIFT = populateNegPos(24)
 
 REVERB_TYPES = {"Small Room","Medium Room","Medium Hall","Large Hall","Plate","Delay 1","Delay 2","Delay 3","OFF"}
 
@@ -145,6 +155,27 @@ end
 function recieveSysex(msg)
     sysex = prefixRecieve .. msg .. checkSum(msg) .. suffix
     panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
+end
+
+
+function sendAllNotesOff(channel)
+    if channel == nil then
+        channel = 0
+    end
+
+    channel = numToHex(176 + channel)
+
+    sysex = channel .." 7b 00"
+    panel:sendMidiMessageNow(CtrlrMidiMessage(sysex))
+end
+
+
+
+-- send all notes off on all channels
+function panic()
+    for i=0,15,1 do
+        sendAllNotesOff(i)
+    end
 end
 
 

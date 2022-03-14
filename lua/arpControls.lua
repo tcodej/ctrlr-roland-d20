@@ -15,11 +15,20 @@ local updown = 0
 local rate = nil
 local noteLength = nil
 
+local ch = panel:getPropertyInt("panelMidiOutputChannelDevice")
+
+
 function arpControls(mod, value)
+	if panel:getRestoreState() == true or panel:getProgramState() == true then
+		return
+	end
 
     local name = L(mod:getName())
     local line1 = ""
     local line2 = ""
+
+local ch = panel:getPropertyInt("panelMidiOutputChannelDevice")
+if ch == nil then ch = 0 end
 
     hideEnv()
 
@@ -29,7 +38,7 @@ function arpControls(mod, value)
             timer:stopTimer(TIMER.ARP_CLOCK)
 
             -- all notes off
-            panel:sendMidiMessageNow(CtrlrMidiMessage("b0 7b 00"))
+            panic()
             line1 = "Arpeggiator"
             line2 = OFF_ON[1]
         end
@@ -54,13 +63,14 @@ function arpControls(mod, value)
         rate =  math.floor(60000 / value)
 
         --rate = (value + 1) * 50
-        noteLength = rate - (rate * .1)
+        noteLength = rate - (rate / 4)
 
         line1 = "ARP Rate"
         line2 = value .."bpm ".. rate .."ms"
 
         if ARP_ON then
             timer:stopTimer(TIMER.ARP_CLOCK)
+            panic()
             timer:startTimer(TIMER.ARP_CLOCK, rate)
         end
 
@@ -87,7 +97,7 @@ function reset()
         rate = 250
     end
 
-    noteLength = rate - (rate * .1)
+    noteLength = rate - (rate / 4)
 end
 
 
@@ -120,7 +130,7 @@ function sendNote()
     end
 
     -- note on
-    panel:sendMidiMessageNow(CtrlrMidiMessage("90 ".. notes[curNote] .." ".. velocity))
+    panel:sendMidiMessageNow(CtrlrMidiMessage(MIDI_ON[ch+1] .." ".. notes[curNote] .." ".. velocity))
 
 	timer:setCallback(TIMER.ARP_NOTE, stopNote)
 	timer:startTimer(TIMER.ARP_NOTE, noteLength)
@@ -132,7 +142,7 @@ function stopNote()
     activity(ACT_OFF)
 
     -- note off
-    panel:sendMidiMessageNow(CtrlrMidiMessage("80 ".. notes[curNote] .." 00"))
+    panel:sendMidiMessageNow(CtrlrMidiMessage(MIDI_OFF[ch+1] .." ".. notes[curNote] .." 00"))
 
     timer:stopTimer(TIMER.ARP_NOTE)
 end

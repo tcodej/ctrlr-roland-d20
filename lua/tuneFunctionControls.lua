@@ -25,8 +25,7 @@ function tuneFunctionControls(mod, value)
 
     local line1 = ""
     local line2 = ""
-    local v1 = "";
-    local v2 = ""
+    local v1 = ""
     local valueStr = nil
 
     local tuneLow = 428

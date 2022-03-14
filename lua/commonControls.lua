@@ -8,10 +8,8 @@ function commonControls(mod, value, source)
     local name = L(mod:getName())
     local sysEx = "04 00 0a"
 
-    local line1 = "Structure s1"
-    local line2 = "s1"
-    local v1 = "";
-    local v2 = "s1"
+    local line1 = ""
+    local line2 = ""
 
     hideEnv()
 
@@ -22,24 +20,20 @@ function commonControls(mod, value, source)
         sysEx = "04 00 0d"
 
     elseif name == "mod-struct1" then
-        v1 = "1&2"
+        line1 = "Structure 1&2"
+        line2 = zeroPad(value+1)
         sysEx = "04 00 0a"
         structureMatrix(1, value)
 
     elseif name == "mod-struct2" then
-        v1 = "3&4"
+        line1 = "Structure 3&4"
+        line2 = zeroPad(value+1)
         sysEx = "04 00 0b"
         structureMatrix(2, value)
     end
 
     sysEx = sysEx .." ".. numToHex(value)
 
-    if type(value) == "number" then
-        -- starts at 1
-        line2 = line2:gsub(v2, zeroPad(value+1))
-    end
-
-    line1 = line1:gsub("s1", v1)
     updateLCD(line1, line2)
 
     sendSysex(sysEx)

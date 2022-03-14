@@ -18,8 +18,6 @@ function timbreControls(mod, value)
     local addr = "00"
     local name = L(mod:getName())
 
-	console(name)
-
     local offset = {
         tgroup = "00",
         tnum = "01",
@@ -32,17 +30,15 @@ function timbreControls(mod, value)
 
     local line1 = ""
     local line2 = ""
-    local v1 = "";
-    local v2 = ""
 
     if string.find(name, "keyshft") then
         line1 = "Key Shift"
-        line2 = zeroPad(value)
+        line2 = KEY_SHIFT[value+1]
         addr = offset.kshift
 
     elseif string.find(name, "ftune") then
         line1 = "Fine Tune"
-        line2 = zeroPad(value)
+        line2 = LEVELS[value+1]
         addr = offset.ftune
 
     elseif string.find(name, "brange") then
