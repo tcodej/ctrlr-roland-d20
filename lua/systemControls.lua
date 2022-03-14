@@ -12,8 +12,7 @@ function systemControls(mod, value)
     local addr = "00"
     local name = L(mod:getName())
 
-    local offset = {
-    }
+    local offset = {}
 
     local line1 = ""
     local line2 = ""
@@ -22,8 +21,14 @@ function systemControls(mod, value)
     if name == "midi-ch-out" then
         line1 = "Midi TxCH"
         line2 = zeroPad(value+1)
-        panel:setPropertyInt("panelMidiOutputChannelDevice", value+1)
-        console(panel:getPropertyString("panelMidiOutputChannelDevice"))
+
+        if (ARP_ON) then
+            -- set all notes off
+            panic()
+        end
+
+        MIDI_CH = value
+        panel:setPropertyInt("panelMidiOutputChannelDevice", MIDI_CH+1)
 
     elseif name == "btn-reset" then
         line1 = "Resetting Timbre"

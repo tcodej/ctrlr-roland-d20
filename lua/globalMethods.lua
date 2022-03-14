@@ -21,6 +21,8 @@ TIMER = {
 
 LFO = { false, false, false, false }
 
+MIDI_CH = panel:getPropertyInt("panelMidiOutputChannelDevice")
+
 -- note off/on by channel
 MIDI_OFF = {"80","81","82","83","84","85","86","87"}
 MIDI_ON = {"90","91","92","93","94","95","96","97"}
