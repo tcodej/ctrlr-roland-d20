@@ -36,6 +36,8 @@ function systemControls(mod, value)
         resetTimbre()
 
     elseif name == "btn-panic" then
+        line1 = "All Notes Off"
+        line2 = "All Channels"
         panic()
     end
 
