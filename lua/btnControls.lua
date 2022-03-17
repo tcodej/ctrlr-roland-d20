@@ -17,13 +17,13 @@ function btnControls(mod, value)
 
     if name == "btn-toggle-performance" then
         if value == 0 then
-            console("performance off, tone on")
+            --console("performance off, tone on")
             toggleVisible("tabs-partials", true)
             toggleLayerVisible("tone-common", true)
             toggleLayerVisible("performance", false)
 
         else
-            console("performance on, tone off")
+            --console("performance on, tone off")
             toggleVisible("tabs-partials", false)
             toggleLayerVisible("tone-common", false)
             toggleLayerVisible("performance", true)

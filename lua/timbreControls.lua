@@ -63,10 +63,19 @@ function timbreControls(mod, value)
         line2 = " ".. (value+1)
         addr = offset.assign
 
+    elseif string.find(name, "reverb") then
+        line1 = "Reverb Switch"
+        line2 = OFF_ON[value+1]
+        addr = offset.reverb
+
+
+-- todo: group and tone select is still janky
+
     elseif string.find(name, "tone%-grp") then
         groupNum = value+1
         line1 = "Tone Select"
         line2 = GROUPS[groupNum] .. addZero(toneNum) ..":".. TONES[groupNum][toneNum]
+        addr = offset.tgroup
 
         toneCombo = panel:getComponent("list-tone-num")
         local newList = table.concat(TONES[groupNum], "\n")
@@ -80,6 +89,7 @@ function timbreControls(mod, value)
         line1 = "Tone Select"
         line2 = GROUPS[groupNum] .. addZero(toneNum) ..":".. TONES[groupNum][toneNum]
         console("tone set to ".. toneNum)
+        addr = offset.tnum
     end
 
     updateLCD(line1, line2)
