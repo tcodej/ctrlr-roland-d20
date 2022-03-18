@@ -7,20 +7,22 @@ local lfoNum = 1
 local SHAPES = {"Triangle","Square","Sawtooth","Random"}
 
 local MODS = {
-    { name = "mod-timbre-keyshft", min = 0, max = 48 },
-    { name = "tvf-cutoff-p1", min = 30, max = 100 },
-    { name = "tvf-res-p1", min = 15, max = 30 },
-    { name = "form-pw-p1", min = 0, max = 100 }
+    { name = "mod-timbre-keyshft", min = 0, max = 48, step = 1 },
+    { name = "tvf-cutoff-p1", min = 30, max = 100, step = 1 },
+    { name = "tvf-res-p1", min = 15, max = 30, step = 1 },
+    { name = "form-pw-p1", min = 0, max = 100, step = 1 },
+    { name = "mod-patch-mainlevel", min = 0, max = 100, step = 10 }
 }
 
-local dest = MODS[1].name
-local min = MODS[1].min
-local max = MODS[1].max
-local rate = 30
+local dest = MODS[get("mod-lfo1-mod")+1].name
+local min = MODS[get("mod-lfo1-mod")+1].min
+local max = MODS[get("mod-lfo1-mod")+1].max
+local step = MODS[get("mod-lfo1-mod")+1].step
+
+local rate = get("mod-lfo1-rate")
+local shape = SHAPES[get("mod-lfo1-SHAPE")]
 local val = min
-local step = 1
 local dir = 1
-local shape = "Triangle"
 
 function lfo1(mod, value)
 
@@ -61,8 +63,9 @@ function lfo1(mod, value)
         dest = MODS[value+1].name
         min = MODS[value+1].min
         max = MODS[value+1].max
+        step = MODS[value+1].step
 
-        line1 = "LFO1 Shape"
+        line1 = "LFO1 Target"
         line2 = dest
 
         if LFO[lfoNum] == true then
@@ -77,7 +80,7 @@ end
 
 
 function startLfo1()
-    console("Start lfo1")
+    LCD_UPDATE = false
     LFO[lfoNum] = true
     val = 0
     timer:setCallback(TIMER.LFO[lfoNum], lfo1Loop)
@@ -86,7 +89,7 @@ end
 
 
 function stopLfo1()
-    console("Stop lfo1")
+    LCD_UPDATE = true
     LFO[lfoNum] = false
     timer:stopTimer(TIMER.LFO[lfoNum])
     val = 0
@@ -108,6 +111,14 @@ function lfo1Loop()
         end
 
         val = val + (step * dir)
+
+        if shape == "Square" then
+            if val == min or val == max then
+                set(dest, val)
+            end
+            return
+        end
+
     end
 
     set(dest, val)
