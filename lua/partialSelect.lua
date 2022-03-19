@@ -5,6 +5,7 @@
 function partialSelect(mod, value, source)
     -- first disable blinker
     stopBlinker()
+    setMode("partials")
 
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
@@ -22,9 +23,9 @@ function partialSelect(mod, value, source)
     -- set chosen as active
     P_EDIT[partial] = true
 
-    startBlinker()
+    --startBlinker()
 
-    --updateLCD("Tone Edit", "Partial ".. partial)
+    updateLCD("Tone Edit", "Partial ".. partial)
 
     -- don't allow the currently pressed button to get in an off state
     if get("btn-p".. partial) == 0 then

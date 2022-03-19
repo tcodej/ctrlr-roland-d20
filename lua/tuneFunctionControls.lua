@@ -52,11 +52,6 @@ function tuneFunctionControls(mod, value)
         line2 = v1 .."Hz"
         addr = offset.mtune
 
-    elseif string.find(name, "keytrns") then
-        -- can't find key transpose in the spec, so this plays with the lcd display for now
-        value = value + 32
-        sendSysex("20 00 00 ".. numToHex(value))
-
     elseif string.find(name, "rtype") then
         line1 = "Reverb Type"
         line2 = REVERB_TYPES[value+1]
