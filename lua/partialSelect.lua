@@ -5,7 +5,9 @@
 function partialSelect(mod, value, source)
     -- first disable blinker
     stopBlinker()
-    setMode("partials")
+
+    -- set partial view
+    set("btn-toggle-functions", 0)
 
     local name = L(mod:getName())
     local partial = tonumber(string.sub(name, -1))
