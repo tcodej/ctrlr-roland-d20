@@ -28,9 +28,6 @@ function arpControls(mod, value)
 
     if name == "btn-arp" then
         if value == 0 then
-            ARP_ON = false
-            timer:stopTimer(TIMER.ARP_CLOCK)
-
             -- all notes off
             panic()
             line1 = "Arpeggiator"
@@ -78,6 +75,12 @@ function arpControls(mod, value)
     updateLCD(line1, line2)
 end
 
+
+-- this is used by panic()
+function stopArp()
+    ARP_ON = false
+    timer:stopTimer(TIMER.ARP_CLOCK)
+end
 
 
 function reset()

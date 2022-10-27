@@ -180,6 +180,7 @@ function panic()
     for i=0,15,1 do
         sendAllNotesOff(i)
     end
+    stopArp();
 end
 
 

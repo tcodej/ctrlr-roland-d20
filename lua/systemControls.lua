@@ -39,6 +39,10 @@ function systemControls(mod, value)
         line1 = "All Notes Off"
         line2 = "All Channels"
         panic()
+        -- also turn off arpeggiator
+        ARP_ON = false
+        timer:stopTimer(TIMER.ARP_CLOCK)
+
     end
 
     --sendSysex(base .. addr .." ".. numToHex(value))
